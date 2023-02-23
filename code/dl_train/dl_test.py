@@ -29,36 +29,17 @@ from sklearn.metrics import classification_report
 from tensorflow.keras.models import load_model
 
 
-# Import history data
-kk = 0
-nsims = 10000
-sigma_min = 0.005
-sigma_max = 0.015
-
-# Make dir for figures
-path = 'figures/dl_test/nsims_{}_sigma_{}_{}_kk_{}'.format(nsims,sigma_min,sigma_max,kk)
-os.makedirs(path, exist_ok=True)
-
-model_type = 1
-filepath = 'training_history/history_{}_mtype_{}_nsims_{}_sigma_{}_{}.csv'.format(kk,model_type,nsims, sigma_min, sigma_max)
-df_history_1 = pd.read_csv(filepath)
-
-model_type = 2
-filepath = 'training_history/history_{}_mtype_{}_nsims_{}_sigma_{}_{}.csv'.format(kk,model_type,nsims,sigma_min,sigma_max)
-df_history_2 = pd.read_csv(filepath)
-
 
 #-----------
 # Confusion matrix for model type 1 - full classificaiton problem
 #------------
 
 model_type = 1
-model_name = 'trained_models/model_{}_mtype_{}_nsims_{}_sigma_{}_{}.pkl'.format(kk, model_type,nsims,sigma_min,sigma_max)
-model = load_model(model_name)
+model = load_model('classifier_{}.pkl'.format(model_type))
 
 # Import test data (numpy array)
-inputs_test = np.load('test_data/inputs_mtype_{}_nsims_{}_sigma_{}_{}.npy'.format(model_type,nsims,sigma_min,sigma_max))
-targets_test = np.load('test_data/targets_mtype_{}_nsims_{}_sigma_{}_{}.npy'.format(model_type,nsims,sigma_min,sigma_max))
+inputs_test = np.load('output/test_inputs_{}.npy'.format(model_type))
+targets_test = np.load('output/test_targets_{}.npy'.format(model_type))
 
 # Get predictions
 preds_prob = model.predict(inputs_test)  # prediction probabilities
@@ -82,7 +63,8 @@ disp= ConfusionMatrixDisplay.from_predictions(targets_test,
 ax = disp.ax_
 ax.images[0].colorbar.remove()
 plt.text(x=-1.7, y=-0.1, s='A', fontdict={'size':14})
-plt.savefig(path+'/cm_mtype_{}.png'.format(model_type),bbox_inches='tight', dpi=300)
+plt.savefig('output/cm_mtype_{}.png'.format(model_type),bbox_inches='tight', dpi=300)
+
 
 
 
@@ -121,10 +103,7 @@ ax.images[0].colorbar.remove()
 plt.yticks(rotation=90, va='center')
 plt.text(x=-0.9, y=-0.35, s='C', fontdict={'size':14})
 plt.ylabel(ylabel='True label', labelpad=15)
-plt.savefig(path+'/cm_mtype_{}_binary.png'.format(model_type),bbox_inches='tight', dpi=300)
-
-
-
+plt.savefig('output/cm_mtype_{}_binary.png'.format(model_type),bbox_inches='tight', dpi=300)
 
 
 
@@ -135,12 +114,11 @@ plt.savefig(path+'/cm_mtype_{}_binary.png'.format(model_type),bbox_inches='tight
 #------------
 
 model_type = 2
-model_name = 'trained_models/model_{}_mtype_{}_nsims_{}_sigma_{}_{}.pkl'.format(kk, model_type,nsims,sigma_min,sigma_max)
-model = load_model(model_name)
+model = load_model('classifier_{}.pkl'.format(model_type))
 
 # Import test data (numpy array)
-inputs_test = np.load('test_data/inputs_mtype_{}_nsims_{}_sigma_{}_{}.npy'.format(model_type,nsims,sigma_min,sigma_max))
-targets_test = np.load('test_data/targets_mtype_{}_nsims_{}_sigma_{}_{}.npy'.format(model_type,nsims,sigma_min,sigma_max))
+inputs_test = np.load('output/test_inputs_{}.npy'.format(model_type))
+targets_test = np.load('output/test_targets_{}.npy'.format(model_type))
 
 # Get predictions
 preds_prob = model.predict(inputs_test)  # prediction probabilities
@@ -164,7 +142,7 @@ disp= ConfusionMatrixDisplay.from_predictions(targets_test,
 ax = disp.ax_
 ax.images[0].colorbar.remove()
 plt.text(x=-1.7, y=-0.1, s='B', fontdict={'size':14})
-plt.savefig(path+'/cm_mtype_{}.png'.format(model_type),bbox_inches='tight', dpi=300)
+plt.savefig('output/cm_mtype_{}.png'.format(model_type),bbox_inches='tight', dpi=300)
 
 
 
@@ -203,9 +181,8 @@ ax.images[0].colorbar.remove()
 plt.yticks(rotation=90, va='center')
 plt.text(x=-0.9, y=-0.35, s='D', fontdict={'size':14})
 plt.ylabel(ylabel='True label', labelpad=15)
-plt.savefig(path+'/cm_mtype_{}_binary.png'.format(model_type),
+plt.savefig('output/cm_mtype_{}_binary.png'.format(model_type),
             bbox_inches='tight', dpi=300)
-
 
 
 
@@ -224,10 +201,10 @@ def add_margin(pil_img, top, right, bottom, left, color):
     return result
 
 
-img_1 = Image.open(path+'/cm_mtype_1.png')
-img_1_binary= Image.open(path+'/cm_mtype_1_binary.png')
-img_2 = Image.open(path+'/cm_mtype_2.png')
-img_2_binary= Image.open(path+'/cm_mtype_2_binary.png')
+img_1 = Image.open('output/cm_mtype_1.png')
+img_1_binary= Image.open('output/cm_mtype_1_binary.png')
+img_2 = Image.open('output/cm_mtype_2.png')
+img_2_binary= Image.open('output/cm_mtype_2_binary.png')
 
 total_width = img_1.width*2
 total_height = img_1.height + img_1_binary.height
@@ -250,30 +227,7 @@ dst.paste(img_2, (img_1.width, 0))
 dst.paste(img_1_binary, (0,img_1.height))
 dst.paste(img_2_binary, (img_1.width, img_1.height))
 
-dst.save(path+'/fig_confusion.png')
-
-
-
-
-# #-----------
-# # Exporot targets and predictions
-# #-----------
-
-# df1 = pd.DataFrame()
-# df1['targets'] = targets_test_1[:,0]
-# df1['preds'] = preds_1
-# df1['model'] = 'm1'
-
-# df2 = pd.DataFrame()
-# df2['targets'] = targets_test_2[:,0]
-# df2['preds'] = preds_2
-# df2['model'] = 'm2'
-
-# df_preds_targets = pd.concat([df1,df2])
-# df_preds_targets.to_csv('output/df_preds_targets_kk_{}.csv'.format(kk), index=False)
-
-
-
+dst.save('../../results/fig_confusion.png')
 
 
 

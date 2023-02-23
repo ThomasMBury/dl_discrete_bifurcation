@@ -25,7 +25,7 @@ Options for model_type
 import argparse
 parser = argparse.ArgumentParser(description='Train DL classifier')
 parser.add_argument('--model_type', type=int, help='Model type', choices=[1,2],
-                    default=1)
+                    default=2)
 parser.add_argument('--num_epochs', type=int, help='Number of training epochs', default=5)
 
 args = parser.parse_args()
@@ -137,8 +137,8 @@ print('Using {} validation data samples'.format(len(inputs_val)))
 print('Using {} test data samples'.format(len(inputs_test)))
 
 # Export test data
-np.save('test_inputs.npy', inputs_test)
-np.save('test_targets.npy', targets_test)
+np.save('output/test_inputs_{}.npy'.format(model_type), inputs_test)
+np.save('output/test_targets_{}.npy'.format(model_type), targets_test)
 
 # Hyperparameters
 pool_size = 2
@@ -204,6 +204,6 @@ history = model.fit(inputs_train, targets_train,
 
 # Export history data (metrics evaluated on training and validation sets at each epoch)
 df_history = pd.DataFrame(history.history)
-df_history.to_csv('df_history_{}.csv'.format(model_type), index=False)
+df_history.to_csv('output/df_history_{}.csv'.format(model_type), index=False)
 
 
