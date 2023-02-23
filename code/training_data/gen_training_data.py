@@ -18,6 +18,9 @@ Key for trajectory type:
 """
 
 
+import time
+start = time.time()
+
 import numpy as np
 import pandas as pd
 
@@ -27,7 +30,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--nsims', type=int, 
                     help='Number of simulations for each model',
-                    default=10)
+                    default=100)
 parser.add_argument('--verbose', type=int, choices=[0,1], default=1)
 
 args = parser.parse_args()
@@ -515,6 +518,7 @@ df_out['x'] = df_full['x'].astype('float32')
 df_out['type'] = df_full['type'].astype('category')
 df_out['bif_type'] = df_full['bif_type'].astype('category')
 
-df_out.to_parquet('df_train.parquet')
+df_out.to_parquet('output/df_train.parquet')
 
-
+end = time.time()
+print('Script took {:0.1f} seconds'.format(end-start))

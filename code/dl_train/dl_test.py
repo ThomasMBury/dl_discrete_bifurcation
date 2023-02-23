@@ -29,7 +29,6 @@ from sklearn.metrics import classification_report
 from tensorflow.keras.models import load_model
 
 
-
 #-----------
 # Confusion matrix for model type 1 - full classificaiton problem
 #------------
@@ -64,8 +63,6 @@ ax = disp.ax_
 ax.images[0].colorbar.remove()
 plt.text(x=-1.7, y=-0.1, s='A', fontdict={'size':14})
 plt.savefig('output/cm_mtype_{}.png'.format(model_type),bbox_inches='tight', dpi=300)
-
-
 
 
 #-----------
