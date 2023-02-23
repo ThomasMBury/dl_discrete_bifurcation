@@ -23,6 +23,16 @@ import pandas as pd
 
 import train_funs as funs
 
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--nsims', type=int, 
+                    help='Number of simulations for each model',
+                    default=10)
+parser.add_argument('--verbose', type=int, choices=[0,1], default=1)
+
+args = parser.parse_args()
+nsims = args.nsims
+verbose = bool(args.verbose)
 
 # Fix random number seed for reproducibility
 np.random.seed(0)
@@ -30,21 +40,19 @@ np.random.seed(0)
 tmax = 600
 tburn = 100
 ts_len = 500 #  length of time series to store for training
-nsims = 10 # number of simulations of each type
 max_order = 10 # Max polynomial degree
 
 # Noise amplitude distribution parameters (uniform dist.)
 sigma_min = 0.005
 sigma_max = 0.015
 
+# Number of standard deviations from equilibrium that defines a transition
+thresh_std = 10
+
 # List to collect time series
 list_df = []
 tsid = 1 # time series id
 
-verbose = True # print output
-
-# Number of standard deviations from equilibrium that defines a transition
-thresh_std = 10
 
 
 print('Run forced PD simulations')
@@ -407,8 +415,6 @@ while j <= nsims:
 
 
 
-
-        
     
 print('Run forced PF simulations')
 j=1
@@ -454,7 +460,6 @@ while j <= nsims:
 
 
 
-
 print('Run null PF simulations')
 j=1
 while j <= nsims:
@@ -495,7 +500,7 @@ while j <= nsims:
     tsid+=1
     j+=1
     
-    
+
 #-------------
 # Concatenate simulations and export
 #-------------
@@ -503,21 +508,13 @@ while j <= nsims:
 df_full = pd.concat(list_df, ignore_index=True)
 
 # Export to csv (include only necessary cols to save space)
-filepath = 'output/df_train_nsims_{}_sigma_{}_{}_thresh_{}.csv'.format(nsims,sigma_min, sigma_max,thresh_std)
 df_out = pd.DataFrame()
-df_out['tsid'] = df_full['tsid']
-df_out['time'] = df_full['time_reset']
-df_out['x'] = df_full['x'].astype(np.float32)
-df_out['type'] = df_full['type']
-df_out['bif_type'] = df_full['bif_type']
-# df_out['sigma'] = df_full['sigma']
-df_out.set_index(['tsid','time'],inplace=True)
-df_out.to_csv(filepath)
+df_out['tsid'] = df_full['tsid'].astype('int32')
+df_out['time'] = df_full['time_reset'].astype('int32')
+df_out['x'] = df_full['x'].astype('float32')
+df_out['type'] = df_full['type'].astype('category')
+df_out['bif_type'] = df_full['bif_type'].astype('category')
 
-
-
-
-
-
+df_out.to_parquet('df_train.parquet')
 
 
