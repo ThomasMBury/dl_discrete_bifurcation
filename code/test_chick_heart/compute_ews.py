@@ -3,16 +3,16 @@
 """
 Created on Wed Oct 26 10:46:50 2022
 
--Compute EWS and DL predictions on data
--Export data to output dir
+-Compute EWS and DL predictions rolling over chick heart data
 
 @author: tbury
 """
 
+import time
+start_time = time.time()
+
 import numpy as np
 import pandas as pd
-import plotly.graph_objects as go
-import plotly.express as px
 
 import ewstools
 
@@ -21,22 +21,16 @@ from tensorflow.keras.models import load_model
 
 np.random.seed(0)
 
-# Load in DL classifiers
-path = '../../dl_train/trained_models/'
-classifier_names = [
-    'model_1_mtype_1_nsims_10000_sigma_0.005_0.015.pkl',
-    'model_1_mtype_2_nsims_10000_sigma_0.005_0.015.pkl'
-    ]
+# Time increment between DL predictions
+inc = 50
 
-list_classifiers=[]
-for name in classifier_names:
-    classifier = load_model(path+name)
-    list_classifiers.append(classifier)
-
+# Load in DL models
+m1 = load_model('../dl_train/classifier_1.pkl')
+m2 = load_model('../dl_train/classifier_2.pkl')
 print('TF models loaded')
 
 # Load in trajectory data
-df_traj = pd.read_csv('data/df_chick.csv')
+df_traj = pd.read_csv('../../data/df_chick.csv')
 df_traj_pd = df_traj[df_traj['type']=='pd']
 df_traj_null = df_traj[df_traj['type']=='neutral']
 
@@ -67,22 +61,20 @@ for tsid in list_tsid:
     ts.compute_var(rolling_window=0.25)
     ts.compute_auto(rolling_window=0.25, lag=1)
     
-    # Get DL predictions
-    for idx, classifier in enumerate(list_classifiers):
-        ts.apply_classifier_inc(classifier, inc=5, name=str(idx), verbose=0)
-    
+    # Get DL predictions for forced trajectory
+    ts.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
+    ts.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
+
     # Save data to lists
+    df_dl = ts.dl_preds.groupby('time').mean() # use mean DL pred
+    df_dl['tsid'] = tsid
+    df_dl.reset_index(inplace=True)
+    df_dl = df_dl.rename({'time':'Beat number'}, axis=1)
+    list_dl.append(df_dl)
+
     df_ews = ts.state.join(ts.ews)
     df_ews['tsid'] = tsid
     list_ews.append(df_ews)
-    
-    df_dl = ts.dl_preds
-    df_dl['tsid'] = tsid
-    df_dl.rename({'time':'Beat number'}, axis=1)
-    list_dl.append(df_dl)
-    
-    # fig = ts.make_plotly(kendall_tau=False, ens_avg=True)
-    # fig.write_html('figures/ews_single/{}_pd.html'.format(tsid))
     
     print('Complete for tsid={}\n'.format(tsid))
 
@@ -92,6 +84,7 @@ df_dl_pd = pd.concat(list_dl)
 # Export period-doubling EWS
 df_ews_pd.to_csv('output/df_ews_pd.csv')
 df_dl_pd.to_csv('output/df_dl_pd.csv', index=False)
+
 
 
 #--------
@@ -114,23 +107,20 @@ for tsid in list_tsid:
     ts.compute_var(rolling_window=0.25)
     ts.compute_auto(rolling_window=0.25, lag=1)
     
-    # Get DL predictions
-    for idx, classifier in enumerate(list_classifiers):
-        ts.apply_classifier_inc(classifier, inc=5, name=str(idx), verbose=0)
-    
-    # Save data to lists
+    # Get DL predictions for null trajectory
+    ts.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
+    ts.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
+
+    df_dl = ts.dl_preds.groupby('time').mean() # use mean DL pred
+    df_dl['tsid'] = tsid
+    df_dl.reset_index(inplace=True)
+    df_dl = df_dl.rename({'time':'Beat number'}, axis=1)
+    list_dl.append(df_dl)
+
     df_ews = ts.state.join(ts.ews)
     df_ews['tsid'] = tsid
     list_ews.append(df_ews)
-    
-    df_dl = ts.dl_preds
-    df_dl['tsid'] = tsid
-    df_dl.rename({'time':'Beat number'}, axis=1)
-    list_dl.append(df_dl)
-    
-    # fig = ts.make_plotly(kendall_tau=False, ens_avg=True)
-    # fig.write_html('figures/ews_single/{}_pd.html'.format(tsid))
-    
+
     print('Complete for tsid={}\n'.format(tsid))    
     
 df_ews_null = pd.concat(list_ews)
@@ -139,6 +129,12 @@ df_dl_null = pd.concat(list_dl)
 # Export null EWS
 df_ews_null.to_csv('output/df_ews_null.csv')
 df_dl_null.to_csv('output/df_dl_null.csv', index=False)
+
+
+# Time taken for script to run
+end_time = time.time()
+time_taken = end_time - start_time
+print('Ran in {:.2f}s'.format(time_taken))
 
 
 

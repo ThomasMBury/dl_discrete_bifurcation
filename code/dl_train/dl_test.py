@@ -224,7 +224,7 @@ dst.paste(img_2, (img_1.width, 0))
 dst.paste(img_1_binary, (0,img_1.height))
 dst.paste(img_2_binary, (img_1.width, img_1.height))
 
-dst.save('../../results/fig_confusion.png')
+dst.save('../../results/figure_s1.png')
 
 
 

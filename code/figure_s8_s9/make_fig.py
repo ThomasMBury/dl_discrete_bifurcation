@@ -9,10 +9,14 @@ Make a figure that includes:
 - Lag-1 AC
 - DL predictions
 
-For each period-doubling trajectory in chick-heart data
+For each null trajectory in chick-heart data
 
 @author: tbury
 """
+
+
+import time
+start_time = time.time()
 
 import numpy as np
 import pandas as pd
@@ -22,16 +26,13 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-# Import transition times
-df_transitions = pd.read_csv('../output/df_transitions.csv')
-df_transitions.set_index('tsid',inplace=True)
-
-# Import EWS data
-df_ews = pd.read_csv('../output/df_ews_pd.csv')
+# Load in EWS data
+df_ews = pd.read_csv('../test_chick_heart/output/df_ews_null.csv')
 
 # Import DL prediction data
-df_dl = pd.read_csv('../output/df_dl_pd.csv')
+df_dl = pd.read_csv('../test_chick_heart/output/df_dl_null.csv')
 df_dl['any'] = df_dl[['1','2','3','4','5']].sum(axis=1)
+df_dl['time'] = df_dl['Beat number']
 # df_dl = df_dl.rename({col_name:str(col_name) for col_name in df_dl.columns.values})
 
 
@@ -335,19 +336,6 @@ def make_grid_figure(df_ews, df_dl, letter_label, title, transition=False):
     return fig
 
 
-# # # make single fig
-# tsid=1
-# df_ews = df_ews[df_ews['tsid']==tsid]
-# df_dl = df_dl[df_dl['tsid']==tsid]
-# transition = df_transitions['transition'].loc[tsid]
-# letter_label = 'a'
-# title=''
-
-# fig = make_grid_figure(df_ews, df_dl, letter_label, title, transition)
-# fig.write_html('temp.html')
-# # fig.write_image('temp.png',scale=2)
-
-
 
 #-------------
 # Make ind figs for period-doubling trajectories
@@ -367,14 +355,13 @@ for i, tsid in enumerate(list_tsid):
     letter_label = list_letter_labels[i]
     df_ews_spec = df_ews[df_ews['tsid']==tsid]
     df_dl_spec = df_dl_av[df_dl_av['tsid']==tsid]
-    transition = df_transitions['transition'].loc[tsid]
 
     # Title
     # title = 'tsid={}'.format(tsid)
     title=''
-    fig = make_grid_figure(df_ews_spec, df_dl_spec, letter_label, title, transition=transition)     
+    fig = make_grid_figure(df_ews_spec, df_dl_spec, letter_label, title, transition=False)     
     # Export as png
-    fig.write_image('temp_images/img_{}.png'.format(tsid),
+    fig.write_image('img_{}.png'.format(tsid),
                     scale=2)  
     print('Exported image {}'.format(tsid))
 
@@ -387,10 +374,10 @@ for i, tsid in enumerate(list_tsid):
 from PIL import Image
 
 list_img = []
-filename = 'fig_ews_all_pd_1.png'
+filename = '../../results/figure_s8.png'
 
 for tsid in np.arange(1,13):
-    img = Image.open('temp_images/img_{}.png'.format(tsid))
+    img = Image.open('img_{}.png'.format(tsid))
     list_img.append(img)
 
 # Get height and width of individual panels
@@ -416,10 +403,10 @@ dst.save(filename)
 #-----------
 
 list_img = []
-filename = 'fig_ews_all_pd_2.png'
+filename = '../../results/figure_s9.png'
 
 for tsid in np.arange(13,24):
-    img = Image.open('temp_images/img_{}.png'.format(tsid))
+    img = Image.open('img_{}.png'.format(tsid))
     list_img.append(img)
 
 # Get height and width of individual panels
@@ -442,14 +429,29 @@ for y in np.arange(0,2)*ind_height:
         
 dst.save(filename)
 
-
 # Remove temp images
 import os
 for i in range(1,24):
     try:
-        os.remove('temp_images/img_{}.png'.format(i))
+        os.remove('img_{}.png'.format(i))
     except:
         pass
+
+# Time taken for script to run
+end_time = time.time()
+time_taken = end_time - start_time
+print('Ran in {:.2f}s'.format(time_taken))
+
+
+
+
+# # Export time taken for script to run
+# end_time = time.time()
+# time_taken = end_time - start_time
+# path = 'time_make_fig.txt'
+# with open(path, 'w') as f:
+#     f.write('{:.2f}'.format(time_taken))
+
 
 
 

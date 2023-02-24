@@ -8,13 +8,11 @@ Find transition times in chick heart data based on slope of return map
 @author: tbury
 """
 
-
 import numpy as np
 import pandas as pd
 
 import ewstools
 from sklearn.linear_model import LinearRegression
-
 
 def get_return_map_slope(series):
     '''
@@ -48,7 +46,7 @@ bw=60 # Bandwidth (in beat number) to detrend data
 num_consec = 10 # Number of consecutive beats required below thresh to define onset of bifurcation
 
 # Import PD data
-df_traj = pd.read_csv('data/df_chick.csv')
+df_traj = pd.read_csv('../../data/df_chick.csv')
 df_pd = df_traj[df_traj['type']=='pd']
 
 # Loop through each tsid
