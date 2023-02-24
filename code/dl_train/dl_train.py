@@ -51,7 +51,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 
 
 # Load in training data
-df = pd.read_parquet('../training_data/df_train.parquet')
+df = pd.read_parquet('../training_data/output/df_train.parquet')
 
 # Make classes of equal size : currently 5 times number of samples in null section
 # Get null class

@@ -2,120 +2,105 @@
 
 # Shell script to execute all code required to reproduce results.
 
+
 # Number of trainng simulations of each class
-NSIMS = 10
+NSIMS=500
 
 # Number of epochs with which to train DL classifiers
-NEPOCHS = 5
+NEPOCHS=2
 
 # Number of test model simulations 
-MODEL_SIMS = 25
+MODEL_SIMS=50
 
-# Generate training data
+# Time increment between DL predictions in chick heart data
+INC=50
+
+
+echo -e "-----\n Generate training data \n-----"
 cd training_data
-echo Generate training data
 python gen_training_data.py --nsims $NSIMS --verbose 0
 
-
-# Train DL classifier of type 1
+echo -e "-----\n Train classifier of type 1 \n-----"
 cd ../dl_train
-echo Train classifier of type 1
-python dl_train.py --model_type 1 --seed 0 --nsims $NSIMS --num_epochs $NEPOCHS
+python dl_train.py --model_type 1 --num_epochs $NEPOCHS
 
-# Train DL classifier of type 2
-echo Train classifier of type 1
-python dl_train.py --model_type 2 --seed 0 --nsims $NSIMS --num_epochs $NEPOCHS
+echo -e "-----\n Train classifier of type 2 \n-----"
+python dl_train.py --model_type 2 --num_epochs $NEPOCHS
 
-# Get F1 scores and confusion matrices - make Sup Fig 1
-echo Get F1 scores on test data
+echo -e "-----\n Get F1 scores on test data \n-----"
 python dl_test.py
 
-# Make Sup Fig 2 - example training trajectories
+echo -e "-----\n Make Sup Fig 2 - example training simulations \n-----"
 cd ../figure_s2
-echo Make Sup Fig 2
 python make_fig.py
 
-# Make Sup Fig 3 - example model test trajectories
+echo -e "-----\n Make Sup Fig 3 - example model test simulations \n-----"
 cd ../figure_s3
-echo make Sup Fig 3
 python make_fig.py
 
-# Fox model - test DL classifier and EWS
+echo -e "-----\n Test DL classifier and EWS on Fox model \n-----"
 cd ../test_fox
-echo Test DL classifier on Fox model
 python test_fox.py --model_sims $MODEL_SIMS
-python compute_roc.py --model_sims $MODEL_SIMS
+python compute_roc.py
 
-# Westerhoff model - test DL classifier and EWS
+echo -e "-----\n Test DL classifier and EWS on Westerhoff model \n-----"
 cd ../test_westerhoff
-echo Test DL classifier on Westerhoff model
 python test_westerhoff.py --model_sims $MODEL_SIMS
-python compute_roc.py --model_sims $MODEL_SIMS
+python compute_roc.py
 
-# Ricker model - test DL classifier and EWS
+echo -e "-----\n Test DL classifier and EWS on Ricker model \n-----"
 cd ../test_ricker
-echo Test DL classifier on Ricker model
 python test_ricker.py --model_sims $MODEL_SIMS
-python compute_roc.py --model_sims $MODEL_SIMS
+python compute_roc.py
 
-# Kot model - test DL classifier and EWS
+echo -e "-----\n Test DL classifier and EWS on Kot model \n-----"
 cd ../test_kot
-echo Test DL classifier on Kot model
 python test_kot.py --model_sims $MODEL_SIMS
-python compute_roc.py --model_sims $MODEL_SIMS
+python compute_roc.py
 
-# Lorenz model - test DL classifier and EWS
+echo -e "-----\n Test DL classifier and EWS on Lorenz model \n-----"
 cd ../test_lorenz
-echo Test DL classifier on Lorenz model
 python test_lorenz.py --model_sims $MODEL_SIMS
-python compute_roc.py --model_sims $MODEL_SIMS
+python compute_roc.py
 
-# Make Figure 2 - sample EWS and DL predictions in model
+echo -e "-----\n Make Figure 2 - EWS and DL predictions for sample model simulations \n-----"
 cd ../figure_2
-echo Make Figure 2
 python generate_data.py
 python make_fig.py
 
-# Make Sup Fig 4 - AUC scores across rof and sigma
+echo -e "-----\n Make Sup Fig 4 - AUC scores across rof and sigma \n-----"
 cd ../figure_s4
-echo Make Figure S4
 python make_fig.py
 
-# Make Sup Fig 5 - DL favourite bifurcation prop. correct
+echo -e "-----\n Make Sup Fig 5 - DL favourite bifurcation prop. correct \n-----"
 cd ../figure_s5
-echo Make Figure S5
 python make_fig.py
 
-# Chick heart data - get transitions and compute rolling EWS
+echo -e "-----\n Find transition times in chick heart data \n-----"
 cd ../test_chick_heart
-echo Find transition times in chick heart data
 python find_transition_times.py
-echo Compute EWS in chick heart data
-python compute_ews.py
 
-# Test DL and EWS with chick heart data
-echo Tet EWS and DL in chick heart data
+echo -e "-----\n Compute EWS in chick heart data \n-----"
+python compute_ews.py --inc $INC
+
+echo -e "-----\n Test EWS and DL in chick heart data \n-----"
 python test_chick_heart.py
 python compute_roc.py
 
-# Make figure 3 - sample EWS and DL preds in chick heart data
+echo -e "-----\n Make figure 3 - sample EWS and DL preds in chick heart data \n-----"
 cd ../figure_3
-echo Make Figure 3
 python make_fig.py
 
-# Make Sup Fig 6, 7 - EWS in chick heart forced sims
+echo -e "-----\n Make Fig S6 S7 - EWS in chick heart period-doubling \n-----"
 cd ../figure_s6_s7
-echo Make Figure S6 and S7
 python make_fig.py
 
-# Make Sup Fig 8, 9 - EWS in chick heart null sims
+echo -e "-----\n Make Fig S8 S9 - EWS in chick heart null \n-----"
 cd ../figure_s8_s9
-echo Make Figure S8 and S9
 python make_fig.py
 
-# Make Figure 4 - ROC curves
+echo -e "-----\n Make Figure 4 - ROC curves \n-----"
 cd ../figure_4
-echo Make Figure 4
 python make_fig.py
 
 

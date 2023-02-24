@@ -16,24 +16,14 @@ import scipy.stats as stats
 
 import funs_westerhoff as funs
 
-# Parse command line arguments
-import argparse
-parser = argparse.ArgumentParser()
-parser.add_argument('--model_sims', type=int, help='Num. of model simulations at each value of noise and rate of forcing', 
-                    default=25)
-
-args = parser.parse_args()
-model_sims = args.model_sims
-
 #-------------
 # Import predictions
 #–------------
 
-df_ktau_forced = pd.read_csv('output/df_ktau_forced_{}.csv'.format(model_sims))
-df_ktau_null = pd.read_csv('output/df_ktau_null_{}.csv'.format(model_sims))
-df_dl_forced = pd.read_csv('output/df_dl_forced_{}.csv'.format(model_sims))
-df_dl_null = pd.read_csv('output/df_dl_null_{}.csv'.format(model_sims))
-
+df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+df_ktau_null = pd.read_csv('output/df_ktau_null.csv')
+df_dl_forced = pd.read_csv('output/df_dl_forced.csv')
+df_dl_null = pd.read_csv('output/df_dl_null.csv')
 
 #----------------
 # compute ROC curves
@@ -65,7 +55,7 @@ df_counts['count'] = counts
 df_counts.fillna(value=0, inplace=True)
 
 # Export data on bifurcation prediction counts
-filepath = 'output/df_fav_bif_{}.csv'.format(model_sims)
+filepath = 'output/df_fav_bif.csv'
 df_counts.to_csv(filepath)
 print('Exported bifurcation count data to {}'.format(filepath))
 
@@ -114,7 +104,7 @@ list_roc.append(df_roc)
 df_roc_full = pd.concat(list_roc, ignore_index=True)
 
 # Export ROC data
-filepath = 'output/df_roc_{}.csv'.format(model_sims)
+filepath = 'output/df_roc.csv'
 df_roc_full.to_csv(filepath,
                     index=False,)
 

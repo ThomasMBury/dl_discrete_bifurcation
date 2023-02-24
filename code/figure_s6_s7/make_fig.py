@@ -30,10 +30,10 @@ df_transitions = pd.read_csv('../test_chick_heart/output/df_transitions.csv')
 df_transitions.set_index('tsid', inplace=True)
 
 # Load in EWS data
-df_ews = pd.read_csv('../test_chick_heart/output/df_ews_pd.csv')
+df_ews = pd.read_csv('../test_chick_heart/output/df_ews_pd_rolling.csv')
 
 # Import DL prediction data
-df_dl = pd.read_csv('../test_chick_heart/output/df_dl_pd.csv')
+df_dl = pd.read_csv('../test_chick_heart/output/df_dl_pd_rolling.csv')
 df_dl['any'] = df_dl[['1','2','3','4','5']].sum(axis=1)
 df_dl['time'] = df_dl['Beat number']
 # df_dl = df_dl.rename({col_name:str(col_name) for col_name in df_dl.columns.values})

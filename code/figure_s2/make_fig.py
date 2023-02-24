@@ -488,7 +488,6 @@ for idx, ax in enumerate(axes_numbers):
 
 #---------Subplot titles----------
 for idx, ax in enumerate([''] + list(np.arange(2,7))):
-    print('x{} domain'.format(ax))
     fig.add_annotation(x=0.5,y=1.12,
                         text=subplot_titles[idx],
                         showarrow=False,

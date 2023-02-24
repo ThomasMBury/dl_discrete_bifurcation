@@ -21,8 +21,6 @@ import plotly.express as px
 
 import sklearn.metrics as metrics
 
-model_sims = 25
-
 def roc_compute(truth_vals, indicator_vals):
     
     # Compute ROC curve and threhsolds using sklearn
@@ -45,10 +43,10 @@ def roc_compute(truth_vals, indicator_vals):
 path = '../test_fox/output/'
 
 # Import data
-df_ktau_forced = pd.read_csv(path+'df_ktau_forced_{}.csv'.format(model_sims))
-df_ktau_null = pd.read_csv(path+'df_ktau_null_{}.csv'.format(model_sims))
-df_dl_forced = pd.read_csv(path+'df_dl_forced_{}.csv'.format(model_sims))
-df_dl_null = pd.read_csv(path+'df_dl_null_{}.csv'.format(model_sims))
+df_ktau_forced = pd.read_csv(path+'df_ktau_forced.csv')
+df_ktau_null = pd.read_csv(path+'df_ktau_null.csv')
+df_dl_forced = pd.read_csv(path+'df_dl_forced.csv')
+df_dl_null = pd.read_csv(path+'df_dl_null.csv')
 
 # Set truth values
 df_ktau_forced['truth_value'] = 1
@@ -114,10 +112,10 @@ print('For the Fox model, the DL performs best in {}% of cases'.format(prop_dl_b
 path = '../test_westerhoff/output/'
 
 # Import data
-df_ktau_forced = pd.read_csv(path+'df_ktau_forced_{}.csv'.format(model_sims))
-df_ktau_null = pd.read_csv(path+'df_ktau_null_{}.csv'.format(model_sims))
-df_dl_forced = pd.read_csv(path+'df_dl_forced_{}.csv'.format(model_sims))
-df_dl_null = pd.read_csv(path+'df_dl_null_{}.csv'.format(model_sims))
+df_ktau_forced = pd.read_csv(path+'df_ktau_forced.csv')
+df_ktau_null = pd.read_csv(path+'df_ktau_null.csv')
+df_dl_forced = pd.read_csv(path+'df_dl_forced.csv')
+df_dl_null = pd.read_csv(path+'df_dl_null.csv')
 
 # Set truth values
 df_ktau_forced['truth_value'] = 1
@@ -184,10 +182,10 @@ print('For the Westerhoff model, the DL performs best in {}% of cases'.format(pr
 path = '../test_ricker/output/'
 
 # Import data
-df_ktau_forced = pd.read_csv(path+'df_ktau_forced_{}.csv'.format(model_sims))
-df_ktau_null = pd.read_csv(path+'df_ktau_null_{}.csv'.format(model_sims))
-df_dl_forced = pd.read_csv(path+'df_dl_forced_{}.csv'.format(model_sims))
-df_dl_null = pd.read_csv(path+'df_dl_null_{}.csv'.format(model_sims))
+df_ktau_forced = pd.read_csv(path+'df_ktau_forced.csv')
+df_ktau_null = pd.read_csv(path+'df_ktau_null.csv')
+df_dl_forced = pd.read_csv(path+'df_dl_forced.csv')
+df_dl_null = pd.read_csv(path+'df_dl_null.csv')
 
 # Set truth values
 df_ktau_forced['truth_value'] = 1
@@ -254,10 +252,10 @@ print('For the Ricker model, the DL performs best in {}% of cases'.format(prop_d
 path = '../test_kot/output/'
 
 # Import data
-df_ktau_forced = pd.read_csv(path+'df_ktau_forced_{}.csv'.format(model_sims))
-df_ktau_null = pd.read_csv(path+'df_ktau_null_{}.csv'.format(model_sims))
-df_dl_forced = pd.read_csv(path+'df_dl_forced_{}.csv'.format(model_sims))
-df_dl_null = pd.read_csv(path+'df_dl_null_{}.csv'.format(model_sims))
+df_ktau_forced = pd.read_csv(path+'df_ktau_forced.csv')
+df_ktau_null = pd.read_csv(path+'df_ktau_null.csv')
+df_dl_forced = pd.read_csv(path+'df_dl_forced.csv')
+df_dl_null = pd.read_csv(path+'df_dl_null.csv')
 
 # Set truth values
 df_ktau_forced['truth_value'] = 1
@@ -323,10 +321,10 @@ print('For the predator-prey model, the DL performs best in {}% of cases'.format
 path = '../test_lorenz/output/'
 
 # Import data
-df_ktau_forced = pd.read_csv(path+'df_ktau_forced_{}.csv'.format(model_sims))
-df_ktau_null = pd.read_csv(path+'df_ktau_null_{}.csv'.format(model_sims))
-df_dl_forced = pd.read_csv(path+'df_dl_forced_{}.csv'.format(model_sims))
-df_dl_null = pd.read_csv(path+'df_dl_null_{}.csv'.format(model_sims))
+df_ktau_forced = pd.read_csv(path+'df_ktau_forced.csv')
+df_ktau_null = pd.read_csv(path+'df_ktau_null.csv')
+df_dl_forced = pd.read_csv(path+'df_dl_forced.csv')
+df_dl_null = pd.read_csv(path+'df_dl_null.csv')
 
 # Set truth values
 df_ktau_forced['truth_value'] = 1

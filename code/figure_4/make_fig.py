@@ -429,15 +429,12 @@ def combine_roc_inset(path_roc, path_inset, path_out):
     
 
 
-
-model_sims = 25
-
 #-------
 # Fox period-doubling
 #--------
 
-df_roc = pd.read_csv('../test_fox/output/df_roc_{}.csv'.format(model_sims))
-df_counts = pd.read_csv('../test_fox/output/df_fav_bif_{}.csv'.format(model_sims))
+df_roc = pd.read_csv('../test_fox/output/df_roc.csv')
+df_counts = pd.read_csv('../test_fox/output/df_fav_bif.csv')
 
 fig_roc = make_roc_figure(df_roc, df_counts, 'a')
 fig_roc.write_image('temp_roc.png', scale=scale)
@@ -458,8 +455,8 @@ combine_roc_inset(path_roc, path_inset, path_out)
 # Westerhoff NS
 #--------
 
-df_roc = pd.read_csv('../test_westerhoff/output/df_roc_{}.csv'.format(model_sims))
-df_counts = pd.read_csv('../test_westerhoff/output/df_fav_bif_{}.csv'.format(model_sims))
+df_roc = pd.read_csv('../test_westerhoff/output/df_roc.csv')
+df_counts = pd.read_csv('../test_westerhoff/output/df_fav_bif.csv')
 
 fig_roc = make_roc_figure(df_roc, df_counts, 'b')
 fig_roc.write_image('temp_roc.png', scale=scale)
@@ -479,8 +476,8 @@ combine_roc_inset(path_roc, path_inset, path_out)
 #-------
 # Ricker fold
 #--------
-df_roc = pd.read_csv('../test_ricker/output/df_roc_{}.csv'.format(model_sims))
-df_counts = pd.read_csv('../test_ricker/output/df_fav_bif_{}.csv'.format(model_sims))
+df_roc = pd.read_csv('../test_ricker/output/df_roc.csv')
+df_counts = pd.read_csv('../test_ricker/output/df_fav_bif.csv')
 
 fig_roc = make_roc_figure(df_roc, df_counts, 'c')
 fig_roc.write_image('temp_roc.png', scale=scale)
@@ -501,8 +498,8 @@ combine_roc_inset(path_roc, path_inset, path_out)
 #-------
 # Kot transcritical
 #--------
-df_roc = pd.read_csv('../test_kot/output/df_roc_{}.csv'.format(model_sims))
-df_counts = pd.read_csv('../test_kot/output/df_fav_bif_{}.csv'.format(model_sims))
+df_roc = pd.read_csv('../test_kot/output/df_roc.csv')
+df_counts = pd.read_csv('../test_kot/output/df_fav_bif.csv')
 
 fig_roc = make_roc_figure(df_roc, df_counts, 'd')
 fig_roc.write_image('temp_roc.png', scale=scale)
@@ -523,8 +520,8 @@ combine_roc_inset(path_roc, path_inset, path_out)
 # Lorenz pitchfork
 #--------
 nsims = 2500
-df_roc = pd.read_csv('../test_lorenz/output/df_roc_{}.csv'.format(model_sims))
-df_counts = pd.read_csv('../test_lorenz/output/df_fav_bif_{}.csv'.format(model_sims))
+df_roc = pd.read_csv('../test_lorenz/output/df_roc.csv')
+df_counts = pd.read_csv('../test_lorenz/output/df_fav_bif.csv')
 
 fig_roc = make_roc_figure(df_roc, df_counts, 'e')
 fig_roc.write_image('temp_roc.png', scale=scale)

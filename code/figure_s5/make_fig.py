@@ -20,8 +20,6 @@ import plotly.express as px
 
 import sklearn.metrics as metrics
 
-model_sims = 25
-
 def roc_compute(truth_vals, indicator_vals):
     
     # Compute ROC curve and threhsolds using sklearn
@@ -44,7 +42,7 @@ def roc_compute(truth_vals, indicator_vals):
 path = '../test_fox/output/'
 
 # Import data
-df = pd.read_csv(path+'df_dl_forced_{}.csv'.format(model_sims))
+df = pd.read_csv(path+'df_dl_forced.csv')
 df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
 
 df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
@@ -80,7 +78,7 @@ df_pred_fox = pd.DataFrame(list_dict)
 path = '../test_westerhoff/output/'
 
 # Import data
-df = pd.read_csv(path+'df_dl_forced_{}.csv'.format(model_sims))
+df = pd.read_csv(path+'df_dl_forced.csv')
 df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
 
 df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
@@ -115,7 +113,7 @@ df_pred_westerhoff = pd.DataFrame(list_dict)
 path = '../test_ricker/output/'
 
 # Import data
-df = pd.read_csv(path+'df_dl_forced_{}.csv'.format(model_sims))
+df = pd.read_csv(path+'df_dl_forced.csv')
 df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
 
 df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
@@ -150,7 +148,7 @@ df_pred_ricker = pd.DataFrame(list_dict)
 path = '../test_kot/output/'
 
 # Import data
-df = pd.read_csv(path+'df_dl_forced_{}.csv'.format(model_sims))
+df = pd.read_csv(path+'df_dl_forced.csv')
 df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
 
 df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
@@ -186,7 +184,7 @@ df_pred_kot = pd.DataFrame(list_dict)
 path = '../test_lorenz/output/'
 
 # Import data
-df = pd.read_csv(path+'df_dl_forced_{}.csv'.format(model_sims))
+df = pd.read_csv(path+'df_dl_forced.csv')
 df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
 
 df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)

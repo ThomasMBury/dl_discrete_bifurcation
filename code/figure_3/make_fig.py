@@ -27,10 +27,10 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 
 # Load in EWS data
-df_ews = pd.read_csv('../test_chick_heart/output/df_ews_pd.csv')
+df_ews = pd.read_csv('../test_chick_heart/output/df_ews_pd_rolling.csv')
 
 # Load in DL data
-df_dl = pd.read_csv('../test_chick_heart/output/df_dl_pd.csv')
+df_dl = pd.read_csv('../test_chick_heart/output/df_dl_pd_rolling.csv')
 df_dl['time'] = df_dl['Beat number']
 df_dl = df_dl.groupby(['tsid','time']).mean().reset_index()
 df_dl['any'] = df_dl[['1','2','3','4','5']].sum(axis=1)

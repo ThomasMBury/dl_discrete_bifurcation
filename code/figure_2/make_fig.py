@@ -1103,16 +1103,13 @@ fig.update_layout(height=fig_height,
 
 fig.update_traces(connectgaps=True)
 
-
 # Export as temp image
-fig.write_image('temp.png',scale=8)
-
-# fig.write_html('temp.html')
+fig.write_image('output/temp.png',scale=8)
 
 # Import image with Pil to assert dpi and export - this assigns correct
 # dimensions in mm for figure.
 from PIL import Image
-img = Image.open('output/fig_temp.png')
+img = Image.open('output/temp.png')
 dpi=96*8 # (default dpi) * (scaling factor)
 img.save('../../results/figure_2.png', dpi=(dpi,dpi))
 

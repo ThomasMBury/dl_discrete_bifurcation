@@ -1,1 +1,7 @@
-#!/bin/bash# Shell script to remove all output filesrm */output/*
+#!/bin/bash
+
+echo Remove all output files
+rm -r */output/*
+
+echo Remove results files
+rm ../results/*

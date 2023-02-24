@@ -104,8 +104,6 @@ plt.savefig('output/cm_mtype_{}_binary.png'.format(model_type),bbox_inches='tigh
 
 
 
-
-
 #-----------
 # Confusion matrix for model type 2 - full classificaiton problem
 #------------
@@ -180,7 +178,6 @@ plt.text(x=-0.9, y=-0.35, s='D', fontdict={'size':14})
 plt.ylabel(ylabel='True label', labelpad=15)
 plt.savefig('output/cm_mtype_{}_binary.png'.format(model_type),
             bbox_inches='tight', dpi=300)
-
 
 
 #-----------

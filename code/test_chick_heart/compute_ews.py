@@ -19,10 +19,18 @@ import ewstools
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
-np.random.seed(0)
 
-# Time increment between DL predictions
-inc = 50
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--inc', type=int, 
+                    help='Time increment between DL predictions',
+                    default=50)
+
+args = parser.parse_args()
+inc = args.inc
+print('Using time increment of {} for DL predictions'.format(inc))
+
+np.random.seed(0)
 
 # Load in DL models
 m1 = load_model('../dl_train/output/classifier_1.pkl')
@@ -76,7 +84,7 @@ for tsid in list_tsid:
     df_ews['tsid'] = tsid
     list_ews.append(df_ews)
     
-    print('Complete for tsid={}\n'.format(tsid))
+    print('Complete for tsid={}'.format(tsid))
 
 df_ews_pd = pd.concat(list_ews)
 df_dl_pd = pd.concat(list_dl)
@@ -121,7 +129,7 @@ for tsid in list_tsid:
     df_ews['tsid'] = tsid
     list_ews.append(df_ews)
 
-    print('Complete for tsid={}\n'.format(tsid))    
+    print('Complete for tsid={}'.format(tsid))    
     
 df_ews_null = pd.concat(list_ews)
 df_dl_null = pd.concat(list_dl)

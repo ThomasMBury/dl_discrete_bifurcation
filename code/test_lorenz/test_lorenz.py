@@ -115,10 +115,10 @@ df_ktau_null = pd.DataFrame(list_ktau_null)
 df_dl_null = pd.concat(list_dl_null)
 
 # Export data
-df_ktau_forced.to_csv('output/df_ktau_forced_{}.csv'.format(model_sims), index=False)
-df_ktau_null.to_csv('output/df_ktau_null_{}.csv'.format(model_sims), index=False)
-df_dl_forced.to_csv('output/df_dl_forced_{}.csv'.format(model_sims), index=False)
-df_dl_null.to_csv('output/df_dl_null_{}.csv'.format(model_sims), index=False)
+df_ktau_forced.to_csv('output/df_ktau_forced.csv', index=False)
+df_ktau_null.to_csv('output/df_ktau_null.csv', index=False)
+df_dl_forced.to_csv('output/df_dl_forced.csv', index=False)
+df_dl_null.to_csv('output/df_dl_null.csv', index=False)
 
 
 # Export time taken for script to run
