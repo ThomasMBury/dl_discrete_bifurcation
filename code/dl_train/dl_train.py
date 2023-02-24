@@ -181,7 +181,7 @@ model.add(Dense(6, activation='softmax',kernel_initializer = kernel_initializer)
 adam = Adam(learning_rate=learning_rate)
 
 # Classifier name for export
-model_name = 'classifier_{}.pkl'.format(model_type)
+model_name = 'output/classifier_{}.pkl'.format(model_type)
 
 chk = ModelCheckpoint(model_name, 
                       monitor='val_accuracy', 

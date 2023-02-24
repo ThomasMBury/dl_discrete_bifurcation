@@ -34,7 +34,7 @@ from tensorflow.keras.models import load_model
 #------------
 
 model_type = 1
-model = load_model('classifier_{}.pkl'.format(model_type))
+model = load_model('output/classifier_{}.pkl'.format(model_type))
 
 # Import test data (numpy array)
 inputs_test = np.load('output/test_inputs_{}.npy'.format(model_type))
@@ -111,7 +111,7 @@ plt.savefig('output/cm_mtype_{}_binary.png'.format(model_type),bbox_inches='tigh
 #------------
 
 model_type = 2
-model = load_model('classifier_{}.pkl'.format(model_type))
+model = load_model('output/classifier_{}.pkl'.format(model_type))
 
 # Import test data (numpy array)
 inputs_test = np.load('output/test_inputs_{}.npy'.format(model_type))

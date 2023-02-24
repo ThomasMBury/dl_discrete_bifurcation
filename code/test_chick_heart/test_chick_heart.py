@@ -26,12 +26,11 @@ import os
 
 np.random.seed(0)
 
-
 eval_pts = np.arange(0.64, 1.01, 0.04) #  percentage of way through pre-transition time series
 
 # Load in DL models
-m1 = load_model('../dl_train/classifier_1.pkl')
-m2 = load_model('../dl_train/classifier_2.pkl')
+m1 = load_model('../dl_train/output/classifier_1.pkl')
+m2 = load_model('../dl_train/output/classifier_2.pkl')
 print('TF models loaded')
 
 
@@ -146,10 +145,10 @@ df_dl_null = pd.concat(list_dl_preds)
 
 
 # Export data
-df_ktau_forced.to_csv('output/ktau_preds_60_100/df_ktau_forced.csv', index=False)
-df_ktau_null.to_csv('output/ktau_preds_60_100/df_ktau_null.csv', index=False)
-df_dl_forced.to_csv('output/dl_preds_60_100/df_dl_forced.csv', index=False)
-df_dl_null.to_csv('output/dl_preds_60_100/df_dl_null.csv', index=False)
+df_ktau_forced.to_csv('output/df_ktau_pd_fixed.csv', index=False)
+df_ktau_null.to_csv('output/df_ktau_null_fixed.csv', index=False)
+df_dl_forced.to_csv('output/df_dl_pd_fixed.csv', index=False)
+df_dl_null.to_csv('output/df_dl_null_fixed.csv', index=False)
 
 
 # Time taken for script to run

@@ -41,8 +41,8 @@ rw = 0.25
 
 
 # Import models
-m1 = load_model('../dl_train/classifier_1.pkl')
-m2 = load_model('../dl_train/classifier_2.pkl')
+m1 = load_model('../dl_train/output/classifier_1.pkl')
+m2 = load_model('../dl_train/output/classifier_2.pkl')
 
 
 #----------

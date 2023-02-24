@@ -25,8 +25,8 @@ np.random.seed(0)
 inc = 50
 
 # Load in DL models
-m1 = load_model('../dl_train/classifier_1.pkl')
-m2 = load_model('../dl_train/classifier_2.pkl')
+m1 = load_model('../dl_train/output/classifier_1.pkl')
+m2 = load_model('../dl_train/output/classifier_2.pkl')
 print('TF models loaded')
 
 # Load in trajectory data
@@ -82,8 +82,8 @@ df_ews_pd = pd.concat(list_ews)
 df_dl_pd = pd.concat(list_dl)
 
 # Export period-doubling EWS
-df_ews_pd.to_csv('output/df_ews_pd.csv')
-df_dl_pd.to_csv('output/df_dl_pd.csv', index=False)
+df_ews_pd.to_csv('output/df_ews_pd_rolling.csv')
+df_dl_pd.to_csv('output/df_dl_pd_rolling.csv', index=False)
 
 
 
@@ -127,8 +127,8 @@ df_ews_null = pd.concat(list_ews)
 df_dl_null = pd.concat(list_dl)
 
 # Export null EWS
-df_ews_null.to_csv('output/df_ews_null.csv')
-df_dl_null.to_csv('output/df_dl_null.csv', index=False)
+df_ews_null.to_csv('output/df_ews_null_rolling.csv')
+df_dl_null.to_csv('output/df_dl_null_rolling.csv', index=False)
 
 
 # Time taken for script to run

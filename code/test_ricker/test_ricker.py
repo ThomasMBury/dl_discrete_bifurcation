@@ -47,8 +47,8 @@ rof_vals = [2.36/500, 2.36/400, 2.36/300, 2.36/200, 2.36/100]
 id_vals = np.arange(int(model_sims/25)) # number of simulations at each combo of rof and sigma
 
 # Load in DL models
-m1 = load_model('../dl_train/classifier_1.pkl')
-m2 = load_model('../dl_train/classifier_2.pkl')
+m1 = load_model('../dl_train/output/classifier_1.pkl')
+m2 = load_model('../dl_train/output/classifier_2.pkl')
 print('TF models loaded')
 
 #--------------

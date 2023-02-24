@@ -1,0 +1,1 @@
+#!/bin/bash# Shell script to remove all output filesrm */output/*

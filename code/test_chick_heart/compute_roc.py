@@ -28,10 +28,10 @@ import sklearn.metrics as metrics
 np.random.seed(0)
 
 # Import df predictions
-df_ktau_forced = pd.read_csv('output/ktau_preds_60_100/df_ktau_forced.csv')
-df_ktau_null = pd.read_csv('output/ktau_preds_60_100/df_ktau_null.csv')
-df_dl_forced = pd.read_csv('output/dl_preds_60_100/df_dl_forced.csv')
-df_dl_null = pd.read_csv('output/dl_preds_60_100/df_dl_null.csv')
+df_ktau_forced = pd.read_csv('output/df_ktau_pd_fixed.csv')
+df_ktau_null = pd.read_csv('output/df_ktau_null_fixed.csv')
+df_dl_forced = pd.read_csv('output/df_dl_pd_fixed.csv')
+df_dl_null = pd.read_csv('output/df_dl_null_fixed.csv')
 
 
 #----------------
