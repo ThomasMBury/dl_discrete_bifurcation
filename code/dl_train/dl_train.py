@@ -55,6 +55,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 
 # Load in training data
 df = pd.read_parquet('../training_data/output/df_train.parquet')
+# df = pd.read_csv('../training_data/output/df_train.csv')
 
 # Make classes of equal size : currently 5 times number of samples in null section
 # Get null class
@@ -112,7 +113,8 @@ df['x_pad'] = ts_pad
 
 # Put into numpy array with shape (samples, timesteps, features)
 inputs = df['x_pad'].to_numpy().reshape(-1, ts_len, 1)
-targets = df.groupby('tsid')['type'].max().values.reshape(-1,1)
+# targets = df.groupby('tsid', sort=False)['type'].max().values.reshape(-1,1)
+targets = df['type'].iloc[::ts_len].to_numpy().reshape(-1,1) 
 
 # Shuffle data
 indices_permutation = np.random.permutation(len(inputs))
