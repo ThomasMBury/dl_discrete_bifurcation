@@ -28,6 +28,8 @@ from sklearn.metrics import classification_report
 
 from tensorflow.keras.models import load_model
 
+import time
+start = time.time()
 
 #-----------
 # Confusion matrix for model type 1 - full classificaiton problem
@@ -121,7 +123,7 @@ preds = np.argmax(preds_prob,axis=1) # class prediction (max prob)
 
 # Show performance stats
 # print(classification_report(targets_test, preds, digits=3))
-print('Performance of model 1\n')
+print('Performance of model 2\n')
 print('F1 score: {:.3f}'.format(f1_score(targets_test, preds, average='macro')))
 print('Accuracy: {:3f}'.format(accuracy_score(targets_test, preds)))
 print('Confusion matrix: \n')
@@ -158,7 +160,7 @@ preds_binary = np.array(list(map(full_to_binary, preds)))
 
 # Show performance stats
 # print(classification_report(targets_test, preds, digits=3))
-print('Performance of model 1\n')
+print('Performance of model 2\n')
 print('F1 score: {:.3f}'.format(f1_score(targets_test_binary, preds_binary, average='macro')))
 print('Accuracy: {:3f}'.format(accuracy_score(targets_test_binary, preds_binary)))
 print('Confusion matrix: \n')
@@ -223,6 +225,8 @@ dst.paste(img_2_binary, (img_1.width, img_1.height))
 
 dst.save('../../results/figure_s1.png')
 
+end = time.time()
+print('Script took {:0.1f} seconds'.format(end-start))
 
 
 
