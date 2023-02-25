@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH --job-name=reproducible_run
 #SBATCH --account=def-glass # adjust this to match the accounting group you are using to submit jobs
-#SBATCH --time=0-10:00:00         # adjust this to match the walltime of your job
+#SBATCH --time=0-15:00:00         # adjust this to match the walltime of your job
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4      # adjust this if you are using parallel commands
