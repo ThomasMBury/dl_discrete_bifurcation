@@ -29,6 +29,7 @@ pip install tensorflow
 pip install scikit-learn
 pip install ewstools
 pip install matplotlib
+pip install kaleido
 
 # Number of trainng simulations of each class
 NSIMS=500

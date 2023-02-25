@@ -1,0 +1,775 @@
+Job 60981991 released
+Load modules
+Create virtual environemnt
+created virtual environment CPython3.8.10.final.0-64 in 1667ms
+  creator CPython3Posix(dest=/localscratch/tbury.60981991.0/venv, clear=False, global=False)
+  seeder FromAppData(download=False, pip=latest, setuptools=latest, wheel=latest, via=copy, app_data_dir=/home/tbury/.local/share/virtualenv/seed-app-data/v1.0.1)
+  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+Install packages
+Ignoring pip: markers 'python_version < "3"' don't match your environment
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pip-23.0+computecanada-py3-none-any.whl
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 20.0.2
+    Uninstalling pip-20.0.2:
+      Successfully uninstalled pip-20.0.2
+Successfully installed pip-23.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/tensorflow-2.11.0+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/libclang-14.0.1+computecanada-py2.py3-none-linux_x86_64.whl
+Requirement already satisfied: six>=1.12.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/ipykernel/2022a/lib/python3.8/site-packages (from tensorflow) (1.16.0+computecanada)
+Collecting protobuf<3.20,>=3.9.2
+  Using cached protobuf-3.19.6-py2.py3-none-any.whl (162 kB)
+Requirement already satisfied: typing-extensions>=3.6.6 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from tensorflow) (4.0.1+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorflow_io_gcs_filesystem-0.26.0+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/grpcio-1.47.0+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/gast-0.4.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/absl_py-1.4.0+computecanada-py3-none-any.whl
+Requirement already satisfied: packaging in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from tensorflow) (21.3+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorflow_estimator-2.11.0+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/keras-2.11.0+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/flatbuffers-20190709135844+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/astunparse-1.6.3+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/wrapt-1.14.1+computecanada-cp38-cp38-linux_x86_64.whl
+Collecting tensorboard<2.12,>=2.11
+  Using cached tensorboard-2.11.2-py3-none-any.whl (6.0 MB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/opt_einsum-3.3.0+computecanada-py3-none-any.whl
+Collecting termcolor>=1.1.0
+  Using cached termcolor-2.2.0-py3-none-any.whl (6.6 kB)
+Requirement already satisfied: numpy>=1.20 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from tensorflow) (1.22.2+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/google_pasta-0.2.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/h5py-3.7.0+computecanada-cp38-cp38-linux_x86_64.whl
+Requirement already satisfied: setuptools in /localscratch/tbury.60981991.0/venv/lib/python3.8/site-packages (from tensorflow) (46.1.3)
+Requirement already satisfied: wheel<1.0,>=0.23.0 in /localscratch/tbury.60981991.0/venv/lib/python3.8/site-packages (from astunparse>=1.6.0->tensorflow) (0.34.2)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Werkzeug-2.2.3+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Markdown-3.4.1+computecanada-py3-none-any.whl
+Requirement already satisfied: requests<3,>=2.21.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from tensorboard<2.12,>=2.11->tensorflow) (2.27.1+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorboard_plugin_wit-1.8.1+computecanada-py3-none-any.whl
+Collecting google-auth<3,>=1.6.3
+  Using cached google_auth-2.16.1-py2.py3-none-any.whl (177 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/google_auth_oauthlib-0.4.6+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorboard_data_server-0.6.1+computecanada-py3-none-linux_x86_64.whl
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from packaging->tensorflow) (3.0.7+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyasn1_modules-0.2.8+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cachetools-5.3.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/rsa-4.9+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/requests_oauthlib-1.3.1+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: importlib-metadata>=4.4 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from markdown>=2.6.8->tensorboard<2.12,>=2.11->tensorflow) (4.10.1+computecanada)
+Requirement already satisfied: idna<4,>=2.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow) (3.3+computecanada)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow) (2.0.11+computecanada)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow) (1.26.8+computecanada)
+Requirement already satisfied: certifi>=2017.4.17 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow) (2021.10.8+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/MarkupSafe-2.1.2+computecanada-cp38-cp38-linux_x86_64.whl
+Requirement already satisfied: zipp>=0.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from importlib-metadata>=4.4->markdown>=2.6.8->tensorboard<2.12,>=2.11->tensorflow) (3.7.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyasn1-0.4.8+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/oauthlib-3.2.2+computecanada-py3-none-any.whl
+Installing collected packages: tensorboard-plugin-wit, pyasn1, libclang, flatbuffers, wrapt, termcolor, tensorflow-io-gcs-filesystem, tensorflow-estimator, tensorboard-data-server, rsa, pyasn1-modules, protobuf, opt-einsum, oauthlib, MarkupSafe, keras, h5py, grpcio, google-pasta, gast, cachetools, astunparse, absl-py, werkzeug, requests-oauthlib, markdown, google-auth, google-auth-oauthlib, tensorboard, tensorflow
+  Attempting uninstall: MarkupSafe
+    Found existing installation: MarkupSafe 2.0.1+computecanada
+    Not uninstalling markupsafe at /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages, outside environment /localscratch/tbury.60981991.0/venv
+    Can't uninstall 'MarkupSafe'. No files were found to uninstall.
+Successfully installed MarkupSafe-2.1.2+computecanada absl-py-1.4.0+computecanada astunparse-1.6.3+computecanada cachetools-5.3.0+computecanada flatbuffers-20190709135844+computecanada gast-0.4.0+computecanada google-auth-2.16.1 google-auth-oauthlib-0.4.6+computecanada google-pasta-0.2.0+computecanada grpcio-1.47.0+computecanada h5py-3.7.0+computecanada keras-2.11.0+computecanada libclang-14.0.1+computecanada markdown-3.4.1+computecanada oauthlib-3.2.2+computecanada opt-einsum-3.3.0+computecanada protobuf-3.19.6 pyasn1-0.4.8+computecanada pyasn1-modules-0.2.8+computecanada requests-oauthlib-1.3.1+computecanada rsa-4.9+computecanada tensorboard-2.11.2 tensorboard-data-server-0.6.1+computecanada tensorboard-plugin-wit-1.8.1+computecanada tensorflow-2.11.0+computecanada tensorflow-estimator-2.11.0+computecanada tensorflow-io-gcs-filesystem-0.26.0+computecanada termcolor-2.2.0 werkzeug-2.2.3+computecanada wrapt-1.14.1+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/scikit_learn-1.1.2+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/threadpoolctl-3.1.0+computecanada-py3-none-any.whl
+Requirement already satisfied: numpy>=1.21 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from scikit-learn) (1.22.2+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/joblib-1.2.0+computecanada-py3-none-any.whl
+Requirement already satisfied: scipy>=1.3.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from scikit-learn) (1.8.0+computecanada)
+Installing collected packages: threadpoolctl, joblib, scikit-learn
+Successfully installed joblib-1.2.0+computecanada scikit-learn-1.1.2+computecanada threadpoolctl-3.1.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting ewstools
+  Using cached ewstools-2.1.0-py3-none-any.whl (27 kB)
+Collecting lmfit>=0.9.0
+  Using cached lmfit-1.1.0-py3-none-any.whl (90 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/deprecation-2.1.0+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/arch-4.19+computecanada-cp38-cp38-linux_x86_64.whl
+Requirement already satisfied: scipy>=1.0.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from ewstools) (1.8.0+computecanada)
+Requirement already satisfied: pandas>=0.23.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from ewstools) (1.4.0+computecanada)
+Collecting plotly>=2.3.0
+  Using cached plotly-5.13.1-py2.py3-none-any.whl (15.2 MB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/statsmodels-0.13.2+computecanada-cp38-cp38-linux_x86_64.whl
+Requirement already satisfied: numpy>=1.14.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from ewstools) (1.22.2+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/property_cached-1.6.4+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: cython>=0.29.14 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from arch>=4.4->ewstools) (0.29.27+computecanada)
+Requirement already satisfied: packaging in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from deprecation>=2.0->ewstools) (21.3+computecanada)
+Collecting uncertainties>=3.1.4
+  Using cached uncertainties-3.1.7-py2.py3-none-any.whl (98 kB)
+Collecting asteval>=0.9.28
+  Using cached asteval-0.9.29-py3-none-any.whl (18 kB)
+Requirement already satisfied: pytz>=2020.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from pandas>=0.23.0->ewstools) (2021.3+computecanada)
+Requirement already satisfied: python-dateutil>=2.8.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/ipykernel/2022a/lib/python3.8/site-packages (from pandas>=0.23.0->ewstools) (2.8.2+computecanada)
+Collecting tenacity>=6.2.0
+  Using cached tenacity-8.2.1-py3-none-any.whl (24 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/patsy-0.5.3+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from packaging->deprecation>=2.0->ewstools) (3.0.7+computecanada)
+Requirement already satisfied: six in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/ipykernel/2022a/lib/python3.8/site-packages (from patsy>=0.5.2->statsmodels>=0.9.0->ewstools) (1.16.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/future-0.18.2+computecanada-py3-none-any.whl
+Installing collected packages: tenacity, property-cached, patsy, future, asteval, uncertainties, plotly, deprecation, statsmodels, lmfit, arch, ewstools
+Successfully installed arch-4.19+computecanada asteval-0.9.29 deprecation-2.1.0+computecanada ewstools-2.1.0 future-0.18.2+computecanada lmfit-1.1.0 patsy-0.5.3+computecanada plotly-5.13.1 property-cached-1.6.4+computecanada statsmodels-0.13.2+computecanada tenacity-8.2.1 uncertainties-3.1.7
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Requirement already satisfied: matplotlib in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (3.5.1+computecanada)
+Requirement already satisfied: pillow>=6.2.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (9.0.1+computecanada)
+Requirement already satisfied: cycler>=0.10 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (0.11.0+computecanada)
+Requirement already satisfied: python-dateutil>=2.7 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/ipykernel/2022a/lib/python3.8/site-packages (from matplotlib) (2.8.2+computecanada)
+Requirement already satisfied: fonttools>=4.22.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (4.29.1+computecanada)
+Requirement already satisfied: kiwisolver>=1.0.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (1.3.2+computecanada)
+Requirement already satisfied: numpy>=1.21 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (1.22.2+computecanada)
+Requirement already satisfied: pyparsing>=2.2.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (3.0.7+computecanada)
+Requirement already satisfied: packaging>=20.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (21.3+computecanada)
+Requirement already satisfied: six>=1.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/ipykernel/2022a/lib/python3.8/site-packages (from python-dateutil>=2.7->matplotlib) (1.16.0+computecanada)
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/kaleido-0.2.1+computecanada-py2.py3-none-linux_x86_64.whl
+Installing collected packages: kaleido
+Successfully installed kaleido-0.2.1+computecanada
+-----
+ Generate training data 
+-----
+Run forced PD simulations
+Complete for tsid=100
+Complete for tsid=200
+Complete for tsid=300
+Complete for tsid=400
+Complete for tsid=500
+Run null PD simulations
+Complete for tsid=600
+Complete for tsid=700
+Complete for tsid=800
+Complete for tsid=900
+Complete for tsid=1000
+Run forced NS simulations
+Complete for tsid=1100
+Complete for tsid=1200
+Complete for tsid=1300
+Complete for tsid=1400
+Complete for tsid=1500
+Run null NS simulations
+Complete for tsid=1600
+Complete for tsid=1700
+Complete for tsid=1800
+Complete for tsid=1900
+Complete for tsid=2000
+Run forced fold simulations
+Complete for tsid=2100
+Complete for tsid=2200
+Complete for tsid=2300
+Complete for tsid=2400
+Complete for tsid=2500
+Run null fold simulations
+Complete for tsid=2600
+Complete for tsid=2700
+Complete for tsid=2800
+Complete for tsid=2900
+Complete for tsid=3000
+Run forced TC simulations
+Complete for tsid=3100
+Complete for tsid=3200
+Complete for tsid=3300
+Complete for tsid=3400
+Complete for tsid=3500
+Run null TC simulations
+Complete for tsid=3600
+Complete for tsid=3700
+Complete for tsid=3800
+Complete for tsid=3900
+Complete for tsid=4000
+Run forced PF simulations
+Complete for tsid=4100
+Complete for tsid=4200
+Complete for tsid=4300
+Complete for tsid=4400
+Complete for tsid=4500
+Run null PF simulations
+Complete for tsid=4600
+Complete for tsid=4700
+Complete for tsid=4800
+Complete for tsid=4900
+Complete for tsid=5000
+Script took 194.5 seconds
+-----
+ Train classifier of type 1 
+-----
+2023-02-24 18:33:37.984467: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:33:39.249849: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:33:39.250517: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:33:39.250575: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:33:43.714398: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:33:44.645164: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+Training DL with mtype=1
+Pad and normalise the data
+Split data into training, validation and test groups
+Using 2850 training data samples
+Using 75 validation data samples
+Using 75 test data samples
+Train NN with seed=0 and model_type=1
+Epoch 1/2
+2023-02-24 18:33:51.694793: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:33:52.048799: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:33:52.708281: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x27ec1590 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-02-24 18:33:52.708533: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+2023-02-24 18:33:52.716104: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2023-02-24 18:33:52.822687: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:33:52.897007: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2023-02-24 18:33:52.993931: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:33:53.377448: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:33:53.379398: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:33:53.380862: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:33:53.430018: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:33:53.570288: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:33:53.651534: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:33:53.919373: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+1/3 [=========>....................] - ETA: 16s - loss: 1.8258 - accuracy: 0.18072/3 [===================>..........] - ETA: 0s - loss: 1.8320 - accuracy: 0.1748 3/3 [==============================] - ETA: 0s - loss: 1.8263 - accuracy: 0.1730
+Epoch 1: val_accuracy improved from -inf to 0.21333, saving model to output/classifier_1.pkl
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, lstm_cell_layer_call_fn, lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+3/3 [==============================] - 33s 12s/step - loss: 1.8263 - accuracy: 0.1730 - val_loss: 1.7958 - val_accuracy: 0.2133
+Epoch 2/2
+1/3 [=========>....................] - ETA: 0s - loss: 1.8022 - accuracy: 0.18162/3 [===================>..........] - ETA: 0s - loss: 1.7978 - accuracy: 0.18853/3 [==============================] - ETA: 0s - loss: 1.7940 - accuracy: 0.1881
+Epoch 2: val_accuracy improved from 0.21333 to 0.24000, saving model to output/classifier_1.pkl
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, lstm_cell_layer_call_fn, lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+3/3 [==============================] - 23s 11s/step - loss: 1.7940 - accuracy: 0.1881 - val_loss: 1.7759 - val_accuracy: 0.2400
+-----
+ Train classifier of type 2 
+-----
+2023-02-24 18:34:44.886579: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:34:46.144369: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:34:46.144907: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:34:46.149032: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:34:50.557707: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:34:51.187215: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+Training DL with mtype=2
+Pad and normalise the data
+Split data into training, validation and test groups
+Using 2850 training data samples
+Using 75 validation data samples
+Using 75 test data samples
+Train NN with seed=0 and model_type=2
+Epoch 1/2
+2023-02-24 18:34:58.079011: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:34:58.391371: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:34:58.945490: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x21b53db0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-02-24 18:34:58.945708: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+2023-02-24 18:34:58.953219: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2023-02-24 18:34:59.058214: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:34:59.131322: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2023-02-24 18:34:59.228824: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:34:59.549454: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:34:59.554364: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:34:59.556175: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:34:59.602773: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:34:59.732049: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:34:59.804773: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+2023-02-24 18:35:00.041736: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+1/3 [=========>....................] - ETA: 15s - loss: 1.7829 - accuracy: 0.19432/3 [===================>..........] - ETA: 0s - loss: 1.7782 - accuracy: 0.1978 3/3 [==============================] - ETA: 0s - loss: 1.7693 - accuracy: 0.2081
+Epoch 1: val_accuracy improved from -inf to 0.14667, saving model to output/classifier_2.pkl
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, lstm_cell_layer_call_fn, lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+3/3 [==============================] - 32s 12s/step - loss: 1.7693 - accuracy: 0.2081 - val_loss: 1.7978 - val_accuracy: 0.1467
+Epoch 2/2
+1/3 [=========>....................] - ETA: 0s - loss: 1.7394 - accuracy: 0.27542/3 [===================>..........] - ETA: 0s - loss: 1.7442 - accuracy: 0.26613/3 [==============================] - ETA: 0s - loss: 1.7419 - accuracy: 0.2754
+Epoch 2: val_accuracy improved from 0.14667 to 0.28000, saving model to output/classifier_2.pkl
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, lstm_cell_layer_call_fn, lstm_cell_layer_call_and_return_conditional_losses, lstm_cell_1_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses while saving (showing 5 of 5). These functions will not be directly callable after loading.
+3/3 [==============================] - 23s 11s/step - loss: 1.7419 - accuracy: 0.2754 - val_loss: 1.7744 - val_accuracy: 0.2800
+-----
+ Get F1 scores on test data 
+-----
+2023-02-24 18:35:54.089871: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:35:55.433609: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:35:55.434275: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:35:55.434358: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:35:59.645903: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:36:00.559474: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+2023-02-24 18:36:16.430424: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:36:16.766009: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+1/3 [=========>....................] - ETA: 4s3/3 [==============================] - 2s 9ms/step
+Performance of model 1
+
+F1 score: 0.270
+Accuracy: 0.360000
+Confusion matrix: 
+
+[[ 0  2  3  0  3  1]
+ [ 0  5  3  2  3  0]
+ [ 0  1 12  2  0  0]
+ [ 0  5  3  3  1  0]
+ [ 0  5  1  2  7  0]
+ [ 0  7  1  0  3  0]]
+Performance of model 1
+
+F1 score: 0.468
+Accuracy: 0.880000
+Confusion matrix: 
+
+[[ 0  9]
+ [ 0 66]]
+1/3 [=========>....................] - ETA: 2s3/3 [==============================] - 1s 8ms/step
+Performance of model 1
+
+F1 score: 0.275
+Accuracy: 0.320000
+Confusion matrix: 
+
+[[0 4 2 6 1 3]
+ [0 8 0 2 0 4]
+ [0 2 3 2 1 1]
+ [0 2 1 6 0 0]
+ [0 2 1 6 0 6]
+ [0 0 0 3 2 7]]
+Performance of model 1
+
+F1 score: 0.440
+Accuracy: 0.786667
+Confusion matrix: 
+
+[[ 0 16]
+ [ 0 59]]
+-----
+ Make Sup Fig 2 - example training simulations 
+-----
+-----
+ Make Sup Fig 3 - example model test simulations 
+-----
+-----
+ Test DL classifier and EWS on Fox model 
+-----
+2023-02-24 18:37:10.586450: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:37:11.913965: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:37:11.914397: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:37:11.914451: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:37:16.083396: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:37:16.793614: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+2023-02-24 18:37:49.213920: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:37:49.532142: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+Running for 50 sims
+TF models loaded
+Simulate forced trajectories and compute EWS
+Complete for rof=0.2
+Complete for rof=0.25
+Complete for rof=0.3333333333333333
+Complete for rof=0.5
+Complete for rof=1.0
+Script took 73.41 seconds
+Compute ROC curves
+Exported bifurcation count data to output/df_fav_bif.csv
+Exported ROC data to output/df_roc.csv
+-----
+ Test DL classifier and EWS on Westerhoff model 
+-----
+2023-02-24 18:38:31.222839: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:38:32.475400: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:38:32.475837: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:38:32.475900: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:38:36.823959: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:38:37.690670: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+2023-02-24 18:39:09.772875: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:39:10.092837: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+Running for 50 sims
+TF models loaded
+Simulate forced trajectories and compute EWS
+Complete for rof=0.02
+Complete for rof=0.025
+Complete for rof=0.03333333333333333
+Complete for rof=0.05
+Complete for rof=0.1
+Script took 72.78 seconds
+Compute ROC curves
+Exported bifurcation count data to output/df_fav_bif.csv
+Exported ROC data to output/df_roc.csv
+-----
+ Test DL classifier and EWS on Ricker model 
+-----
+2023-02-24 18:39:50.567917: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:39:51.788095: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:39:51.788788: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:39:51.788863: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:39:56.025043: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:39:56.724397: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+2023-02-24 18:40:28.365103: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:40:28.682242: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+Running for 50 sims
+TF models loaded
+Simulate forced trajectories and compute EWS
+Complete for rof=0.004719999999999999
+Complete for rof=0.0059
+Complete for rof=0.007866666666666666
+Complete for rof=0.0118
+Complete for rof=0.0236
+Script took 72.01 seconds
+Compute ROC curves
+Exported bifurcation count data to output/df_fav_bif.csv
+Exported ROC data to output/df_roc.csv
+-----
+ Test DL classifier and EWS on Kot model 
+-----
+2023-02-24 18:41:09.521562: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:41:10.761387: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:41:10.761842: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:41:10.761908: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:41:15.056970: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:41:15.945222: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+2023-02-24 18:41:48.030783: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:41:48.366262: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+Running for 50 sims
+TF models loaded
+Simulate forced trajectories and compute EWS
+Complete for rof=0.001
+Complete for rof=0.00125
+Complete for rof=0.0016666666666666668
+Complete for rof=0.0025
+Complete for rof=0.005
+Script took 72.69 seconds
+Compute ROC curves
+Exported bifurcation count data to output/df_fav_bif.csv
+Exported ROC data to output/df_roc.csv
+-----
+ Test DL classifier and EWS on Lorenz model 
+-----
+2023-02-24 18:42:28.889070: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:42:30.115552: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:42:30.116225: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:42:30.116284: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:42:34.315402: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:42:35.229935: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+2023-02-24 18:43:06.966797: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:43:07.297914: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+Running for 50 sims
+TF models loaded
+Simulate forced trajectories and compute EWS
+Complete for rof=0.002
+Complete for rof=0.0025
+Complete for rof=0.0033333333333333335
+Complete for rof=0.005
+Complete for rof=0.01
+Script took 73.08 seconds
+Compute ROC curves
+Exported bifurcation count data to output/df_fav_bif.csv
+Exported ROC data to output/df_roc.csv
+-----
+ Make Figure 2 - EWS and DL predictions for sample model simulations 
+-----
+2023-02-24 18:43:49.196084: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:43:50.458710: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:43:50.459329: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:43:50.459387: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:43:54.879101: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:43:55.785773: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+2023-02-24 18:44:28.445767: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:44:28.760517: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+EWS computed for Fox model
+EWS computed for Westerhoff model
+EWS computed for Ricker model
+EWS computed for Kot model
+EWS computed for Lorenz model
+Script took 87.75s
+2023-02-24 18:45:19.242262: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:45:20.498769: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:45:20.499371: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:45:20.499428: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+-----
+ Make Sup Fig 4 - AUC scores across rof and sigma 
+-----
+For the Fox model, the DL performs best in 4.0% of cases
+For the Westerhoff model, the DL performs best in 8.0% of cases
+For the Ricker model, the DL performs best in 0.0% of cases
+For the predator-prey model, the DL performs best in 0.0% of cases
+For the Lorenz model, the DL performs best in 8.0% of cases
+-----
+ Make Sup Fig 5 - DL favourite bifurcation prop. correct 
+-----
+-----
+ Find transition times in chick heart data 
+-----
+Transition for tsid = 1 at beat 440
+Transition for tsid = 2 at beat 410
+Transition for tsid = 3 at beat 303
+Transition for tsid = 4 at beat 338
+Transition for tsid = 5 at beat 345
+Transition for tsid = 6 at beat 249
+Transition for tsid = 7 at beat 151
+Transition for tsid = 8 at beat 222
+Transition for tsid = 9 at beat 96
+Transition for tsid = 10 at beat 297
+Transition for tsid = 11 at beat 313
+Transition for tsid = 12 at beat 198
+Transition for tsid = 13 at beat 231
+Transition for tsid = 14 at beat 299
+Transition for tsid = 15 at beat 200
+Transition for tsid = 16 at beat 301
+Transition for tsid = 17 at beat 234
+Transition for tsid = 18 at beat 340
+Transition for tsid = 19 at beat 198
+Transition for tsid = 20 at beat 262
+Transition for tsid = 21 at beat 148
+Transition for tsid = 22 at beat 187
+Transition for tsid = 23 at beat 324
+-----
+ Compute EWS in chick heart data 
+-----
+2023-02-24 18:45:55.214492: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:45:56.445889: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:45:56.446356: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:45:56.446449: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:46:00.673590: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:46:01.367667: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+2023-02-24 18:46:33.500461: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:46:33.878196: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+Using time increment of 50 for DL predictions
+TF models loaded
+Complete for tsid=1
+Complete for tsid=2
+Complete for tsid=3
+Complete for tsid=4
+Complete for tsid=5
+Complete for tsid=6
+Complete for tsid=7
+Complete for tsid=8
+Complete for tsid=9
+Complete for tsid=10
+Complete for tsid=11
+Complete for tsid=12
+Complete for tsid=13
+Complete for tsid=14
+Complete for tsid=15
+Complete for tsid=16
+Complete for tsid=17
+Complete for tsid=18
+Complete for tsid=19
+Complete for tsid=20
+Complete for tsid=21
+Complete for tsid=22
+Complete for tsid=23
+Complete for tsid=1
+Complete for tsid=2
+Complete for tsid=3
+Complete for tsid=4
+Complete for tsid=5
+Complete for tsid=6
+Complete for tsid=7
+Complete for tsid=8
+Complete for tsid=9
+Complete for tsid=10
+Complete for tsid=11
+Complete for tsid=12
+Complete for tsid=13
+Complete for tsid=14
+Complete for tsid=15
+Complete for tsid=16
+Complete for tsid=17
+Complete for tsid=18
+Complete for tsid=19
+Complete for tsid=20
+Complete for tsid=21
+Complete for tsid=22
+Complete for tsid=23
+Ran in 88.29s
+-----
+ Test EWS and DL in chick heart data 
+-----
+2023-02-24 18:47:25.926294: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:47:27.156420: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:47:27.157092: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:47:27.157157: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-24 18:47:31.381825: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:47:32.080721: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0
+2023-02-24 18:48:04.327588: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-24 18:48:04.654334: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+TF models loaded
+Complete for pd tsid=1
+Complete for pd tsid=2
+Complete for pd tsid=3
+Complete for pd tsid=4
+Complete for pd tsid=5
+Complete for pd tsid=6
+Complete for pd tsid=7
+Complete for pd tsid=8
+Complete for pd tsid=9
+Complete for pd tsid=10
+Complete for pd tsid=11
+Complete for pd tsid=12
+Complete for pd tsid=13
+Complete for pd tsid=14
+Complete for pd tsid=15
+Complete for pd tsid=16
+Complete for pd tsid=17
+Complete for pd tsid=18
+Complete for pd tsid=19
+Complete for pd tsid=20
+Complete for pd tsid=21
+Complete for pd tsid=22
+Complete for pd tsid=23
+Simulate null trajectories and compute EWS
+Complete for null tsid=1
+Complete for null tsid=2
+Complete for null tsid=3
+Complete for null tsid=4
+Complete for null tsid=5
+Complete for null tsid=6
+Complete for null tsid=7
+Complete for null tsid=8
+Complete for null tsid=9
+Complete for null tsid=10
+Complete for null tsid=11
+Complete for null tsid=12
+Complete for null tsid=13
+Complete for null tsid=14
+Complete for null tsid=15
+Complete for null tsid=16
+Complete for null tsid=17
+Complete for null tsid=18
+Complete for null tsid=19
+Complete for null tsid=20
+Complete for null tsid=21
+Complete for null tsid=22
+Complete for null tsid=23
+Ran in 125.02s
+2023-02-24 18:49:33.475937: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-24 18:49:34.781785: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:49:34.782233: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-24 18:49:34.782290: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Compute ROC curves
+Exported bifurcation count data to output/df_fav_bif.csv
+Exported ROC data to output/df_roc.csv
+-----
+ Make figure 3 - sample EWS and DL preds in chick heart data 
+-----
+Ran in 6.09s
+-----
+ Make Fig S6 S7 - EWS in chick heart period-doubling 
+-----
+Exported image 1
+Exported image 2
+Exported image 3
+Exported image 4
+Exported image 5
+Exported image 6
+Exported image 7
+Exported image 8
+Exported image 9
+Exported image 10
+Exported image 11
+Exported image 12
+Exported image 13
+Exported image 14
+Exported image 15
+Exported image 16
+Exported image 17
+Exported image 18
+Exported image 19
+Exported image 20
+Exported image 21
+Exported image 22
+Exported image 23
+Ran in 9.53s
+-----
+ Make Fig S8 S9 - EWS in chick heart null 
+-----
+Exported image 1
+Exported image 2
+Exported image 3
+Exported image 4
+Exported image 5
+Exported image 6
+Exported image 7
+Exported image 8
+Exported image 9
+Exported image 10
+Exported image 11
+Exported image 12
+Exported image 13
+Exported image 14
+Exported image 15
+Exported image 16
+Exported image 17
+Exported image 18
+Exported image 19
+Exported image 20
+Exported image 21
+Exported image 22
+Exported image 23
+Ran in 9.56s
+-----
+ Make Figure 4 - ROC curves 
+-----
+findfont: Font family ['Times New Roman'] not found. Falling back to DejaVu Sans.
+Ran in 9.35s
