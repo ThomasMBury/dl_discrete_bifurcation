@@ -17,7 +17,6 @@ Key for trajectory type:
 @author: tbury
 """
 
-
 import time
 start = time.time()
 
@@ -30,7 +29,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--nsims', type=int, 
                     help='Number of simulations for each model',
-                    default=100)
+                    default=10)
 parser.add_argument('--verbose', type=int, choices=[0,1], default=1)
 
 args = parser.parse_args()
@@ -99,7 +98,7 @@ while j <= nsims:
     list_df.append(df_traj)
     if verbose:
         print('Complete for tsid={}'.format(tsid))
-    elif tsid%100==0:
+    elif tsid%1000==0:
         print('Complete for tsid={}'.format(tsid))
     tsid+=1
     j+=1
@@ -142,7 +141,7 @@ while j <= nsims:
     list_df.append(df_traj)
     if verbose:
         print('Complete for tsid={}'.format(tsid))
-    elif tsid%100==0:
+    elif tsid%1000==0:
         print('Complete for tsid={}'.format(tsid))
     tsid+=1
     j+=1
@@ -194,7 +193,7 @@ while j <= nsims:
     list_df.append(df_traj)
     if verbose:
         print('Complete for tsid={}'.format(tsid))
-    elif tsid%100==0:
+    elif tsid%1000==0:
         print('Complete for tsid={}'.format(tsid))
     tsid+=1
     j+=1
@@ -240,7 +239,7 @@ while j <= nsims:
     list_df.append(df_traj)
     if verbose:
         print('Complete for tsid={}'.format(tsid))
-    elif tsid%100==0:
+    elif tsid%1000==0:
         print('Complete for tsid={}'.format(tsid))
     tsid+=1
     j+=1
@@ -286,7 +285,7 @@ while j <= nsims:
     list_df.append(df_traj)
     if verbose:
         print('Complete for tsid={}'.format(tsid))
-    elif tsid%100==0:
+    elif tsid%1000==0:
         print('Complete for tsid={}'.format(tsid))
     tsid+=1
     j+=1
@@ -327,7 +326,7 @@ while j <= nsims:
     list_df.append(df_traj)
     if verbose:
         print('Complete for tsid={}'.format(tsid))
-    elif tsid%100==0:
+    elif tsid%1000==0:
         print('Complete for tsid={}'.format(tsid))
     tsid+=1
     j+=1
@@ -370,7 +369,7 @@ while j <= nsims:
     list_df.append(df_traj)
     if verbose:
         print('Complete for tsid={}'.format(tsid))
-    elif tsid%100==0:
+    elif tsid%1000==0:
         print('Complete for tsid={}'.format(tsid))
     tsid+=1
     j+=1
@@ -411,7 +410,7 @@ while j <= nsims:
     list_df.append(df_traj)
     if verbose:
         print('Complete for tsid={}'.format(tsid))
-    elif tsid%100==0:
+    elif tsid%1000==0:
         print('Complete for tsid={}'.format(tsid))
     tsid+=1
     j+=1
@@ -456,7 +455,7 @@ while j <= nsims:
     list_df.append(df_traj)
     if verbose:
         print('Complete for tsid={}'.format(tsid))
-    elif tsid%100==0:
+    elif tsid%1000==0:
         print('Complete for tsid={}'.format(tsid))
     tsid+=1
     j+=1
@@ -498,7 +497,7 @@ while j <= nsims:
     list_df.append(df_traj)
     if verbose:
         print('Complete for tsid={}'.format(tsid))
-    elif tsid%100==0:
+    elif tsid%1000==0:
         print('Complete for tsid={}'.format(tsid))
     tsid+=1
     j+=1
@@ -522,3 +521,7 @@ df_out.to_parquet('output/df_train.parquet')
 
 end = time.time()
 print('Script took {:0.1f} seconds'.format(end-start))
+
+
+
+

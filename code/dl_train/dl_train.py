@@ -20,6 +20,8 @@ Options for model_type
 @author: tbury
 """
 
+import time
+start = time.time()
 
 # Parse command line arguments
 import argparse
@@ -30,6 +32,7 @@ parser.add_argument('--num_epochs', type=int, help='Number of training epochs', 
 
 args = parser.parse_args()
 model_type = args.model_type
+num_epochs = args.num_epochs
 
 print('Training DL with mtype={}'.format(model_type))
 seed = 0
@@ -149,7 +152,6 @@ filters = 50
 mem_cells = 50
 mem_cells2 = 10
 kernel_size = 12
-num_epochs = args.num_epochs
 kernel_initializer = 'lecun_normal'
 
 
@@ -205,5 +207,9 @@ history = model.fit(inputs_train, targets_train,
 # Export history data (metrics evaluated on training and validation sets at each epoch)
 df_history = pd.DataFrame(history.history)
 df_history.to_csv('output/df_history_{}.csv'.format(model_type), index=False)
+
+end = time.time()
+print('Script took {:0.1f} seconds'.format(end-start))
+
 
 
