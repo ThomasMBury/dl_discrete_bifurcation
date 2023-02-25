@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH --job-name=reproducible_run
 #SBATCH --account=def-glass # adjust this to match the accounting group you are using to submit jobs
-#SBATCH --time=0-5:00:00         # adjust this to match the walltime of your job
+#SBATCH --time=0-1:00:00         # adjust this to match the walltime of your job
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4      # adjust this if you are using parallel commands
@@ -14,7 +14,7 @@ echo Job $SLURM_JOB_ID released
 
 # Load modules
 echo Load modules
-module load python/3.7 cuda cudnn
+module load gcc/9.3.0 arrow python scipy-stack cuda cudnn
 
 # Create virtual env
 echo Create virtual environemnt
@@ -29,7 +29,6 @@ pip install tensorflow
 pip install scikit-learn
 pip install ewstools
 pip install matplotlib
-
 
 # Number of trainng simulations of each class
 NSIMS=500

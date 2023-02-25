@@ -1,0 +1,681 @@
+Job 60952712 released
+Load modules
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) libfabric/1.10.1     2) openmpi/4.0.3     3) ucx/1.8.0
+
+Create virtual environemnt
+created virtual environment CPython3.7.9.final.0-64 in 6968ms
+  creator CPython3Posix(dest=/localscratch/tbury.60952712.0/venv, clear=False, global=False)
+  seeder FromAppData(download=False, pip=latest, setuptools=latest, wheel=latest, via=copy, app_data_dir=/home/tbury/.local/share/virtualenv/seed-app-data/v1.0.1)
+  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+Install packages
+Ignoring pip: markers 'python_version < "3"' don't match your environment
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pip-23.0+computecanada-py3-none-any.whl
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 20.0.2
+    Uninstalling pip-20.0.2:
+      Successfully uninstalled pip-20.0.2
+Successfully installed pip-23.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/tensorflow-2.7.0+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/astunparse-1.6.3+computecanada-py2.py3-none-any.whl
+Collecting tensorboard~=2.6
+  Using cached tensorboard-2.11.2-py3-none-any.whl (6.0 MB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/absl_py-1.4.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/grpcio-1.38.1+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/numpy-1.21.4+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Keras_Preprocessing-1.1.2+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/h5py-3.4.0+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorflow_io_gcs_filesystem-0.22.0+computecanada-cp37-cp37m-linux_x86_64.whl
+Collecting termcolor>=1.1.0
+  Using cached termcolor-2.2.0-py3-none-any.whl (6.6 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorflow_estimator-2.7.0+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/gast-0.4.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/six-1.16.0+computecanada-py2.py3-none-any.whl
+Collecting flatbuffers<3.0,>=1.12
+  Using cached flatbuffers-2.0.7-py2.py3-none-any.whl (26 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/keras-2.7.0+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: wheel<1.0,>=0.32.0 in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from tensorflow) (0.34.2)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/typing_extensions-4.5.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/google_pasta-0.2.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/libclang-14.0.1+computecanada-py2.py3-none-linux_x86_64.whl
+Collecting protobuf>=3.9.2
+  Using cached protobuf-4.22.0-py3-none-any.whl (172 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/wrapt-1.12.1+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/opt_einsum-3.3.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cached_property-1.5.2+computecanada-py2.py3-none-any.whl
+Collecting google-auth<3,>=1.6.3
+  Using cached google_auth-2.16.1-py2.py3-none-any.whl (177 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Markdown-3.4.1+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/google_auth_oauthlib-0.4.6+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Werkzeug-2.2.3+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorboard_plugin_wit-1.8.1+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/requests-2.28.2+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorboard_data_server-0.6.1+computecanada-py3-none-linux_x86_64.whl
+Requirement already satisfied: setuptools>=41.0.0 in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from tensorboard~=2.6->tensorflow) (46.1.3)
+Collecting protobuf>=3.9.2
+  Using cached protobuf-3.20.3-py2.py3-none-any.whl (162 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/rsa-4.9+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cachetools-5.3.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyasn1_modules-0.2.8+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/requests_oauthlib-1.3.1+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/importlib_metadata-6.0.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/urllib3-1.26.14+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/certifi-2022.12.7+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/idna-3.4+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/charset_normalizer-3.0.1+computecanada-py3-none-any.whl
+Collecting MarkupSafe>=2.1.1
+  Using cached MarkupSafe-2.1.2-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/zipp-3.14.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyasn1-0.4.8+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/oauthlib-3.2.2+computecanada-py3-none-any.whl
+Installing collected packages: wrapt, tensorflow-estimator, tensorboard-plugin-wit, pyasn1, libclang, keras, flatbuffers, charset-normalizer, cached-property, zipp, urllib3, typing-extensions, termcolor, tensorflow-io-gcs-filesystem, tensorboard-data-server, six, rsa, pyasn1-modules, protobuf, oauthlib, numpy, MarkupSafe, idna, gast, certifi, cachetools, absl-py, werkzeug, requests, opt-einsum, keras-preprocessing, importlib-metadata, h5py, grpcio, google-pasta, google-auth, astunparse, requests-oauthlib, markdown, google-auth-oauthlib, tensorboard, tensorflow
+Successfully installed MarkupSafe-2.1.2 absl-py-1.4.0+computecanada astunparse-1.6.3+computecanada cached-property-1.5.2+computecanada cachetools-5.3.0+computecanada certifi-2022.12.7+computecanada charset-normalizer-3.0.1+computecanada flatbuffers-2.0.7 gast-0.4.0+computecanada google-auth-2.16.1 google-auth-oauthlib-0.4.6+computecanada google-pasta-0.2.0+computecanada grpcio-1.38.1+computecanada h5py-3.4.0+computecanada idna-3.4+computecanada importlib-metadata-6.0.0+computecanada keras-2.7.0+computecanada keras-preprocessing-1.1.2+computecanada libclang-14.0.1+computecanada markdown-3.4.1+computecanada numpy-1.21.4+computecanada oauthlib-3.2.2+computecanada opt-einsum-3.3.0+computecanada protobuf-3.20.3 pyasn1-0.4.8+computecanada pyasn1-modules-0.2.8+computecanada requests-2.28.2+computecanada requests-oauthlib-1.3.1+computecanada rsa-4.9+computecanada six-1.16.0+computecanada tensorboard-2.11.2 tensorboard-data-server-0.6.1+computecanada tensorboard-plugin-wit-1.8.1+computecanada tensorflow-2.7.0+computecanada tensorflow-estimator-2.7.0+computecanada tensorflow-io-gcs-filesystem-0.22.0+computecanada termcolor-2.2.0 typing-extensions-4.5.0+computecanada urllib3-1.26.14+computecanada werkzeug-2.2.3+computecanada wrapt-1.12.1+computecanada zipp-3.14.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/scikit_learn-1.0.1+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/joblib-1.2.0+computecanada-py3-none-any.whl
+Requirement already satisfied: numpy>=1.14.6 in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from scikit-learn) (1.21.4+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/scipy-1.7.3+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/threadpoolctl-3.1.0+computecanada-py3-none-any.whl
+Installing collected packages: threadpoolctl, scipy, joblib, scikit-learn
+Successfully installed joblib-1.2.0+computecanada scikit-learn-1.0.1+computecanada scipy-1.7.3+computecanada threadpoolctl-3.1.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting ewstools
+  Using cached ewstools-2.1.0-py3-none-any.whl (27 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/statsmodels-0.12.2+computecanada-cp37-cp37m-linux_x86_64.whl
+Requirement already satisfied: numpy>=1.14.0 in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from ewstools) (1.21.4+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/arch-4.19+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/pandas-1.3.5+computecanada-cp37-cp37m-linux_x86_64.whl
+Collecting plotly>=2.3.0
+  Using cached plotly-5.13.1-py2.py3-none-any.whl (15.2 MB)
+Requirement already satisfied: scipy>=1.0.1 in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from ewstools) (1.7.3+computecanada)
+Collecting lmfit>=0.9.0
+  Using cached lmfit-1.1.0-py3-none-any.whl (90 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/deprecation-2.1.0+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Cython-0.29.33+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/property_cached-1.6.4+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/packaging-23.0+computecanada-py3-none-any.whl
+Collecting asteval>=0.9.28
+  Using cached asteval-0.9.29-py3-none-any.whl (18 kB)
+Collecting uncertainties>=3.1.4
+  Using cached uncertainties-3.1.7-py2.py3-none-any.whl (98 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/python_dateutil-2.8.2+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pytz-2022.7.1+computecanada-py3-none-any.whl
+Collecting tenacity>=6.2.0
+  Using cached tenacity-8.2.1-py3-none-any.whl (24 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/patsy-0.5.3+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: importlib-metadata in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from asteval>=0.9.28->lmfit>=0.9.0->ewstools) (6.0.0+computecanada)
+Requirement already satisfied: six in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from patsy>=0.5->statsmodels>=0.9.0->ewstools) (1.16.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/future-0.18.2+computecanada-py3-none-any.whl
+Requirement already satisfied: zipp>=0.5 in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from importlib-metadata->asteval>=0.9.28->lmfit>=0.9.0->ewstools) (3.14.0+computecanada)
+Requirement already satisfied: typing-extensions>=3.6.4 in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from importlib-metadata->asteval>=0.9.28->lmfit>=0.9.0->ewstools) (4.5.0+computecanada)
+Installing collected packages: pytz, tenacity, python-dateutil, property-cached, patsy, packaging, future, cython, uncertainties, plotly, pandas, deprecation, asteval, statsmodels, lmfit, arch, ewstools
+Successfully installed arch-4.19+computecanada asteval-0.9.29 cython-0.29.33+computecanada deprecation-2.1.0+computecanada ewstools-2.1.0 future-0.18.2+computecanada lmfit-1.1.0 packaging-23.0+computecanada pandas-1.3.5+computecanada patsy-0.5.3+computecanada plotly-5.13.1 property-cached-1.6.4+computecanada python-dateutil-2.8.2+computecanada pytz-2022.7.1+computecanada statsmodels-0.12.2+computecanada tenacity-8.2.1 uncertainties-3.1.7
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/matplotlib-3.4.2+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cycler-0.11.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/Pillow-8.4.0+computecanada-cp37-cp37m-linux_x86_64.whl
+Requirement already satisfied: numpy>=1.16 in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from matplotlib) (1.21.4+computecanada)
+Requirement already satisfied: python-dateutil>=2.7 in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from matplotlib) (2.8.2+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyparsing-3.0.9+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/kiwisolver-1.3.1+computecanada-cp37-cp37m-linux_x86_64.whl
+Requirement already satisfied: six>=1.5 in /localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages (from python-dateutil>=2.7->matplotlib) (1.16.0+computecanada)
+Installing collected packages: pyparsing, pillow, kiwisolver, cycler, matplotlib
+Successfully installed cycler-0.11.0+computecanada kiwisolver-1.3.1+computecanada matplotlib-3.4.2+computecanada pillow-8.4.0+computecanada pyparsing-3.0.9+computecanada
+-----
+ Generate training data 
+-----
+Run forced PD simulations
+Complete for tsid=100
+Complete for tsid=200
+Complete for tsid=300
+Complete for tsid=400
+Complete for tsid=500
+Run null PD simulations
+Complete for tsid=600
+Complete for tsid=700
+Complete for tsid=800
+Complete for tsid=900
+Complete for tsid=1000
+Run forced NS simulations
+Complete for tsid=1100
+Complete for tsid=1200
+Complete for tsid=1300
+Complete for tsid=1400
+Complete for tsid=1500
+Run null NS simulations
+Complete for tsid=1600
+Complete for tsid=1700
+Complete for tsid=1800
+Complete for tsid=1900
+Complete for tsid=2000
+Run forced fold simulations
+Complete for tsid=2100
+Complete for tsid=2200
+Complete for tsid=2300
+Complete for tsid=2400
+Complete for tsid=2500
+Run null fold simulations
+Complete for tsid=2600
+Complete for tsid=2700
+Complete for tsid=2800
+Complete for tsid=2900
+Complete for tsid=3000
+Run forced TC simulations
+Complete for tsid=3100
+Complete for tsid=3200
+Complete for tsid=3300
+Complete for tsid=3400
+Complete for tsid=3500
+Run null TC simulations
+Complete for tsid=3600
+Complete for tsid=3700
+Complete for tsid=3800
+Complete for tsid=3900
+Complete for tsid=4000
+Run forced PF simulations
+Complete for tsid=4100
+Complete for tsid=4200
+Complete for tsid=4300
+Complete for tsid=4400
+Complete for tsid=4500
+Run null PF simulations
+Complete for tsid=4600
+Complete for tsid=4700
+Complete for tsid=4800
+Complete for tsid=4900
+Complete for tsid=5000
+Traceback (most recent call last):
+  File "gen_training_data.py", line 521, in <module>
+    df_out.to_parquet('output/df_train.parquet')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 207, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/core/frame.py", line 2685, in to_parquet
+    **kwargs,
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 412, in to_parquet
+    impl = get_engine(engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 54, in get_engine
+    "Unable to find a usable engine; "
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+-----
+ Train classifier of type 1 
+-----
+Training DL with mtype=1
+Traceback (most recent call last):
+  File "dl_train.py", line 54, in <module>
+    df = pd.read_parquet('../training_data/output/df_train.parquet')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 493, in read_parquet
+    impl = get_engine(engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 54, in get_engine
+    "Unable to find a usable engine; "
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+-----
+ Train classifier of type 2 
+-----
+Training DL with mtype=2
+Traceback (most recent call last):
+  File "dl_train.py", line 54, in <module>
+    df = pd.read_parquet('../training_data/output/df_train.parquet')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 493, in read_parquet
+    impl = get_engine(engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 54, in get_engine
+    "Unable to find a usable engine; "
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+-----
+ Get F1 scores on test data 
+-----
+Traceback (most recent call last):
+  File "dl_test.py", line 37, in <module>
+    model = load_model('output/classifier_{}.pkl'.format(model_type))
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at output/classifier_1.pkl
+-----
+ Make Sup Fig 2 - example training simulations 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 548, in <module>
+    scale=4)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/plotly/basedatatypes.py", line 3821, in write_image
+    return pio.write_image(self, *args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/plotly/io/_kaleido.py", line 274, in write_image
+    engine=engine,
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/plotly/io/_kaleido.py", line 138, in to_image
+    """
+ValueError: 
+Image export using the "kaleido" engine requires the kaleido package,
+which can be installed using pip:
+    $ pip install -U kaleido
+
+-----
+ Make Sup Fig 3 - example model test simulations 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 311, in <module>
+    scale=4,
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/plotly/basedatatypes.py", line 3821, in write_image
+    return pio.write_image(self, *args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/plotly/io/_kaleido.py", line 274, in write_image
+    engine=engine,
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/plotly/io/_kaleido.py", line 138, in to_image
+    """
+ValueError: 
+Image export using the "kaleido" engine requires the kaleido package,
+which can be installed using pip:
+    $ pip install -U kaleido
+
+-----
+ Test DL classifier and EWS on Fox model 
+-----
+Running for 50 sims
+Traceback (most recent call last):
+  File "test_fox.py", line 47, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 24, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_forced.csv'
+-----
+ Test DL classifier and EWS on Westerhoff model 
+-----
+Running for 50 sims
+Traceback (most recent call last):
+  File "test_westerhoff.py", line 51, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 23, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_forced.csv'
+-----
+ Test DL classifier and EWS on Ricker model 
+-----
+Running for 50 sims
+Traceback (most recent call last):
+  File "test_ricker.py", line 50, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 20, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_forced.csv'
+-----
+ Test DL classifier and EWS on Kot model 
+-----
+Running for 50 sims
+Traceback (most recent call last):
+  File "test_kot.py", line 48, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 24, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_forced.csv'
+-----
+ Test DL classifier and EWS on Lorenz model 
+-----
+Running for 50 sims
+Traceback (most recent call last):
+  File "test_lorenz.py", line 46, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 23, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_forced.csv'
+-----
+ Make Figure 2 - EWS and DL predictions for sample model simulations 
+-----
+Traceback (most recent call last):
+  File "generate_data.py", line 44, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "make_fig.py", line 41, in <module>
+    df_plot = pd.read_csv('output/df_plot.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_plot.csv'
+-----
+ Make Sup Fig 4 - AUC scores across rof and sigma 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 46, in <module>
+    df_ktau_forced = pd.read_csv(path+'df_ktau_forced.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_fox/output/df_ktau_forced.csv'
+-----
+ Make Sup Fig 5 - DL favourite bifurcation prop. correct 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 45, in <module>
+    df = pd.read_csv(path+'df_dl_forced.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_fox/output/df_dl_forced.csv'
+-----
+ Find transition times in chick heart data 
+-----
+Transition for tsid = 1 at beat 440
+Transition for tsid = 2 at beat 410
+Transition for tsid = 3 at beat 303
+Transition for tsid = 4 at beat 338
+Transition for tsid = 5 at beat 345
+Transition for tsid = 6 at beat 249
+Transition for tsid = 7 at beat 151
+Transition for tsid = 8 at beat 222
+Transition for tsid = 9 at beat 96
+Transition for tsid = 10 at beat 297
+Transition for tsid = 11 at beat 313
+Transition for tsid = 12 at beat 198
+Transition for tsid = 13 at beat 231
+Transition for tsid = 14 at beat 299
+Transition for tsid = 15 at beat 200
+Transition for tsid = 16 at beat 301
+Transition for tsid = 17 at beat 234
+Transition for tsid = 18 at beat 340
+Transition for tsid = 19 at beat 198
+Transition for tsid = 20 at beat 262
+Transition for tsid = 21 at beat 148
+Transition for tsid = 22 at beat 187
+Transition for tsid = 23 at beat 324
+-----
+ Compute EWS in chick heart data 
+-----
+Using time increment of 50 for DL predictions
+Traceback (most recent call last):
+  File "compute_ews.py", line 36, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+-----
+ Test EWS and DL in chick heart data 
+-----
+Traceback (most recent call last):
+  File "test_chick_heart.py", line 32, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 31, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_pd_fixed.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_pd_fixed.csv'
+-----
+ Make figure 3 - sample EWS and DL preds in chick heart data 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 30, in <module>
+    df_ews = pd.read_csv('../test_chick_heart/output/df_ews_pd_rolling.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_chick_heart/output/df_ews_pd_rolling.csv'
+-----
+ Make Fig S6 S7 - EWS in chick heart period-doubling 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 33, in <module>
+    df_ews = pd.read_csv('../test_chick_heart/output/df_ews_pd_rolling.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_chick_heart/output/df_ews_pd_rolling.csv'
+-----
+ Make Fig S8 S9 - EWS in chick heart null 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 30, in <module>
+    df_ews = pd.read_csv('../test_chick_heart/output/df_ews_null_rolling.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_chick_heart/output/df_ews_null_rolling.csv'
+-----
+ Make Figure 4 - ROC curves 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 436, in <module>
+    df_roc = pd.read_csv('../test_fox/output/df_roc.csv')
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60952712.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_fox/output/df_roc.csv'

@@ -1,0 +1,1048 @@
+Job 60975405 released
+Load modules
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) libfabric/1.10.1     2) openmpi/4.0.3     3) ucx/1.8.0
+
+Create virtual environemnt
+created virtual environment CPython3.7.9.final.0-64 in 5655ms
+  creator CPython3Posix(dest=/localscratch/tbury.60975405.0/venv, clear=False, global=False)
+  seeder FromAppData(download=False, pip=latest, setuptools=latest, wheel=latest, via=copy, app_data_dir=/home/tbury/.local/share/virtualenv/seed-app-data/v1.0.1)
+  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+Install packages
+Ignoring pip: markers 'python_version < "3"' don't match your environment
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pip-23.0+computecanada-py3-none-any.whl
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 20.0.2
+    Uninstalling pip-20.0.2:
+      Successfully uninstalled pip-20.0.2
+Successfully installed pip-23.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/tensorflow-2.7.0+computecanada-cp37-cp37m-linux_x86_64.whl
+Requirement already satisfied: wheel<1.0,>=0.32.0 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from tensorflow) (0.34.2)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/opt_einsum-3.3.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/google_pasta-0.2.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/grpcio-1.38.1+computecanada-cp37-cp37m-linux_x86_64.whl
+Collecting flatbuffers<3.0,>=1.12
+  Using cached flatbuffers-2.0.7-py2.py3-none-any.whl (26 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/typing_extensions-4.5.0+computecanada-py3-none-any.whl
+Collecting protobuf>=3.9.2
+  Using cached protobuf-4.22.0-py3-none-any.whl (172 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/astunparse-1.6.3+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/gast-0.4.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/libclang-14.0.1+computecanada-py2.py3-none-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/six-1.16.0+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorflow_io_gcs_filesystem-0.22.0+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/h5py-3.4.0+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/absl_py-1.4.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/keras-2.7.0+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorflow_estimator-2.7.0+computecanada-py2.py3-none-any.whl
+Collecting termcolor>=1.1.0
+  Using cached termcolor-2.2.0-py3-none-any.whl (6.6 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/wrapt-1.12.1+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/numpy-1.21.4+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Keras_Preprocessing-1.1.2+computecanada-py3-none-any.whl
+Collecting tensorboard~=2.6
+  Using cached tensorboard-2.11.2-py3-none-any.whl (6.0 MB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cached_property-1.5.2+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Markdown-3.4.1+computecanada-py3-none-any.whl
+Collecting google-auth<3,>=1.6.3
+  Using cached google_auth-2.16.1-py2.py3-none-any.whl (177 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/google_auth_oauthlib-0.4.6+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/requests-2.28.2+computecanada-py3-none-any.whl
+Requirement already satisfied: setuptools>=41.0.0 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from tensorboard~=2.6->tensorflow) (46.1.3)
+Collecting protobuf>=3.9.2
+  Using cached protobuf-3.20.3-py2.py3-none-any.whl (162 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorboard_data_server-0.6.1+computecanada-py3-none-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorboard_plugin_wit-1.8.1+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Werkzeug-2.2.3+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cachetools-5.3.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/rsa-4.9+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyasn1_modules-0.2.8+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/requests_oauthlib-1.3.1+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/importlib_metadata-6.0.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/certifi-2022.12.7+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/urllib3-1.26.14+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/charset_normalizer-3.0.1+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/idna-3.4+computecanada-py3-none-any.whl
+Collecting MarkupSafe>=2.1.1
+  Using cached MarkupSafe-2.1.2-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/zipp-3.14.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyasn1-0.4.8+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/oauthlib-3.2.2+computecanada-py3-none-any.whl
+Installing collected packages: wrapt, tensorflow-estimator, tensorboard-plugin-wit, pyasn1, libclang, keras, flatbuffers, charset-normalizer, cached-property, zipp, urllib3, typing-extensions, termcolor, tensorflow-io-gcs-filesystem, tensorboard-data-server, six, rsa, pyasn1-modules, protobuf, oauthlib, numpy, MarkupSafe, idna, gast, certifi, cachetools, absl-py, werkzeug, requests, opt-einsum, keras-preprocessing, importlib-metadata, h5py, grpcio, google-pasta, google-auth, astunparse, requests-oauthlib, markdown, google-auth-oauthlib, tensorboard, tensorflow
+Successfully installed MarkupSafe-2.1.2 absl-py-1.4.0+computecanada astunparse-1.6.3+computecanada cached-property-1.5.2+computecanada cachetools-5.3.0+computecanada certifi-2022.12.7+computecanada charset-normalizer-3.0.1+computecanada flatbuffers-2.0.7 gast-0.4.0+computecanada google-auth-2.16.1 google-auth-oauthlib-0.4.6+computecanada google-pasta-0.2.0+computecanada grpcio-1.38.1+computecanada h5py-3.4.0+computecanada idna-3.4+computecanada importlib-metadata-6.0.0+computecanada keras-2.7.0+computecanada keras-preprocessing-1.1.2+computecanada libclang-14.0.1+computecanada markdown-3.4.1+computecanada numpy-1.21.4+computecanada oauthlib-3.2.2+computecanada opt-einsum-3.3.0+computecanada protobuf-3.20.3 pyasn1-0.4.8+computecanada pyasn1-modules-0.2.8+computecanada requests-2.28.2+computecanada requests-oauthlib-1.3.1+computecanada rsa-4.9+computecanada six-1.16.0+computecanada tensorboard-2.11.2 tensorboard-data-server-0.6.1+computecanada tensorboard-plugin-wit-1.8.1+computecanada tensorflow-2.7.0+computecanada tensorflow-estimator-2.7.0+computecanada tensorflow-io-gcs-filesystem-0.22.0+computecanada termcolor-2.2.0 typing-extensions-4.5.0+computecanada urllib3-1.26.14+computecanada werkzeug-2.2.3+computecanada wrapt-1.12.1+computecanada zipp-3.14.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/scikit_learn-1.0.1+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/joblib-1.2.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/scipy-1.7.3+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/threadpoolctl-3.1.0+computecanada-py3-none-any.whl
+Requirement already satisfied: numpy>=1.14.6 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from scikit-learn) (1.21.4+computecanada)
+Installing collected packages: threadpoolctl, scipy, joblib, scikit-learn
+Successfully installed joblib-1.2.0+computecanada scikit-learn-1.0.1+computecanada scipy-1.7.3+computecanada threadpoolctl-3.1.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting ewstools
+  Using cached ewstools-2.1.0-py3-none-any.whl (27 kB)
+Collecting lmfit>=0.9.0
+  Using cached lmfit-1.1.0-py3-none-any.whl (90 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/arch-4.19+computecanada-cp37-cp37m-linux_x86_64.whl
+Requirement already satisfied: scipy>=1.0.1 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from ewstools) (1.7.3+computecanada)
+Collecting plotly>=2.3.0
+  Using cached plotly-5.13.1-py2.py3-none-any.whl (15.2 MB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/deprecation-2.1.0+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: numpy>=1.14.0 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from ewstools) (1.21.4+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/pandas-1.3.5+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/statsmodels-0.12.2+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Cython-0.29.33+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/property_cached-1.6.4+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/packaging-23.0+computecanada-py3-none-any.whl
+Collecting uncertainties>=3.1.4
+  Using cached uncertainties-3.1.7-py2.py3-none-any.whl (98 kB)
+Collecting asteval>=0.9.28
+  Using cached asteval-0.9.29-py3-none-any.whl (18 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/python_dateutil-2.8.2+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pytz-2022.7.1+computecanada-py3-none-any.whl
+Collecting tenacity>=6.2.0
+  Using cached tenacity-8.2.1-py3-none-any.whl (24 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/patsy-0.5.3+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: importlib-metadata in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from asteval>=0.9.28->lmfit>=0.9.0->ewstools) (6.0.0+computecanada)
+Requirement already satisfied: six in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from patsy>=0.5->statsmodels>=0.9.0->ewstools) (1.16.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/future-0.18.2+computecanada-py3-none-any.whl
+Requirement already satisfied: typing-extensions>=3.6.4 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from importlib-metadata->asteval>=0.9.28->lmfit>=0.9.0->ewstools) (4.5.0+computecanada)
+Requirement already satisfied: zipp>=0.5 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from importlib-metadata->asteval>=0.9.28->lmfit>=0.9.0->ewstools) (3.14.0+computecanada)
+Installing collected packages: pytz, tenacity, python-dateutil, property-cached, patsy, packaging, future, cython, uncertainties, plotly, pandas, deprecation, asteval, statsmodels, lmfit, arch, ewstools
+Successfully installed arch-4.19+computecanada asteval-0.9.29 cython-0.29.33+computecanada deprecation-2.1.0+computecanada ewstools-2.1.0 future-0.18.2+computecanada lmfit-1.1.0 packaging-23.0+computecanada pandas-1.3.5+computecanada patsy-0.5.3+computecanada plotly-5.13.1 property-cached-1.6.4+computecanada python-dateutil-2.8.2+computecanada pytz-2022.7.1+computecanada statsmodels-0.12.2+computecanada tenacity-8.2.1 uncertainties-3.1.7
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/matplotlib-3.4.2+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyparsing-3.0.9+computecanada-py3-none-any.whl
+Requirement already satisfied: python-dateutil>=2.7 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from matplotlib) (2.8.2+computecanada)
+Requirement already satisfied: numpy>=1.16 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from matplotlib) (1.21.4+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cycler-0.11.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/kiwisolver-1.3.1+computecanada-cp37-cp37m-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/Pillow-8.4.0+computecanada-cp37-cp37m-linux_x86_64.whl
+Requirement already satisfied: six>=1.5 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from python-dateutil>=2.7->matplotlib) (1.16.0+computecanada)
+Installing collected packages: pyparsing, pillow, kiwisolver, cycler, matplotlib
+Successfully installed cycler-0.11.0+computecanada kiwisolver-1.3.1+computecanada matplotlib-3.4.2+computecanada pillow-8.4.0+computecanada pyparsing-3.0.9+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting pyarrow
+  Downloading pyarrow-11.0.0.tar.gz (1.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 4.4 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: numpy>=1.16.6 in /localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages (from pyarrow) (1.21.4+computecanada)
+Building wheels for collected packages: pyarrow
+  Building wheel for pyarrow (pyproject.toml): started
+  Building wheel for pyarrow (pyproject.toml): finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  × Building wheel for pyarrow (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> [342 lines of output]
+      running bdist_wheel
+      running build
+      running build_py
+      creating build
+      creating build/lib.linux-x86_64-cpython-37
+      creating build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/util.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/types.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/substrait.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/serialization.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/plasma.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/pandas_compat.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/orc.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/jvm.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/json.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/ipc.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/hdfs.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/fs.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/flight.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/filesystem.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/feather.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/dataset.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/cuda.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/csv.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/conftest.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/compute.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/cffi.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/benchmark.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_generated_version.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_compute_docstrings.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/__init__.py -> build/lib.linux-x86_64-cpython-37/pyarrow
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/vendored
+      copying pyarrow/vendored/version.py -> build/lib.linux-x86_64-cpython-37/pyarrow/vendored
+      copying pyarrow/vendored/docscrape.py -> build/lib.linux-x86_64-cpython-37/pyarrow/vendored
+      copying pyarrow/vendored/__init__.py -> build/lib.linux-x86_64-cpython-37/pyarrow/vendored
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/util.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_util.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_udf.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_types.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_tensor.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_table.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_substrait.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_strategies.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_sparse_tensor.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_serialization_deprecated.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_serialization.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_schema.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_scalars.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_plasma_tf_op.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_plasma.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_pandas.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_orc.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_misc.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_memory.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_jvm.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_json.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_ipc.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_io.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_hdfs.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_gdb.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_gandiva.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_fs.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_flight.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_filesystem.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_feather.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_extension_type.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_exec_plan.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_deprecations.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_dataset.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_cython.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_cuda_numba_interop.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_cuda.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_csv.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_cpp_internals.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_convert_builtin.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_compute.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_cffi.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_builder.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_array.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/test_adhoc_memory_leak.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/strategies.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/read_record_batch.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/pandas_threaded_import.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/pandas_examples.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/deserialize_buffer.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/conftest.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/arrow_7980.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/arrow_16597.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/__init__.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/parquet
+      copying pyarrow/parquet/encryption.py -> build/lib.linux-x86_64-cpython-37/pyarrow/parquet
+      copying pyarrow/parquet/core.py -> build/lib.linux-x86_64-cpython-37/pyarrow/parquet
+      copying pyarrow/parquet/__init__.py -> build/lib.linux-x86_64-cpython-37/pyarrow/parquet
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/interchange
+      copying pyarrow/interchange/from_dataframe.py -> build/lib.linux-x86_64-cpython-37/pyarrow/interchange
+      copying pyarrow/interchange/dataframe.py -> build/lib.linux-x86_64-cpython-37/pyarrow/interchange
+      copying pyarrow/interchange/column.py -> build/lib.linux-x86_64-cpython-37/pyarrow/interchange
+      copying pyarrow/interchange/buffer.py -> build/lib.linux-x86_64-cpython-37/pyarrow/interchange
+      copying pyarrow/interchange/__init__.py -> build/lib.linux-x86_64-cpython-37/pyarrow/interchange
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_parquet_writer.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_parquet_file.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_pandas.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_metadata.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_encryption.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_datetime.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_dataset.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_data_types.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_compliant_nested_type.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_basic.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/encryption.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/conftest.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/common.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/__init__.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/parquet
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/tests/interchange
+      copying pyarrow/tests/interchange/test_interchange_spec.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/interchange
+      copying pyarrow/tests/interchange/test_conversion.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/interchange
+      copying pyarrow/tests/interchange/__init__.py -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/interchange
+      running egg_info
+      writing pyarrow.egg-info/PKG-INFO
+      writing dependency_links to pyarrow.egg-info/dependency_links.txt
+      writing entry points to pyarrow.egg-info/entry_points.txt
+      writing requirements to pyarrow.egg-info/requires.txt
+      writing top-level names to pyarrow.egg-info/top_level.txt
+      listing git files failed - pretending there aren't any
+      reading manifest file 'pyarrow.egg-info/SOURCES.txt'
+      reading manifest template 'MANIFEST.in'
+      warning: no files found matching '../LICENSE.txt'
+      warning: no files found matching '../NOTICE.txt'
+      warning: no previously-included files matching '*.so' found anywhere in distribution
+      warning: no previously-included files matching '*.pyc' found anywhere in distribution
+      warning: no previously-included files matching '*~' found anywhere in distribution
+      warning: no previously-included files matching '#*' found anywhere in distribution
+      warning: no previously-included files matching '.git*' found anywhere in distribution
+      warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+      no previously-included directories found matching '.asv'
+      writing manifest file 'pyarrow.egg-info/SOURCES.txt'
+      copying pyarrow/__init__.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_compute.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_compute.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_csv.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_csv.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_cuda.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_cuda.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_dataset.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_dataset.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_dataset_orc.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_dataset_parquet.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_exec_plan.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_feather.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_flight.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_fs.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_fs.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_gcsfs.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_hdfs.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_hdfsio.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_json.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_orc.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_orc.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_parquet.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_parquet.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_parquet_encryption.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_parquet_encryption.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_plasma.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_pyarrow_cpp_tests.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_pyarrow_cpp_tests.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_s3fs.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/_substrait.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/array.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/benchmark.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/builder.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/compat.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/config.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/error.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/gandiva.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/io.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/ipc.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/lib.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/lib.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/memory.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/pandas-shim.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/public-api.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/scalar.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/serialization.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/table.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/tensor.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      copying pyarrow/types.pxi -> build/lib.linux-x86_64-cpython-37/pyarrow
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libplasma.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libgandiva.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libarrow_substrait.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libarrow_python.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libarrow_fs.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libarrow_flight.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libarrow_feather.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libarrow_dataset_parquet.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libarrow_dataset.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libarrow_cuda.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/libarrow.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/common.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/includes/__init__.pxd -> build/lib.linux-x86_64-cpython-37/pyarrow/includes
+      copying pyarrow/tests/bound_function_visit_strings.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      copying pyarrow/tests/pyarrow_cython_example.pyx -> build/lib.linux-x86_64-cpython-37/pyarrow/tests
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/tensorflow
+      copying pyarrow/tensorflow/plasma_op.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/tensorflow
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/tests/data
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/parquet
+      copying pyarrow/tests/data/parquet/v0.7.1.all-named-index.parquet -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/parquet
+      copying pyarrow/tests/data/parquet/v0.7.1.column-metadata-handling.parquet -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/parquet
+      copying pyarrow/tests/data/parquet/v0.7.1.parquet -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/parquet
+      copying pyarrow/tests/data/parquet/v0.7.1.some-named-index.parquet -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/parquet
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/README.md -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.emptyFile.jsn.gz -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.emptyFile.orc -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.test1.jsn.gz -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.test1.orc -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.testDate1900.jsn.gz -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.testDate1900.orc -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/decimal.jsn.gz -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/decimal.orc -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/orc
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/feather
+      copying pyarrow/tests/data/feather/v0.17.0.version.2-compression.lz4.feather -> build/lib.linux-x86_64-cpython-37/pyarrow/tests/data/feather
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/src
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow
+      creating build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/CMakeLists.txt -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/api.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/arrow_to_pandas.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/arrow_to_pandas.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/arrow_to_python_internal.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/benchmark.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/benchmark.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/common.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/common.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/csv.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/csv.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/datetime.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/datetime.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/decimal.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/decimal.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/deserialize.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/deserialize.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/extension_type.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/extension_type.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/filesystem.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/filesystem.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/flight.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/flight.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/gdb.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/gdb.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/helpers.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/helpers.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/inference.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/inference.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/init.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/init.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/io.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/io.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/ipc.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/ipc.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/iterators.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_convert.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_convert.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_internal.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_interop.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_to_arrow.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_to_arrow.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/parquet_encryption.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/parquet_encryption.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/pch.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/platform.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/pyarrow.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/pyarrow.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/pyarrow_api.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/pyarrow_lib.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/python_test.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/python_test.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/python_to_arrow.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/python_to_arrow.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/serialize.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/serialize.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/type_traits.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/udf.cc -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/udf.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/visibility.h -> build/lib.linux-x86_64-cpython-37/pyarrow/src/arrow/python
+      running build_ext
+      creating /tmp/pip-install-frhe3h0w/pyarrow_b44c5b2a9cf64532b6f7200c356d2f45/build/temp.linux-x86_64-cpython-37
+      -- Running cmake for PyArrow
+      cmake -DCMAKE_INSTALL_PREFIX=/tmp/pip-install-frhe3h0w/pyarrow_b44c5b2a9cf64532b6f7200c356d2f45/build/lib.linux-x86_64-cpython-37/pyarrow -DPYTHON_EXECUTABLE=/localscratch/tbury.60975405.0/venv/bin/python -DPython3_EXECUTABLE=/localscratch/tbury.60975405.0/venv/bin/python -DPYARROW_CXXFLAGS= -DPYARROW_BUILD_CUDA=off -DPYARROW_BUILD_SUBSTRAIT=off -DPYARROW_BUILD_FLIGHT=off -DPYARROW_BUILD_GANDIVA=off -DPYARROW_BUILD_DATASET=off -DPYARROW_BUILD_ORC=off -DPYARROW_BUILD_PARQUET=off -DPYARROW_BUILD_PARQUET_ENCRYPTION=off -DPYARROW_BUILD_PLASMA=off -DPYARROW_BUILD_GCS=off -DPYARROW_BUILD_S3=off -DPYARROW_BUILD_HDFS=off -DPYARROW_USE_TENSORFLOW=off -DPYARROW_BUNDLE_ARROW_CPP=off -DPYARROW_BUNDLE_BOOST=off -DPYARROW_BUNDLE_CYTHON_CPP=off -DPYARROW_BUNDLE_PLASMA_EXECUTABLE=on -DPYARROW_GENERATE_COVERAGE=off -DPYARROW_BOOST_USE_SHARED=on -DPYARROW_PARQUET_USE_SHARED=on -DCMAKE_BUILD_TYPE=release /tmp/pip-install-frhe3h0w/pyarrow_b44c5b2a9cf64532b6f7200c356d2f45
+      -- The C compiler identification is GNU 9.3.0
+      -- The CXX compiler identification is GNU 9.3.0
+      -- Check for working C compiler: /cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/bin/cc
+      -- Check for working C compiler: /cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/bin/cc -- works
+      -- Detecting C compiler ABI info
+      -- Detecting C compiler ABI info - done
+      -- Detecting C compile features
+      -- Detecting C compile features - done
+      -- Check for working CXX compiler: /cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/bin/c++
+      -- Check for working CXX compiler: /cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/bin/c++ -- works
+      -- Detecting CXX compiler ABI info
+      -- Detecting CXX compiler ABI info - done
+      -- Detecting CXX compile features
+      -- Detecting CXX compile features - done
+      -- Using ccache: /cvmfs/soft.computecanada.ca/gentoo/2020/usr/bin/ccache
+      -- System processor: x86_64
+      -- Performing Test CXX_SUPPORTS_SSE4_2
+      -- Performing Test CXX_SUPPORTS_SSE4_2 - Success
+      -- Performing Test CXX_SUPPORTS_AVX2
+      -- Performing Test CXX_SUPPORTS_AVX2 - Success
+      -- Performing Test CXX_SUPPORTS_AVX512
+      -- Performing Test CXX_SUPPORTS_AVX512 - Success
+      -- Arrow build warning level: PRODUCTION
+      -- Using hard-wired gold linker (version 1.16)
+      -- Build Type: RELEASE
+      -- CMAKE_C_FLAGS:  -Wall -fno-semantic-interposition -msse4.2  -fdiagnostics-color=always  -fno-omit-frame-pointer -Wno-unused-variable -Wno-maybe-uninitialized
+      -- CMAKE_CXX_FLAGS:  -Wno-noexcept-type  -Wall -fno-semantic-interposition -msse4.2  -fdiagnostics-color=always  -fno-omit-frame-pointer -Wno-unused-variable -Wno-maybe-uninitialized
+      -- Generator: Unix Makefiles
+      -- Build output directory: /tmp/pip-install-frhe3h0w/pyarrow_b44c5b2a9cf64532b6f7200c356d2f45/build/temp.linux-x86_64-cpython-37/release
+      -- Found Python3: /localscratch/tbury.60975405.0/venv/bin/python (found version "3.7.9") found components: Interpreter Development NumPy
+      -- Found Python3Alt: /localscratch/tbury.60975405.0/venv/bin/python
+      CMake Error at CMakeLists.txt:268 (find_package):
+        By not providing "FindArrow.cmake" in CMAKE_MODULE_PATH this project has
+        asked CMake to find a package configuration file provided by "Arrow", but
+        CMake did not find one.
+      
+        Could not find a package configuration file provided by "Arrow" with any of
+        the following names:
+      
+          ArrowConfig.cmake
+          arrow-config.cmake
+      
+        Add the installation prefix of "Arrow" to CMAKE_PREFIX_PATH or set
+        "Arrow_DIR" to a directory containing one of the above files.  If "Arrow"
+        provides a separate development package or SDK, be sure it has been
+        installed.
+      
+      
+      -- Configuring incomplete, errors occurred!
+      See also "/tmp/pip-install-frhe3h0w/pyarrow_b44c5b2a9cf64532b6f7200c356d2f45/build/temp.linux-x86_64-cpython-37/CMakeFiles/CMakeOutput.log".
+      error: command '/cvmfs/soft.computecanada.ca/gentoo/2020/usr/bin/cmake' failed with exit code 1
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for pyarrow
+Failed to build pyarrow
+ERROR: Could not build wheels for pyarrow, which is required to install pyproject.toml-based projects
+-----
+ Generate training data 
+-----
+Run forced PD simulations
+Complete for tsid=100
+Complete for tsid=200
+Complete for tsid=300
+Complete for tsid=400
+Complete for tsid=500
+Run null PD simulations
+Complete for tsid=600
+Complete for tsid=700
+Complete for tsid=800
+Complete for tsid=900
+Complete for tsid=1000
+Run forced NS simulations
+Complete for tsid=1100
+Complete for tsid=1200
+Complete for tsid=1300
+Complete for tsid=1400
+Complete for tsid=1500
+Run null NS simulations
+Complete for tsid=1600
+Complete for tsid=1700
+Complete for tsid=1800
+Complete for tsid=1900
+Complete for tsid=2000
+Run forced fold simulations
+Complete for tsid=2100
+Complete for tsid=2200
+Complete for tsid=2300
+Complete for tsid=2400
+Complete for tsid=2500
+Run null fold simulations
+Complete for tsid=2600
+Complete for tsid=2700
+Complete for tsid=2800
+Complete for tsid=2900
+Complete for tsid=3000
+Run forced TC simulations
+Complete for tsid=3100
+Complete for tsid=3200
+Complete for tsid=3300
+Complete for tsid=3400
+Complete for tsid=3500
+Run null TC simulations
+Complete for tsid=3600
+Complete for tsid=3700
+Complete for tsid=3800
+Complete for tsid=3900
+Complete for tsid=4000
+Run forced PF simulations
+Complete for tsid=4100
+Complete for tsid=4200
+Complete for tsid=4300
+Complete for tsid=4400
+Complete for tsid=4500
+Run null PF simulations
+Complete for tsid=4600
+Complete for tsid=4700
+Complete for tsid=4800
+Complete for tsid=4900
+Complete for tsid=5000
+Traceback (most recent call last):
+  File "gen_training_data.py", line 521, in <module>
+    df_out.to_parquet('output/df_train.parquet')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 207, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/core/frame.py", line 2685, in to_parquet
+    **kwargs,
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 412, in to_parquet
+    impl = get_engine(engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 54, in get_engine
+    "Unable to find a usable engine; "
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+-----
+ Train classifier of type 1 
+-----
+Training DL with mtype=1
+Traceback (most recent call last):
+  File "dl_train.py", line 54, in <module>
+    df = pd.read_parquet('../training_data/output/df_train.parquet')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 493, in read_parquet
+    impl = get_engine(engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 54, in get_engine
+    "Unable to find a usable engine; "
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+-----
+ Train classifier of type 2 
+-----
+Training DL with mtype=2
+Traceback (most recent call last):
+  File "dl_train.py", line 54, in <module>
+    df = pd.read_parquet('../training_data/output/df_train.parquet')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 493, in read_parquet
+    impl = get_engine(engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parquet.py", line 54, in get_engine
+    "Unable to find a usable engine; "
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+-----
+ Get F1 scores on test data 
+-----
+Traceback (most recent call last):
+  File "dl_test.py", line 37, in <module>
+    model = load_model('output/classifier_{}.pkl'.format(model_type))
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at output/classifier_1.pkl
+-----
+ Make Sup Fig 2 - example training simulations 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 548, in <module>
+    scale=4)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/plotly/basedatatypes.py", line 3821, in write_image
+    return pio.write_image(self, *args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/plotly/io/_kaleido.py", line 274, in write_image
+    engine=engine,
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/plotly/io/_kaleido.py", line 138, in to_image
+    """
+ValueError: 
+Image export using the "kaleido" engine requires the kaleido package,
+which can be installed using pip:
+    $ pip install -U kaleido
+
+-----
+ Make Sup Fig 3 - example model test simulations 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 311, in <module>
+    scale=4,
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/plotly/basedatatypes.py", line 3821, in write_image
+    return pio.write_image(self, *args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/plotly/io/_kaleido.py", line 274, in write_image
+    engine=engine,
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/plotly/io/_kaleido.py", line 138, in to_image
+    """
+ValueError: 
+Image export using the "kaleido" engine requires the kaleido package,
+which can be installed using pip:
+    $ pip install -U kaleido
+
+-----
+ Test DL classifier and EWS on Fox model 
+-----
+Running for 50 sims
+Traceback (most recent call last):
+  File "test_fox.py", line 47, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 24, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_forced.csv'
+-----
+ Test DL classifier and EWS on Westerhoff model 
+-----
+Running for 50 sims
+Traceback (most recent call last):
+  File "test_westerhoff.py", line 51, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 23, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_forced.csv'
+-----
+ Test DL classifier and EWS on Ricker model 
+-----
+Running for 50 sims
+Traceback (most recent call last):
+  File "test_ricker.py", line 50, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 20, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_forced.csv'
+-----
+ Test DL classifier and EWS on Kot model 
+-----
+Running for 50 sims
+Traceback (most recent call last):
+  File "test_kot.py", line 48, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 24, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_forced.csv'
+-----
+ Test DL classifier and EWS on Lorenz model 
+-----
+Running for 50 sims
+Traceback (most recent call last):
+  File "test_lorenz.py", line 46, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 23, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_forced.csv'
+-----
+ Make Figure 2 - EWS and DL predictions for sample model simulations 
+-----
+Traceback (most recent call last):
+  File "generate_data.py", line 44, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "make_fig.py", line 41, in <module>
+    df_plot = pd.read_csv('output/df_plot.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_plot.csv'
+-----
+ Make Sup Fig 4 - AUC scores across rof and sigma 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 46, in <module>
+    df_ktau_forced = pd.read_csv(path+'df_ktau_forced.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_fox/output/df_ktau_forced.csv'
+-----
+ Make Sup Fig 5 - DL favourite bifurcation prop. correct 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 45, in <module>
+    df = pd.read_csv(path+'df_dl_forced.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_fox/output/df_dl_forced.csv'
+-----
+ Find transition times in chick heart data 
+-----
+Transition for tsid = 1 at beat 440
+Transition for tsid = 2 at beat 410
+Transition for tsid = 3 at beat 303
+Transition for tsid = 4 at beat 338
+Transition for tsid = 5 at beat 345
+Transition for tsid = 6 at beat 249
+Transition for tsid = 7 at beat 151
+Transition for tsid = 8 at beat 222
+Transition for tsid = 9 at beat 96
+Transition for tsid = 10 at beat 297
+Transition for tsid = 11 at beat 313
+Transition for tsid = 12 at beat 198
+Transition for tsid = 13 at beat 231
+Transition for tsid = 14 at beat 299
+Transition for tsid = 15 at beat 200
+Transition for tsid = 16 at beat 301
+Transition for tsid = 17 at beat 234
+Transition for tsid = 18 at beat 340
+Transition for tsid = 19 at beat 198
+Transition for tsid = 20 at beat 262
+Transition for tsid = 21 at beat 148
+Transition for tsid = 22 at beat 187
+Transition for tsid = 23 at beat 324
+-----
+ Compute EWS in chick heart data 
+-----
+Using time increment of 50 for DL predictions
+Traceback (most recent call last):
+  File "compute_ews.py", line 36, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+-----
+ Test EWS and DL in chick heart data 
+-----
+Traceback (most recent call last):
+  File "test_chick_heart.py", line 32, in <module>
+    m1 = load_model('../dl_train/output/classifier_1.pkl')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/keras/saving/save.py", line 209, in load_model
+    raise IOError(f'No file or directory found at {filepath}')
+OSError: No file or directory found at ../dl_train/output/classifier_1.pkl
+Traceback (most recent call last):
+  File "compute_roc.py", line 31, in <module>
+    df_ktau_forced = pd.read_csv('output/df_ktau_pd_fixed.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: 'output/df_ktau_pd_fixed.csv'
+-----
+ Make figure 3 - sample EWS and DL preds in chick heart data 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 30, in <module>
+    df_ews = pd.read_csv('../test_chick_heart/output/df_ews_pd_rolling.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_chick_heart/output/df_ews_pd_rolling.csv'
+-----
+ Make Fig S6 S7 - EWS in chick heart period-doubling 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 33, in <module>
+    df_ews = pd.read_csv('../test_chick_heart/output/df_ews_pd_rolling.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_chick_heart/output/df_ews_pd_rolling.csv'
+-----
+ Make Fig S8 S9 - EWS in chick heart null 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 30, in <module>
+    df_ews = pd.read_csv('../test_chick_heart/output/df_ews_null_rolling.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_chick_heart/output/df_ews_null_rolling.csv'
+-----
+ Make Figure 4 - ROC curves 
+-----
+Traceback (most recent call last):
+  File "make_fig.py", line 436, in <module>
+    df_roc = pd.read_csv('../test_fox/output/df_roc.csv')
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/localscratch/tbury.60975405.0/venv/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '../test_fox/output/df_roc.csv'
