@@ -45,10 +45,12 @@ INC=50
 
 echo -e "-----\n Generate training data \n-----"
 cd training_data
+mkdir -p output
 python gen_training_data.py --nsims $NSIMS --verbose 0
 
 echo -e "-----\n Train classifier of type 1 \n-----"
 cd ../dl_train
+mkdir -p output
 python dl_train.py --model_type 1 --num_epochs $NEPOCHS
 
 echo -e "-----\n Train classifier of type 2 \n-----"
@@ -67,31 +69,37 @@ python make_fig.py
 
 echo -e "-----\n Test DL classifier and EWS on Fox model \n-----"
 cd ../test_fox
+mkdir -p output
 python test_fox.py --model_sims $MODEL_SIMS
 python compute_roc.py
 
 echo -e "-----\n Test DL classifier and EWS on Westerhoff model \n-----"
 cd ../test_westerhoff
+mkdir -p output
 python test_westerhoff.py --model_sims $MODEL_SIMS
 python compute_roc.py
 
 echo -e "-----\n Test DL classifier and EWS on Ricker model \n-----"
 cd ../test_ricker
+mkdir -p output
 python test_ricker.py --model_sims $MODEL_SIMS
 python compute_roc.py
 
 echo -e "-----\n Test DL classifier and EWS on Kot model \n-----"
 cd ../test_kot
+mkdir -p output
 python test_kot.py --model_sims $MODEL_SIMS
 python compute_roc.py
 
 echo -e "-----\n Test DL classifier and EWS on Lorenz model \n-----"
 cd ../test_lorenz
+mkdir -p output
 python test_lorenz.py --model_sims $MODEL_SIMS
 python compute_roc.py
 
 echo -e "-----\n Make Figure 2 - EWS and DL predictions for sample model simulations \n-----"
 cd ../figure_2
+mkdir -p output
 python generate_data.py
 python make_fig.py
 
@@ -105,6 +113,7 @@ python make_fig.py
 
 echo -e "-----\n Find transition times in chick heart data \n-----"
 cd ../test_chick_heart
+mkdir -p output
 python find_transition_times.py
 
 echo -e "-----\n Compute EWS in chick heart data \n-----"
@@ -128,7 +137,7 @@ python make_fig.py
 
 echo -e "-----\n Make Figure 4 - ROC curves \n-----"
 cd ../figure_4
+mkdir -p output
 python make_fig.py
-
 
 
