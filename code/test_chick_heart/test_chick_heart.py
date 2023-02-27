@@ -83,7 +83,7 @@ for tsid in list_tsid:
         ts.apply_classifier(m1, tmin=0, tmax=eval_time, name='m1', verbose=0)
         ts.apply_classifier(m2, tmin=0, tmax=eval_time, name='m2', verbose=0)
          
-        df_dl_preds = ts.dl_preds.groupby('time').mean() # use mean DL pred
+        df_dl_preds = ts.dl_preds.groupby('time').mean(numeric_only=True) # use mean DL pred
         df_dl_preds['eval_time']=eval_time
         df_dl_preds['tsid'] = tsid
         list_dl_preds.append(df_dl_preds)
@@ -135,7 +135,7 @@ for tsid in list_tsid:
         ts.apply_classifier(m1, tmin=0, tmax=eval_time, name='m1', verbose=0)
         ts.apply_classifier(m2, tmin=0, tmax=eval_time, name='m2', verbose=0)
             
-        df_dl_preds = ts.dl_preds.groupby('time').mean() # use mean DL pred
+        df_dl_preds = ts.dl_preds.groupby('time').mean(numeric_only=True) # use mean DL pred
         df_dl_preds['eval_time']=eval_time
         df_dl_preds['tsid']=tsid
         list_dl_preds.append(df_dl_preds)

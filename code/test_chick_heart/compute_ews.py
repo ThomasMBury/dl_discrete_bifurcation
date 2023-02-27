@@ -77,7 +77,7 @@ for tsid in list_tsid:
     ts.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
 
     # Save data to lists
-    df_dl = ts.dl_preds.groupby('time').mean() # use mean DL pred
+    df_dl = ts.dl_preds.groupby('time').mean(numeric_only=True) # use mean DL pred
     df_dl['tsid'] = tsid
     df_dl.reset_index(inplace=True)
     df_dl = df_dl.rename({'time':'Beat number'}, axis=1)
@@ -122,7 +122,7 @@ for tsid in list_tsid:
     ts.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
     ts.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
 
-    df_dl = ts.dl_preds.groupby('time').mean() # use mean DL pred
+    df_dl = ts.dl_preds.groupby('time').mean(numeric_only=True) # use mean DL pred
     df_dl['tsid'] = tsid
     df_dl.reset_index(inplace=True)
     df_dl = df_dl.rename({'time':'Beat number'}, axis=1)
