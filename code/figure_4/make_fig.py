@@ -23,7 +23,6 @@ import matplotlib.pyplot as plt
 # Import PIL for image tools
 from PIL import Image
 
-
 #-----------
 # General fig params
 #------------
