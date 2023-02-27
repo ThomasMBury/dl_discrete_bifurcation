@@ -42,6 +42,10 @@ sigma_vals = [0.000625, 0.00125, 0.0025, 0.005, 0.01]
 rof_vals = [1/500, 1/400, 1/300, 1/200, 1/100]
 id_vals = np.arange(int(model_sims/25)) # number of simulations at each combo of rof and sigma
 
+# EWS parameters
+rw = 0.5 # rolling window
+span = 0.25 # Lowess span
+
 # Load in DL models
 m1 = load_model('../dl_train/output/classifier_1.pkl')
 m2 = load_model('../dl_train/output/classifier_2.pkl')
@@ -65,9 +69,9 @@ for rof in rof_vals:
             
             # Compute EWS for forced trajectory
             ts = ewstools.TimeSeries(s_forced, transition=transition)
-            ts.detrend(method='Lowess', span=0.25)
-            ts.compute_var(rolling_window=0.5)
-            ts.compute_auto(rolling_window=0.5, lag=1)
+            ts.detrend(method='Lowess', span=span)
+            ts.compute_var(rolling_window=rw)
+            ts.compute_auto(rolling_window=rw, lag=1)
             ts.compute_ktau(tmin=0, tmax=transition*eval_pt)
             dic_ktau = ts.ktau
             dic_ktau['sigma'] = sigma
@@ -87,9 +91,9 @@ for rof in rof_vals:
         
             # Compute EWS for null trajectory
             ts = ewstools.TimeSeries(s_null)
-            ts.detrend(method='Lowess', span=0.25)
-            ts.compute_var(rolling_window=0.5)
-            ts.compute_auto(rolling_window=0.5, lag=1)
+            ts.detrend(method='Lowess', span=span)
+            ts.compute_var(rolling_window=rw)
+            ts.compute_auto(rolling_window=rw, lag=1)
             ts.compute_ktau(tmin=0, tmax=transition*eval_pt)
             dic_ktau = ts.ktau
             dic_ktau['sigma'] = sigma

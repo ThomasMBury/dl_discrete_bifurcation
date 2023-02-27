@@ -37,12 +37,16 @@ from tensorflow.keras.models import load_model
 
 print('Running for {} sims'.format(model_sims))
 
-np.random.seed(1)
+np.random.seed(0)
 eval_pt = 0.8 #  percentage of way through pre-transition time series
 
 sigma_vals = [0.000625, 0.00125, 0.0025, 0.005, 0.01]
 rof_vals = [0.5/500, 0.5/400, 0.5/300, 0.5/200, 0.5/100]
 id_vals = np.arange(int(model_sims/25)) # number of simulations at each combo of rof and sigma
+
+# EWS parameters
+rw = 0.5 # rolling window
+span = 0.25 # Lowess span
 
 # Load in DL models
 m1 = load_model('../dl_train/output/classifier_1.pkl')
@@ -68,9 +72,9 @@ for rof in rof_vals:
             
             # Compute EWS for forced trajectory
             ts = ewstools.TimeSeries(s_forced, transition=transition)
-            ts.detrend(method='Lowess', span=0.25)
-            ts.compute_var(rolling_window=0.5)
-            ts.compute_auto(rolling_window=0.5, lag=1)
+            ts.detrend(method='Lowess', span=span)
+            ts.compute_var(rolling_window=rw)
+            ts.compute_auto(rolling_window=rw, lag=1)
             ts.compute_ktau(tmin=0, tmax=transition*eval_pt)
             dic_ktau = ts.ktau
             dic_ktau['sigma'] = sigma
@@ -90,9 +94,9 @@ for rof in rof_vals:
         
             # Compute EWS for null trajectory
             ts = ewstools.TimeSeries(s_null)
-            ts.detrend(method='Lowess', span=0.25)
-            ts.compute_var(rolling_window=0.5)
-            ts.compute_auto(rolling_window=0.5, lag=1)
+            ts.detrend(method='Lowess', span=span)
+            ts.compute_var(rolling_window=rw)
+            ts.compute_auto(rolling_window=rw, lag=1)
             ts.compute_ktau(tmin=0, tmax=transition*eval_pt)
             dic_ktau = ts.ktau
             dic_ktau['sigma'] = sigma

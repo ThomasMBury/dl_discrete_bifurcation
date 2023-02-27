@@ -40,4 +40,3 @@ cd ../test_kot
 mkdir -p output
 python test_kot.py --model_sims $MODEL_SIMS
 python compute_roc.py
-

@@ -19,7 +19,6 @@ import ewstools
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
-
 import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--inc', type=int, 
@@ -36,6 +35,10 @@ np.random.seed(0)
 m1 = load_model('../dl_train/output/classifier_1.pkl')
 m2 = load_model('../dl_train/output/classifier_2.pkl')
 print('TF models loaded')
+
+# EWS parameters
+rw = 0.5 # rolling window
+bw = 20 # Gaussian band width (# beats)
 
 # Load in trajectory data
 df_traj = pd.read_csv('../../data/df_chick.csv')
@@ -64,10 +67,10 @@ for tsid in list_tsid:
     # Compute EWS
     ts = ewstools.TimeSeries(s, transition=transition)
     # ts.detrend(method='Lowess', span=50)
-    ts.detrend(method='Gaussian', bandwidth=20)
+    ts.detrend(method='Gaussian', bandwidth=bw)
     
-    ts.compute_var(rolling_window=0.25)
-    ts.compute_auto(rolling_window=0.25, lag=1)
+    ts.compute_var(rolling_window=rw)
+    ts.compute_auto(rolling_window=rw, lag=1)
     
     # Get DL predictions for forced trajectory
     ts.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
@@ -110,10 +113,10 @@ for tsid in list_tsid:
     # Compute EWS
     ts = ewstools.TimeSeries(s)
     # ts.detrend(method='Lowess', span=50)
-    ts.detrend(method='Gaussian', bandwidth=20)
+    ts.detrend(method='Gaussian', bandwidth=bw)
     
-    ts.compute_var(rolling_window=0.25)
-    ts.compute_auto(rolling_window=0.25, lag=1)
+    ts.compute_var(rolling_window=rw)
+    ts.compute_auto(rolling_window=rw, lag=1)
     
     # Get DL predictions for null trajectory
     ts.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)

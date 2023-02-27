@@ -8,7 +8,6 @@ Generic functions stored here
 @author: tbury
 """
 
-
 # import python libraries
 import numpy as np
 import pandas as pd
