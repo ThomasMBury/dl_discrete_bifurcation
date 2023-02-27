@@ -1,0 +1,160 @@
+Job 61273091 released
+Load modules
+
+Lmod is automatically replacing "intel/2020.1.217" with "gcc/9.3.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) libfabric/1.10.1     2) openmpi/4.0.3     3) ucx/1.8.0
+
+Create virtual environemnt
+created virtual environment CPython3.8.10.final.0-64 in 4127ms
+  creator CPython3Posix(dest=/localscratch/tbury.61273091.0/venv, clear=False, global=False)
+  seeder FromAppData(download=False, pip=latest, setuptools=latest, wheel=latest, via=copy, app_data_dir=/home/tbury/.local/share/virtualenv/seed-app-data/v1.0.1)
+  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+Install packages
+Ignoring pip: markers 'python_version < "3"' don't match your environment
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pip-23.0+computecanada-py3-none-any.whl
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 20.0.2
+    Uninstalling pip-20.0.2:
+      Successfully uninstalled pip-20.0.2
+Successfully installed pip-23.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/tensorflow-2.11.0+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/absl_py-1.4.0+computecanada-py3-none-any.whl
+Requirement already satisfied: typing-extensions>=3.6.6 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from tensorflow) (4.0.1+computecanada)
+Requirement already satisfied: numpy>=1.20 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from tensorflow) (1.22.2+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/astunparse-1.6.3+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorflow_estimator-2.11.0+computecanada-py2.py3-none-any.whl
+Collecting wrapt>=1.11.0
+  Using cached wrapt-1.15.0-py3-none-any.whl (22 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/libclang-14.0.1+computecanada-py2.py3-none-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/keras-2.11.0+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/opt_einsum-3.3.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorflow_io_gcs_filesystem-0.26.0+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/google_pasta-0.2.0+computecanada-py3-none-any.whl
+Collecting tensorboard<2.12,>=2.11
+  Using cached tensorboard-2.11.2-py3-none-any.whl (6.0 MB)
+Requirement already satisfied: six>=1.12.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/ipykernel/2022a/lib/python3.8/site-packages (from tensorflow) (1.16.0+computecanada)
+Collecting protobuf<3.20,>=3.9.2
+  Using cached protobuf-3.19.6-py2.py3-none-any.whl (162 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/flatbuffers-20190709135844+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/grpcio-1.47.0+computecanada-cp38-cp38-linux_x86_64.whl
+Collecting termcolor>=1.1.0
+  Using cached termcolor-2.2.0-py3-none-any.whl (6.6 kB)
+Requirement already satisfied: setuptools in /localscratch/tbury.61273091.0/venv/lib/python3.8/site-packages (from tensorflow) (46.1.3)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/gast-0.4.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2/h5py-3.7.0+computecanada-cp38-cp38-linux_x86_64.whl
+Requirement already satisfied: packaging in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from tensorflow) (21.3+computecanada)
+Requirement already satisfied: wheel<1.0,>=0.23.0 in /localscratch/tbury.61273091.0/venv/lib/python3.8/site-packages (from astunparse>=1.6.0->tensorflow) (0.34.2)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Markdown-3.4.1+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/Werkzeug-2.2.3+computecanada-py3-none-any.whl
+Requirement already satisfied: requests<3,>=2.21.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from tensorboard<2.12,>=2.11->tensorflow) (2.27.1+computecanada)
+Collecting google-auth<3,>=1.6.3
+  Using cached google_auth-2.16.1-py2.py3-none-any.whl (177 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorboard_data_server-0.6.1+computecanada-py3-none-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorboard_plugin_wit-1.8.1+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/google_auth_oauthlib-0.4.6+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from packaging->tensorflow) (3.0.7+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/rsa-4.9+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyasn1_modules-0.2.8+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cachetools-5.3.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/requests_oauthlib-1.3.1+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: importlib-metadata>=4.4 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from markdown>=2.6.8->tensorboard<2.12,>=2.11->tensorflow) (4.10.1+computecanada)
+Requirement already satisfied: idna<4,>=2.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow) (3.3+computecanada)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow) (2.0.11+computecanada)
+Requirement already satisfied: certifi>=2017.4.17 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow) (2021.10.8+computecanada)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.12,>=2.11->tensorflow) (1.26.8+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/MarkupSafe-2.1.2+computecanada-cp38-cp38-linux_x86_64.whl
+Requirement already satisfied: zipp>=0.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from importlib-metadata>=4.4->markdown>=2.6.8->tensorboard<2.12,>=2.11->tensorflow) (3.7.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyasn1-0.4.8+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/oauthlib-3.2.2+computecanada-py3-none-any.whl
+Installing collected packages: tensorboard-plugin-wit, pyasn1, libclang, flatbuffers, wrapt, termcolor, tensorflow-io-gcs-filesystem, tensorflow-estimator, tensorboard-data-server, rsa, pyasn1-modules, protobuf, opt-einsum, oauthlib, MarkupSafe, keras, h5py, grpcio, google-pasta, gast, cachetools, astunparse, absl-py, werkzeug, requests-oauthlib, markdown, google-auth, google-auth-oauthlib, tensorboard, tensorflow
+  Attempting uninstall: MarkupSafe
+    Found existing installation: MarkupSafe 2.0.1+computecanada
+    Not uninstalling markupsafe at /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages, outside environment /localscratch/tbury.61273091.0/venv
+    Can't uninstall 'MarkupSafe'. No files were found to uninstall.
+Successfully installed MarkupSafe-2.1.2+computecanada absl-py-1.4.0+computecanada astunparse-1.6.3+computecanada cachetools-5.3.0+computecanada flatbuffers-20190709135844+computecanada gast-0.4.0+computecanada google-auth-2.16.1 google-auth-oauthlib-0.4.6+computecanada google-pasta-0.2.0+computecanada grpcio-1.47.0+computecanada h5py-3.7.0+computecanada keras-2.11.0+computecanada libclang-14.0.1+computecanada markdown-3.4.1+computecanada oauthlib-3.2.2+computecanada opt-einsum-3.3.0+computecanada protobuf-3.19.6 pyasn1-0.4.8+computecanada pyasn1-modules-0.2.8+computecanada requests-oauthlib-1.3.1+computecanada rsa-4.9+computecanada tensorboard-2.11.2 tensorboard-data-server-0.6.1+computecanada tensorboard-plugin-wit-1.8.1+computecanada tensorflow-2.11.0+computecanada tensorflow-estimator-2.11.0+computecanada tensorflow-io-gcs-filesystem-0.26.0+computecanada termcolor-2.2.0 werkzeug-2.2.3+computecanada wrapt-1.15.0
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/scikit_learn-1.1.2+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/threadpoolctl-3.1.0+computecanada-py3-none-any.whl
+Requirement already satisfied: numpy>=1.21 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from scikit-learn) (1.22.2+computecanada)
+Requirement already satisfied: scipy>=1.3.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from scikit-learn) (1.8.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/joblib-1.2.0+computecanada-py3-none-any.whl
+Installing collected packages: threadpoolctl, joblib, scikit-learn
+Successfully installed joblib-1.2.0+computecanada scikit-learn-1.1.2+computecanada threadpoolctl-3.1.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting ewstools
+  Using cached ewstools-2.1.0-py3-none-any.whl (27 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/deprecation-2.1.0+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: scipy>=1.0.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from ewstools) (1.8.0+computecanada)
+Collecting lmfit>=0.9.0
+  Using cached lmfit-1.1.0-py3-none-any.whl (90 kB)
+Requirement already satisfied: pandas>=0.23.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from ewstools) (1.4.0+computecanada)
+Collecting plotly>=2.3.0
+  Using cached plotly-5.13.1-py2.py3-none-any.whl (15.2 MB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/statsmodels-0.13.2+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/arch-4.19+computecanada-cp38-cp38-linux_x86_64.whl
+Requirement already satisfied: numpy>=1.14.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from ewstools) (1.22.2+computecanada)
+Requirement already satisfied: cython>=0.29.14 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from arch>=4.4->ewstools) (0.29.27+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/property_cached-1.6.4+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: packaging in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from deprecation>=2.0->ewstools) (21.3+computecanada)
+Collecting uncertainties>=3.1.4
+  Using cached uncertainties-3.1.7-py2.py3-none-any.whl (98 kB)
+Collecting asteval>=0.9.28
+  Using cached asteval-0.9.29-py3-none-any.whl (18 kB)
+Requirement already satisfied: pytz>=2020.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from pandas>=0.23.0->ewstools) (2021.3+computecanada)
+Requirement already satisfied: python-dateutil>=2.8.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/ipykernel/2022a/lib/python3.8/site-packages (from pandas>=0.23.0->ewstools) (2.8.2+computecanada)
+Collecting tenacity>=6.2.0
+  Using cached tenacity-8.2.1-py3-none-any.whl (24 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/patsy-0.5.3+computecanada-py2.py3-none-any.whl
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from packaging->deprecation>=2.0->ewstools) (3.0.7+computecanada)
+Requirement already satisfied: six in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/ipykernel/2022a/lib/python3.8/site-packages (from patsy>=0.5.2->statsmodels>=0.9.0->ewstools) (1.16.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/future-0.18.2+computecanada-py3-none-any.whl
+Installing collected packages: tenacity, property-cached, patsy, future, asteval, uncertainties, plotly, deprecation, statsmodels, lmfit, arch, ewstools
+Successfully installed arch-4.19+computecanada asteval-0.9.29 deprecation-2.1.0+computecanada ewstools-2.1.0 future-0.18.2+computecanada lmfit-1.1.0 patsy-0.5.3+computecanada plotly-5.13.1 property-cached-1.6.4+computecanada statsmodels-0.13.2+computecanada tenacity-8.2.1 uncertainties-3.1.7
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Requirement already satisfied: matplotlib in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (3.5.1+computecanada)
+Requirement already satisfied: kiwisolver>=1.0.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (1.3.2+computecanada)
+Requirement already satisfied: packaging>=20.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (21.3+computecanada)
+Requirement already satisfied: pillow>=6.2.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (9.0.1+computecanada)
+Requirement already satisfied: python-dateutil>=2.7 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/ipykernel/2022a/lib/python3.8/site-packages (from matplotlib) (2.8.2+computecanada)
+Requirement already satisfied: pyparsing>=2.2.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (3.0.7+computecanada)
+Requirement already satisfied: fonttools>=4.22.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (4.29.1+computecanada)
+Requirement already satisfied: cycler>=0.10 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (0.11.0+computecanada)
+Requirement already satisfied: numpy>=1.21 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/scipy-stack/2022a/lib/python3.8/site-packages (from matplotlib) (1.22.2+computecanada)
+Requirement already satisfied: six>=1.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/Core/ipykernel/2022a/lib/python3.8/site-packages (from python-dateutil>=2.7->matplotlib) (1.16.0+computecanada)
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/kaleido-0.2.1+computecanada-py2.py3-none-linux_x86_64.whl
+Installing collected packages: kaleido
+Successfully installed kaleido-0.2.1+computecanada
+-----
+ Test DL classifier and EWS on Kot model 
+-----
+2023-02-27 10:49:00.041225: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-27 10:49:01.524189: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-27 10:49:01.524775: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-27 10:49:01.524836: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-02-27 10:49:06.244697: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-27 10:49:07.011705: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11306 MB memory:  -> device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:03:00.0, compute capability: 6.0
+2023-02-27 10:49:44.122996: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8200
+2023-02-27 10:49:44.489057: W tensorflow/compiler/xla/stream_executor/gpu/asm_compiler.cc:115] *** WARNING *** You are using ptxas 11.0.194, which is older than 11.1. ptxas before 11.1 is known to miscompile XLA code, leading to incorrect results or invalid-address errors.
+
+You may not need to update to CUDA 11.1; cherry-picking the ptxas binary is often sufficient.
+Running for 2500 sims
+TF models loaded
+Simulate forced trajectories and compute EWS
+Complete for rof=0.001
+Complete for rof=0.00125
+Complete for rof=0.0016666666666666668
+Complete for rof=0.0025
+Complete for rof=0.005
+Script took 1611.73 seconds
+Compute ROC curves
+Exported bifurcation count data to output/df_fav_bif.csv
+Exported ROC data to output/df_roc.csv
