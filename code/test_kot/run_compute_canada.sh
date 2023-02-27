@@ -36,7 +36,6 @@ pip install kaleido
 MODEL_SIMS=2500
 
 echo -e "-----\n Test DL classifier and EWS on Kot model \n-----"
-cd ../test_kot
 mkdir -p output
 python test_kot.py --model_sims $MODEL_SIMS
 python compute_roc.py
