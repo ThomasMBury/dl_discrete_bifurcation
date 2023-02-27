@@ -4,16 +4,16 @@
 
 
 # Number of trainng simulations of each class
-NSIMS=500
+NSIMS=10000
 
 # Number of epochs with which to train DL classifiers
-NEPOCHS=2
+NEPOCHS=200
 
 # Number of test model simulations 
-MODEL_SIMS=50
+MODEL_SIMS=2500
 
 # Time increment between DL predictions in chick heart data
-INC=50
+INC=5
 
 
 echo -e "-----\n Generate training data \n-----"
