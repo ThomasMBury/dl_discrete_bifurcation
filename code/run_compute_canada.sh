@@ -32,7 +32,7 @@ pip install matplotlib
 pip install kaleido
 
 # Number of trainng simulations of each class
-NSIMS=10000
+NSIMS=20000
 
 # Number of epochs with which to train DL classifiers
 NEPOCHS=200

@@ -35,7 +35,7 @@ model_type = args.model_type
 num_epochs = args.num_epochs
 
 print('Training DL with mtype={}'.format(model_type))
-seed = 1
+seed = 0
 
 import pandas as pd
 import numpy as np
