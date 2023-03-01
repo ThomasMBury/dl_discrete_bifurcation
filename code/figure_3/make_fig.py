@@ -254,6 +254,7 @@ for i, tsid in enumerate(tsid_plot):
     
     
     # Arrows to indiciate rolling window
+    rw = 0.5
     arrowhead=1
     arrowsize=1.5
     arrowwidth=0.4
@@ -266,7 +267,7 @@ for i, tsid in enumerate(tsid_plot):
         annotation_arrow_right = dict(
               x=0,  # arrows' head
               y=0.1,  # arrows' head
-              ax=transition*0.25,  # arrows' tail
+              ax=transition*rw,  # arrows' tail
               ay=0.1,  # arrows' tail
               xref='x{}'.format(axis_number),
               yref='y{} domain'.format(axis_number),
@@ -283,7 +284,7 @@ for i, tsid in enumerate(tsid_plot):
         annotation_arrow_left = dict(
               ax=0,  # arrows' head
               y=0.1,  # arrows' head
-              x=transition*0.25,  # arrows' tail
+              x=transition*rw,  # arrows' tail
               ay=0.1,  # arrows' tail
               xref='x{}'.format(axis_number),
               yref='y{} domain'.format(axis_number),

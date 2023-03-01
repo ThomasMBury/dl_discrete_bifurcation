@@ -31,6 +31,9 @@ pip install ewstools
 pip install matplotlib
 pip install kaleido
 
+echo List all packages
+pip list
+
 # Number of trainng simulations of each class
 NSIMS=20000
 

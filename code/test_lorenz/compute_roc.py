@@ -25,6 +25,7 @@ df_ktau_null = pd.read_csv('output/df_ktau_null.csv')
 df_dl_forced = pd.read_csv('output/df_dl_forced.csv')
 df_dl_null = pd.read_csv('output/df_dl_null.csv')
 
+
 #----------------
 # compute ROC curves
 #----------------
@@ -110,6 +111,27 @@ df_roc_full.to_csv(filepath,
                     index=False,)
 
 print('Exported ROC data to {}'.format(filepath))
+
+
+
+# TEMP work
+# Plot a histogram with error bars of the weights
+df_plot = df_dl.query('truth_value==1')[['1','2','3','4','5']]
+df_plot.boxplot()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

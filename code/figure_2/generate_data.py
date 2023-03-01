@@ -37,7 +37,7 @@ inc = 10
 
 # EWS paramers
 span = 0.25
-rw = 0.25
+rw = 0.5
 
 
 # Import models
@@ -145,7 +145,6 @@ ts_pf.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
 ts_pf.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
 ts_pf.dl_preds_mean = ts_pf.dl_preds.groupby('time').mean()
 print('EWS computed for Lorenz model')
-
 
 
 #--------

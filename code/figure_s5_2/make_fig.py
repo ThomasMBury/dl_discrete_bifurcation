@@ -43,11 +43,7 @@ path = '../test_fox/output/'
 
 # Import data
 df = pd.read_csv(path+'df_dl_forced.csv')
-df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
-
-df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
-
-correct_bif = 1
+correct_bif = '1'
 
 # Get rof and sigma values
 rof_values = df['rof'].unique()
@@ -58,15 +54,12 @@ list_dict = []
 for rof in rof_values:
     for sigma in sigma_values:
         
-        df_spec = df[(df['sigma']==sigma)&\
-                           (df['rof']==rof)]
-        # % correct
-        num_correct = len(df_spec[df_spec['fav_bif']==correct_bif])
-        num_total = len(df_spec)
-        prop_correct = num_correct/num_total
-        list_dict.append({'rof':rof, 'sigma':sigma, 'prop_correct':prop_correct})
+        # Get mean DL weight for correct bif
+        mean_weight = df.query('sigma==@sigma and rof==@rof')[correct_bif].mean()
+        list_dict.append({'rof':rof, 'sigma':sigma, 'mean_weight':mean_weight})
 
 df_pred_fox = pd.DataFrame(list_dict)
+
 
 
 
@@ -79,11 +72,7 @@ path = '../test_westerhoff/output/'
 
 # Import data
 df = pd.read_csv(path+'df_dl_forced.csv')
-df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
-
-df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
-
-correct_bif = 2
+correct_bif = '2'
 
 # Get rof and sigma values
 rof_values = df['rof'].unique()
@@ -94,13 +83,10 @@ list_dict = []
 for rof in rof_values:
     for sigma in sigma_values:
         
-        df_spec = df[(df['sigma']==sigma)&\
-                           (df['rof']==rof)]
-        # % correct
-        num_correct = len(df_spec[df_spec['fav_bif']==correct_bif])
-        num_total = len(df_spec)
-        prop_correct = num_correct/num_total
-        list_dict.append({'rof':rof, 'sigma':sigma, 'prop_correct':prop_correct})
+        # Get mean DL weight for correct bif
+        mean_weight = df.query('sigma==@sigma and rof==@rof')[correct_bif].mean()
+        list_dict.append({'rof':rof, 'sigma':sigma, 'mean_weight':mean_weight})
+
 
 df_pred_westerhoff = pd.DataFrame(list_dict)
 
@@ -114,11 +100,7 @@ path = '../test_ricker/output/'
 
 # Import data
 df = pd.read_csv(path+'df_dl_forced.csv')
-df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
-
-df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
-
-correct_bif = 3
+correct_bif = '3'
 
 # Get rof and sigma values
 rof_values = df['rof'].unique()
@@ -129,13 +111,10 @@ list_dict = []
 for rof in rof_values:
     for sigma in sigma_values:
         
-        df_spec = df[(df['sigma']==sigma)&\
-                           (df['rof']==rof)]
-        # % correct
-        num_correct = len(df_spec[df_spec['fav_bif']==correct_bif])
-        num_total = len(df_spec)
-        prop_correct = num_correct/num_total
-        list_dict.append({'rof':rof, 'sigma':sigma, 'prop_correct':prop_correct})
+        # Get mean DL weight for correct bif
+        mean_weight = df.query('sigma==@sigma and rof==@rof')[correct_bif].mean()
+        list_dict.append({'rof':rof, 'sigma':sigma, 'mean_weight':mean_weight})
+
 
 df_pred_ricker = pd.DataFrame(list_dict)
 
@@ -149,11 +128,7 @@ path = '../test_kot/output/'
 
 # Import data
 df = pd.read_csv(path+'df_dl_forced.csv')
-df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
-
-df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
-
-correct_bif = 4
+correct_bif = '4'
 
 # Get rof and sigma values
 rof_values = df['rof'].unique()
@@ -164,13 +139,10 @@ list_dict = []
 for rof in rof_values:
     for sigma in sigma_values:
         
-        df_spec = df[(df['sigma']==sigma)&\
-                           (df['rof']==rof)]
-        # % correct
-        num_correct = len(df_spec[df_spec['fav_bif']==correct_bif])
-        num_total = len(df_spec)
-        prop_correct = num_correct/num_total
-        list_dict.append({'rof':rof, 'sigma':sigma, 'prop_correct':prop_correct})
+        # Get mean DL weight for correct bif
+        mean_weight = df.query('sigma==@sigma and rof==@rof')[correct_bif].mean()
+        list_dict.append({'rof':rof, 'sigma':sigma, 'mean_weight':mean_weight})
+
 
 df_pred_kot = pd.DataFrame(list_dict)
 
@@ -185,11 +157,7 @@ path = '../test_lorenz/output/'
 
 # Import data
 df = pd.read_csv(path+'df_dl_forced.csv')
-df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
-
-df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
-
-correct_bif = 5
+correct_bif = '5'
 
 # Get rof and sigma values
 rof_values = df['rof'].unique()
@@ -200,13 +168,10 @@ list_dict = []
 for rof in rof_values:
     for sigma in sigma_values:
         
-        df_spec = df[(df['sigma']==sigma)&\
-                           (df['rof']==rof)]
-        # % correct
-        num_correct = len(df_spec[df_spec['fav_bif']==correct_bif])
-        num_total = len(df_spec)
-        prop_correct = num_correct/num_total
-        list_dict.append({'rof':rof, 'sigma':sigma, 'prop_correct':prop_correct})
+        # Get mean DL weight for correct bif
+        mean_weight = df.query('sigma==@sigma and rof==@rof')[correct_bif].mean()
+        list_dict.append({'rof':rof, 'sigma':sigma, 'mean_weight':mean_weight})
+
 
 df_pred_lorenz = pd.DataFrame(list_dict)
 
@@ -223,7 +188,8 @@ import plotly.graph_objects as go
 
 fig = make_subplots(5, 1, vertical_spacing=0.08)
     
-
+zmin = 0.5  
+zmax = 0.6
 
 # Fox model
 df = df_pred_fox
@@ -231,12 +197,12 @@ row=1
 # # Only plot from 0.5 to 1
 # df_auc['auc'] = df_auc['auc'].apply(lambda x: max(0.5, x))
 
-z = df.pivot(index='sigma', columns='rof',values='prop_correct')
+z = df.pivot(index='sigma', columns='rof',values='mean_weight')
 xvals = ['{:.2g}'.format(x) for x in z.columns]
 yvals = ['{:.2g}'.format(x) for x in z.index]
 
 fig.add_trace(go.Heatmap(z=z.values, x=xvals, y=yvals, 
-                          zmin=0, zmax=1, 
+                          zmin=zmin, zmax=zmax, 
                           coloraxis='coloraxis',
                           ),
               row=row,col=1)
@@ -248,13 +214,13 @@ row=2
 # # Only plot from 0.5 to 1
 # df_auc['auc'] = df_auc['auc'].apply(lambda x: max(0.5, x))
 
-z = df.pivot(index='sigma', columns='rof',values='prop_correct')
+z = df.pivot(index='sigma', columns='rof',values='mean_weight')
 xvals = ['{:.2g}'.format(x) for x in z.columns]
 yvals = ['{:.2g}'.format(x) for x in z.index]
 
 fig.add_trace(go.Heatmap(z=z.values, x=xvals, y=yvals, 
-                           zmin=0, zmax=1, 
-                          coloraxis='coloraxis',
+                           zmin=zmin, zmax=zmax, 
+                           coloraxis='coloraxis',
                           ),
               row=row,col=1)
 
@@ -265,13 +231,13 @@ row=3
 # # Only plot from 0.5 to 1
 # df_auc['auc'] = df_auc['auc'].apply(lambda x: max(0.5, x))
 
-z = df.pivot(index='sigma', columns='rof',values='prop_correct')
+z = df.pivot(index='sigma', columns='rof',values='mean_weight')
 xvals = ['{:.2g}'.format(x) for x in z.columns]
 yvals = ['{:.2g}'.format(x) for x in z.index]
 
 fig.add_trace(go.Heatmap(z=z.values, x=xvals, y=yvals, 
-                           zmin=0, zmax=1, 
-                          coloraxis='coloraxis',
+                           zmin=zmin, zmax=zmax, 
+                           coloraxis='coloraxis',
                           ),
               row=row,col=1)
 
@@ -282,13 +248,13 @@ row=4
 # # Only plot from 0.5 to 1
 # df_auc['auc'] = df_auc['auc'].apply(lambda x: max(0.5, x))
 
-z = df.pivot(index='sigma', columns='rof',values='prop_correct')
+z = df.pivot(index='sigma', columns='rof',values='mean_weight')
 xvals = ['{:.2g}'.format(x) for x in z.columns]
 yvals = ['{:.2g}'.format(x) for x in z.index]
 
 fig.add_trace(go.Heatmap(z=z.values, x=xvals, y=yvals, 
-                           zmin=0, zmax=1, 
-                          coloraxis='coloraxis',
+                           zmin=zmin, zmax=zmax, 
+                           coloraxis='coloraxis',
                           ),
               row=row,col=1)
 
@@ -299,12 +265,12 @@ row=5
 # # Only plot from 0.5 to 1
 # df_auc['auc'] = df_auc['auc'].apply(lambda x: max(0.5, x))
 
-z = df.pivot(index='sigma', columns='rof',values='prop_correct')
+z = df.pivot(index='sigma', columns='rof',values='mean_weight')
 xvals = ['{:.2g}'.format(x) for x in z.columns]
 yvals = ['{:.2g}'.format(x) for x in z.index]
 
 fig.add_trace(go.Heatmap(z=z.values, x=xvals, y=yvals, 
-                           zmin=0, zmax=1, 
+                         zmin=zmin, zmax=zmax, 
                           coloraxis='coloraxis',
                           ),
               row=row,col=1)
@@ -375,13 +341,14 @@ fig.update_layout(
     font=dict(family='Times New Roman'),
     coloraxis=dict(cmin=0, cmax=1),
     coloraxis_colorbar=dict(x=1.5, 
-                            title='Proportion<br>correct<br>',
+                            title='Mean<br>weight<br>',
                             ),
     margin=dict(l=60, r=10, b=75, t=30),
     )
 
 
-fig.write_image('../../results/figure_s5.png', scale=8)
+
+fig.write_image('../../results/figure_s5_2.png', scale=8)
 
 
 # # Export time taken for script to run

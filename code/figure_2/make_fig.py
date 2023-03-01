@@ -964,6 +964,7 @@ title_pf = dict(
 
 
 # Arrows to indiciate rolling window
+rw = 0.5
 axes_numbers = [6,7,8,9,10,11,12,13,14,15]
 arrowhead=1
 arrowsize=1.5
@@ -974,7 +975,7 @@ for axis_number in axes_numbers:
     annotation_arrow_right = dict(
           x=0,  # arrows' head
           y=0.1,  # arrows' head
-          ax=500*0.25,  # arrows' tail
+          ax=500*rw,  # arrows' tail
           ay=0.1,  # arrows' tail
           xref='x{}'.format(axis_number),
           yref='y{} domain'.format(axis_number),
@@ -991,7 +992,7 @@ for axis_number in axes_numbers:
     annotation_arrow_left = dict(
           ax=0,  # arrows' head
           y=0.1,  # arrows' head
-          x=500*0.25,  # arrows' tail
+          x=500*rw,  # arrows' tail
           ay=0.1,  # arrows' tail
           xref='x{}'.format(axis_number),
           yref='y{} domain'.format(axis_number),

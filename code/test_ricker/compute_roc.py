@@ -110,6 +110,11 @@ print('Exported ROC data to {}'.format(filepath))
 
 
 
+# # TEMP work
+# # Plot a histogram with error bars of the weights
+# df_plot = df_dl.query('truth_value==1')[['1','2','3','4','5']]
+# df_plot.boxplot()
+
 
 
 
