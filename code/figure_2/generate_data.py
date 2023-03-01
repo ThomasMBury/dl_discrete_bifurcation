@@ -63,7 +63,7 @@ ts_pd.compute_auto(rolling_window=rw, lag=1)
 # Get DL predictions
 ts_pd.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
 ts_pd.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
-ts_pd.dl_preds_mean = ts_pd.dl_preds.groupby('time').mean()
+ts_pd.dl_preds_mean = ts_pd.dl_preds.groupby('time').mean(numeric_only=True)
 print('EWS computed for Fox model')
         
 
@@ -82,7 +82,7 @@ ts_ns.compute_auto(rolling_window=rw, lag=1)
 # Get DL predictions
 ts_ns.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
 ts_ns.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
-ts_ns.dl_preds_mean = ts_ns.dl_preds.groupby('time').mean()
+ts_ns.dl_preds_mean = ts_ns.dl_preds.groupby('time').mean(numeric_only=True)
 print('EWS computed for Westerhoff model')
 
         
@@ -102,7 +102,7 @@ ts_fold.compute_auto(rolling_window=rw, lag=1)
 # Get DL predictions
 ts_fold.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
 ts_fold.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
-ts_fold.dl_preds_mean = ts_fold.dl_preds.groupby('time').mean()
+ts_fold.dl_preds_mean = ts_fold.dl_preds.groupby('time').mean(numeric_only=True)
 print('EWS computed for Ricker model')
 
 
@@ -123,7 +123,7 @@ ts_tc.compute_auto(rolling_window=rw, lag=1)
 # Get DL predictions
 ts_tc.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
 ts_tc.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
-ts_tc.dl_preds_mean = ts_tc.dl_preds.groupby('time').mean()
+ts_tc.dl_preds_mean = ts_tc.dl_preds.groupby('time').mean(numeric_only=True)
 print('EWS computed for Kot model')
 
 
@@ -143,7 +143,7 @@ ts_pf.compute_auto(rolling_window=rw, lag=1)
 # Get DL predictions
 ts_pf.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
 ts_pf.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
-ts_pf.dl_preds_mean = ts_pf.dl_preds.groupby('time').mean()
+ts_pf.dl_preds_mean = ts_pf.dl_preds.groupby('time').mean(numeric_only=True)
 print('EWS computed for Lorenz model')
 
 

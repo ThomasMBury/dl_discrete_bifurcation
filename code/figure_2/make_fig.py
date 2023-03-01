@@ -1088,8 +1088,8 @@ fig.update_yaxes(range=[-0.5,12],
 fig.update_yaxes(range=[0.7,1.1],
                   row=1, col=4)
 
-fig.update_yaxes(range=[0.65,0.75],
-                  row=3, col=2)
+# fig.update_yaxes(range=[0.65,0.75],
+#                   row=3, col=2)
 fig.update_yaxes(range=[-0.05,1.05], row=4)
 
 

@@ -351,8 +351,6 @@ fig['layout'].update(annotations=list_annotations)
 # Axes properties
 #-----------
 
-  
-
 
 # Global y axis properties
 fig.update_yaxes(showline=True,
