@@ -35,16 +35,21 @@ echo List all packages
 pip list
 
 # Number of trainng simulations of each class
-NSIMS=20000
+#NSIMS=10000
+NSIMS=100
 
 # Number of epochs with which to train DL classifiers
-NEPOCHS=200
+# NEPOCHS=200
+NEPOCHS=5
 
 # Number of test model simulations 
-MODEL_SIMS=2500
+# MODEL_SIMS=2500
+MODEL_SIMS=50
 
 # Time increment between DL predictions in chick heart data
-INC=5
+# INC=5
+INC=20
+
 
 echo -e "-----\n Generate training data \n-----"
 cd training_data
@@ -114,6 +119,10 @@ echo -e "-----\n Make Sup Fig 5 - DL favourite bifurcation prop. correct \n-----
 cd ../figure_s5
 python make_fig.py
 
+echo -e "-----\n Make Sup Fig 5 type 2 - DL favourite bifurcation prop. correct \n-----"
+cd ../figure_s5_2
+python make_fig.py
+
 echo -e "-----\n Find transition times in chick heart data \n-----"
 cd ../test_chick_heart
 mkdir -p output
@@ -142,5 +151,11 @@ echo -e "-----\n Make Figure 4 - ROC curves \n-----"
 cd ../figure_4
 mkdir -p output
 python make_fig.py
+
+echo -e "-----\n Make Figure 4 type 2 - ROC curves \n-----"
+cd ../figure_4_2
+mkdir -p output
+python make_fig.py
+
 
 
