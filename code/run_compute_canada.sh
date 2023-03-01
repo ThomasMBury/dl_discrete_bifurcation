@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH --job-name=reproducible_run
 #SBATCH --account=def-glass # adjust this to match the accounting group you are using to submit jobs
-#SBATCH --time=0-1:00:00         # adjust this to match the walltime of your job
+#SBATCH --time=0-10:00:00         # adjust this to match the walltime of your job
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4      # adjust this if you are using parallel commands
@@ -29,26 +29,27 @@ pip install tensorflow
 pip install scikit-learn
 pip install ewstools
 pip install matplotlib
+pip install seaborn
 pip install kaleido
 
 echo List all packages
 pip list
 
 # Number of trainng simulations of each class
-#NSIMS=10000
-NSIMS=100
+NSIMS=10000
+#NSIMS=100
 
 # Number of epochs with which to train DL classifiers
-# NEPOCHS=200
-NEPOCHS=5
+NEPOCHS=200
+#NEPOCHS=5
 
 # Number of test model simulations 
-# MODEL_SIMS=2500
-MODEL_SIMS=50
+MODEL_SIMS=2500
+#MODEL_SIMS=50
 
 # Time increment between DL predictions in chick heart data
-# INC=5
-INC=20
+INC=5
+#INC=20
 
 
 echo -e "-----\n Generate training data \n-----"
