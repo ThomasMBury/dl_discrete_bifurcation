@@ -402,6 +402,8 @@ fig.update_yaxes(title='DL probability',
                   row=4,col=1)   
 
 
+fig.update_yaxes(range=[0.45, 1.4],
+                  row=1,col=3)
 
 fig.update_yaxes(range=[0.5,1.39],
                   row=1,col=5)

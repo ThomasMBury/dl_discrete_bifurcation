@@ -281,64 +281,6 @@ def make_roc_figure(df_roc, letter_label, title=''):
 
 
 
-def make_inset_bar(df, target_bif, save_dir):
-
-    '''
-    Modified from 
-    https://scentellegher.github.io/visualization/2018/10/10/beautiful-bar-plots-matplotlib.html
-    
-    target_bif: one of [1,2,3,4,5]
-    
-    '''
-    
-    plt.rcParams["font.family"] = "Times New Roman"
-    plt.rcParams["font.size"] = 15
-
-    
-    # set the style of the axes and the text color
-    plt.rcParams['axes.edgecolor']='#333F4B'
-    plt.rcParams['axes.linewidth']=0.8
-    plt.rcParams['xtick.color']='#333F4B'
-    plt.rcParams['ytick.color']='#333F4B'
-    plt.rcParams['text.color']='#333F4B'    
-    
-    
-    fig, ax = plt.subplots(figsize=(2.5,1.5), dpi=800, )
-    
-    color_main = '#646464'
-    color_target = '#FFA15A'
-    
-    df['color'] = df['bif_id'].apply(lambda x: color_target if x==target_bif else color_main)
-    df['bif_name'] = ['PD', 'NS', 'Fold', 'TC', 'PF']
-    
-    # Reverse the order of occurnece for plot
-    df = df.iloc[::-1]
-    
-    # Plot horizontal lines
-    plt.hlines(y=np.arange(5), xmin=0, xmax=df['count'], color= df['color'].values, alpha=0.4, linewidth=5,)
-
-    for i in np.arange(5):
-        plt.plot(df['count'].iloc[i], df['bif_name'].iloc[i], "o", markersize=5, color=df['color'].iloc[i], alpha=0.8) 
-    
-    # set labels style
-    # ax.set_xlabel('Frequency', fontsize=15, fontweight='black', color = '#333F4B')
-    ax.set_ylabel('')
-    
-    # change the style of the axis spines
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['left'].set_bounds((0,4))
-    
-    ax.grid(False)
-
-    # add some space between the axis and the plot
-    ax.spines['left'].set_position(('outward', 5))
-    ax.spines['bottom'].set_position(('outward', 5))  
-    
-    plt.savefig(save_dir, dpi=300, bbox_inches='tight', pad_inches=0)
-    
-
-
 import seaborn as sns
 
 def make_inset_boxplot(df_dl_forced, target_bif, save_dir):

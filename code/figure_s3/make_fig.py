@@ -183,8 +183,8 @@ fig.update_yaxes(title='State', col=1)
 fig.update_xaxes(title='Time', row=1)
 
 
-yrange5 = [100,190]
-yrange4 = [29, 47]
+yrange5 = [100,199]
+yrange4 = [18, 49]
 yrange3 = [-1,11]
 yrange2 = [0.6,1.1]
 yrange1 = [-0.55, 0.55]
