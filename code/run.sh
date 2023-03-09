@@ -3,18 +3,23 @@
 # Shell script to execute all code required to reproduce results.
 
 
-# Number of trainng simulations of each class
-NSIMS=20000
+# Set to true to do a quick run of all scripts
+QUICK_RUN=true
 
-# Number of epochs with which to train DL classifiers
-NEPOCHS=200
+if [ "$QUICK_RUN" = true ]
+then 
+    NSIMS=50 # Number of training simulations of each class
+    NEPOCHS=2 # Number of epochs used to train the deep learning classifiers
+    MODEL_SIMS=50 # Number of test model simulations
+    INC=50 # Time increment between DL predictions in chick heart data
+else
+    NSIMS=10000
+    NEPOCHS=200
+    MODEL_SIMS=100
+    INC=5
+fi
 
-# Number of test model simulations 
-MODEL_SIMS=2500
-
-# Time increment between DL predictions in chick heart data
-INC=5
-
+echo -e "-----\n Running code repository with NSIMS=$NSIMS, NEPOCHS=$NEPOCHS, MODEL_SIMS=$MODEL_SIMS, INC=$INC  \n-----"
 
 echo -e "-----\n Generate training data \n-----"
 cd training_data

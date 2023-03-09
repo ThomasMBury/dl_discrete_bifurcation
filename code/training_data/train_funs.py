@@ -194,14 +194,6 @@ def simulate_pd(bl=-1, bh=0, tmax=500, tburn=100, sigma=0.01,
     dict_coeffs = {order: np.random.normal(0,1) for \
                    order in np.arange(4,max_order+1)}
     
-    # # Set a proportion 'sparsity' to zero
-    # sparsity = np.random.uniform(0,1)
-    # list_order_tozero = np.random.choice(
-    #     list(dict_coeffs.keys()),
-    #     int((max_order-3)*sparsity), replace=False)
-    # for order in list_order_tozero:
-    #     dict_coeffs[order]=0
-    
     # Create brownian increments
     dW_burn = np.random.normal(loc=0, scale=sigma, size = int(tburn))
     dW = np.random.normal(loc=0, scale=sigma, size = len(t))
@@ -267,15 +259,7 @@ def simulate_ns(bl=-1, bh=0, theta=np.pi/2, tmax=500, tburn=100,
     for order in np.arange(4,max_order+1):
         dict_coeffs_x[order] = np.random.normal(0,1,size=order+1)
         dict_coeffs_y[order] = np.random.normal(0,1,size=order+1)
-    
 
-    # # Set a proportion 'sparsity' to zero
-    # sparsity = np.random.uniform(0,1)
-    # list_order_tozero = np.random.choice(
-    #     list(dict_coeffs.keys()),
-    #     int((max_order-3)*sparsity), replace=False)
-    # for order in list_order_tozero:
-    #     dict_coeffs[order]=0
     
     # Create brownian increments
     dW_burn = np.random.normal(loc=0, scale=sigma, size = (int(tburn),2))
@@ -346,14 +330,6 @@ def simulate_fold(bl=-0.5, bh=0, tmax=500, tburn=100, sigma=0.01,
     # Note Fold only goes up to order 2 so include orders 3 and above.
     dict_coeffs = {order: np.random.normal(0,1) for \
                    order in np.arange(3,max_order+1)}
-    
-    # # Set a proportion 'sparsity' to zero
-    # sparsity = np.random.uniform(0,1)
-    # list_order_tozero = np.random.choice(
-    #     list(dict_coeffs.keys()),
-    #     int((max_order-3)*sparsity), replace=False)
-    # for order in list_order_tozero:
-    #     dict_coeffs[order]=0
     
     # Create brownian increments
     dW_burn = np.random.normal(loc=0, scale=sigma, size = int(tburn))
@@ -430,14 +406,6 @@ def simulate_tc(bl=-1, bh=0, tmax=500, tburn=100, sigma=0.01,
     dict_coeffs = {order: np.random.normal(0,1) for \
                    order in np.arange(3,max_order+1)}
     
-    # # Set a proportion 'sparsity' to zero
-    # sparsity = np.random.uniform(0,1)
-    # list_order_tozero = np.random.choice(
-    #     list(dict_coeffs.keys()),
-    #     int((max_order-3)*sparsity), replace=False)
-    # for order in list_order_tozero:
-    #     dict_coeffs[order]=0
-    
     # Create brownian increments
     dW_burn = np.random.normal(loc=0, scale=sigma, size = int(tburn))
     dW = np.random.normal(loc=0, scale=sigma, size = len(t))
@@ -502,14 +470,6 @@ def simulate_pf(bl=-1, bh=0, tmax=500, tburn=100, sigma=0.01,
     # Note PF goes up to order 3 so include orders 4 and above.
     dict_coeffs = {order: np.random.normal(0,1) for \
                    order in np.arange(4,max_order+1)}
-    
-    # # Set a proportion 'sparsity' to zero
-    # sparsity = np.random.uniform(0,1)
-    # list_order_tozero = np.random.choice(
-    #     list(dict_coeffs.keys()),
-    #     int((max_order-3)*sparsity), replace=False)
-    # for order in list_order_tozero:
-    #     dict_coeffs[order]=0
     
     # Create brownian increments
     dW_burn = np.random.normal(loc=0, scale=sigma, size = int(tburn))
