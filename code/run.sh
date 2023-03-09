@@ -8,7 +8,7 @@ QUICK_RUN=true
 
 if [ "$QUICK_RUN" = true ]
 then 
-    NSIMS=50 # Number of training simulations of each class
+    NSIMS=100 # Number of training simulations of each class
     NEPOCHS=2 # Number of epochs used to train the deep learning classifiers
     MODEL_SIMS=50 # Number of test model simulations
     INC=50 # Time increment between DL predictions in chick heart data

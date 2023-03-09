@@ -215,8 +215,8 @@ img_2_binary = add_margin(img_2_binary,
 
 dst = Image.new('RGB', 
                 (2*img_1.width,
-                 img_1.height + img_1_binary.height
-                 ))
+                  img_1.height + img_1_binary.height
+                  ))
 
 dst.paste(img_1, (0,0))
 dst.paste(img_2, (img_1.width, 0))
