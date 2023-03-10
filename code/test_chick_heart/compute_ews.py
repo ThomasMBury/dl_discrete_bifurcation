@@ -24,16 +24,24 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--inc', type=int, 
                     help='Time increment between DL predictions',
                     default=50)
+parser.add_argument('--use_inter_classifier', type=bool, help='Use the intermediate classifier as opposed to the hard saved classifier', default=True)
+
 
 args = parser.parse_args()
 inc = args.inc
+use_inter_classifier = args.use_inter_classifier
 print('Using time increment of {} for DL predictions'.format(inc))
 
 np.random.seed(0)
 
 # Load in DL models
-m1 = load_model('../dl_train/output/classifier_1.pkl')
-m2 = load_model('../dl_train/output/classifier_2.pkl')
+if use_inter_classifier:
+    filepath_classifier = '../dl_train/output/'
+else:
+    filepath_classifier = '../../data/'
+
+m1 = load_model(filepath_classifier+'classifier_1.pkl')
+m2 = load_model(filepath_classifier+'classifier_2.pkl')
 print('TF models loaded')
 
 # EWS parameters

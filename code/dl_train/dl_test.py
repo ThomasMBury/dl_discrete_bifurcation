@@ -31,16 +31,80 @@ from tensorflow.keras.models import load_model
 import time
 start = time.time()
 
+# Parse command line arguments
+import argparse
+parser = argparse.ArgumentParser(description='Test DL classifier')
+parser.add_argument('--use_inter_train', type=bool, help='Use the intermediate training data as opposed to the hard saved training data', default=True)
+parser.add_argument('--use_inter_classifier', type=bool, help='Use the intermediate classifier as opposed to the hard saved classifier', default=True)
+
+args = parser.parse_args()
+use_inter_train = args.use_inter_train
+use_inter_classifier = args.use_inter_classifier
+
+if use_inter_train:
+    filepath_data = '../training_data/output/'
+else:
+    filepath_data = '../../data/'
+
+if use_inter_classifier:
+    filepath_classifier = 'output/'
+else:
+    filepath_classifier = '../../data/'
+
+
+# Function to preprocess training/test data
+ts_len = 500
+def prepare_series(series, model_type):
+    '''
+    Prepare raw series data for training.
+    
+    Parameters:
+        series: pd.Series of length ts_len
+    '''
+    
+    # Length of sequence to extract
+    L = np.random.choice(np.arange(50,ts_len+1))
+    
+    # Start time of sequence to extract
+    if model_type==1:
+        t0 = np.random.choice(np.arange(0,ts_len-L+1))
+    elif model_type==2:
+        t0 = ts_len-L
+        
+    seq = series[t0:t0+L]
+    
+    # Normalise the sequence by mean of absolute values
+    mean = seq.abs().mean()
+    seq_norm = seq/mean
+    
+    # Prepend with zeros to make sequence of length ts_len
+    series_out = pd.concat([
+        pd.Series(np.zeros(ts_len-L)),
+        seq_norm], ignore_index=True)
+    
+    # Keep original index
+    series_out.index=series.index
+    return series_out
+
+
+
 #-----------
 # Confusion matrix for model type 1 - full classificaiton problem
 #------------
 
+# Import model
 model_type = 1
-model = load_model('output/classifier_{}.pkl'.format(model_type))
+model = load_model(filepath_classifier+'classifier_{}.pkl'.format(model_type))
 
-# Import test data (numpy array)
-inputs_test = np.load('output/test_inputs_{}.npy'.format(model_type))
-targets_test = np.load('output/test_targets_{}.npy'.format(model_type))
+# Import test data and apply preprocessing
+df_test = pd.read_parquet(filepath_data+'df_train.parquet')
+ts_pad = df_test.groupby('tsid')['x'].transform(prepare_series, model_type)
+df_test['x_pad'] = ts_pad
+
+# Put into numpy array with shape (samples, timesteps, features)
+inputs_test = df_test['x_pad'].to_numpy().reshape(-1, ts_len, 1)
+targets_test = df_test['type'].iloc[::ts_len].to_numpy().reshape(-1,1) 
+
 
 # Get predictions
 preds_prob = model.predict(inputs_test)  # prediction probabilities
@@ -110,12 +174,19 @@ plt.savefig('output/cm_mtype_{}_binary.png'.format(model_type),bbox_inches='tigh
 # Confusion matrix for model type 2 - full classificaiton problem
 #------------
 
-model_type = 2
-model = load_model('output/classifier_{}.pkl'.format(model_type))
 
-# Import test data (numpy array)
-inputs_test = np.load('output/test_inputs_{}.npy'.format(model_type))
-targets_test = np.load('output/test_targets_{}.npy'.format(model_type))
+# Import model
+model_type = 2
+model = load_model(filepath_classifier+'classifier_{}.pkl'.format(model_type))
+
+# Import test data and apply preprocessing
+df_test = pd.read_parquet(filepath_data+'df_train.parquet')
+ts_pad = df_test.groupby('tsid')['x'].transform(prepare_series, model_type)
+df_test['x_pad'] = ts_pad
+
+# Put into numpy array with shape (samples, timesteps, features)
+inputs_test = df_test['x_pad'].to_numpy().reshape(-1, ts_len, 1)
+targets_test = df_test['type'].iloc[::ts_len].to_numpy().reshape(-1,1) 
 
 # Get predictions
 preds_prob = model.predict(inputs_test)  # prediction probabilities

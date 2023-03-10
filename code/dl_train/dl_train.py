@@ -27,14 +27,16 @@ start = time.time()
 import argparse
 parser = argparse.ArgumentParser(description='Train DL classifier')
 parser.add_argument('--model_type', type=int, help='Model type', choices=[1,2],
-                    default=2)
+                    default=1)
 parser.add_argument('--num_epochs', type=int, help='Number of training epochs', default=5)
+parser.add_argument('--use_inter_train', type=bool, help='Use the intermediate training data as opposed to the hard saved training data', default=True)
 
 args = parser.parse_args()
 model_type = args.model_type
 num_epochs = args.num_epochs
+use_inter_train = args.use_inter_train
 
-print('Training DL with mtype={}'.format(model_type))
+print('Training DL with mtype={} for {} epochs with inter_train={}'.format(model_type,num_epochs,use_inter_train))
 seed = 0
 
 import pandas as pd
@@ -54,22 +56,16 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 
 
 # Load in training data
-df = pd.read_parquet('../training_data/output/df_train.parquet')
-
-# Make classes of equal size : currently 5 times number of samples in null section
-# Get null class
-tsid_null = df[df['type']==0]['tsid'].unique()
-# Downsample - Take random selection 
-tsid_null_down = np.random.choice(tsid_null, 
-                                  size=int(len(tsid_null)/5),
-                                  replace=False)
-df_null = df[df['tsid'].isin(tsid_null_down)]
-df_not_null = df[df['type']!=0]
-df = pd.concat((df_null, df_not_null))
-
-ts_len = 500
+if use_inter_train:
+    filepath = '../training_data/output/'
+else:
+    filepath = '../../data/'
+    
+df_train = pd.read_parquet(filepath+'df_train.parquet')
+df_val = pd.read_parquet(filepath+'df_val.parquet')
 
 # Pad and normalise the data
+ts_len = 500
 print('Pad and normalise the data')
 def prepare_series(series):
     '''
@@ -107,42 +103,22 @@ def prepare_series(series):
     return series_out
 
 # Apply preprocessing to each series
-ts_pad = df.groupby('tsid')['x'].transform(prepare_series)
-df['x_pad'] = ts_pad
+ts_pad = df_train.groupby('tsid')['x'].transform(prepare_series)
+df_train['x_pad'] = ts_pad
+
+ts_pad = df_val.groupby('tsid')['x'].transform(prepare_series)
+df_val['x_pad'] = ts_pad
+
 
 # Put into numpy array with shape (samples, timesteps, features)
-inputs = df['x_pad'].to_numpy().reshape(-1, ts_len, 1)
-# targets = df.groupby('tsid', sort=False)['type'].max().values.reshape(-1,1)
-targets = df['type'].iloc[::ts_len].to_numpy().reshape(-1,1) 
+inputs_train = df_train['x_pad'].to_numpy().reshape(-1, ts_len, 1)
+targets_train = df_train['type'].iloc[::ts_len].to_numpy().reshape(-1,1) 
 
-# Shuffle data
-indices_permutation = np.random.permutation(len(inputs))
-inputs_shuffled = inputs[indices_permutation]
-targets_shuffled = targets[indices_permutation]
-
-
-# Split into training, validation and test
-print('Split data into training, validation and test groups')
-# split_ratio = (0.5,0.25,0.25) # (training, validation, test)
-split_ratio = (0.95,0.025,0.025)
-max_index_train = int(split_ratio[0]*len(inputs))
-max_index_val = int((split_ratio[0]+split_ratio[1])*len(inputs))                      
-
-inputs_train = inputs_shuffled[:max_index_train]
-inputs_val = inputs_shuffled[max_index_train:max_index_val]
-inputs_test = inputs_shuffled[max_index_val:]
-
-targets_train = targets_shuffled[:max_index_train]
-targets_val = targets_shuffled[max_index_train:max_index_val]
-targets_test = targets_shuffled[max_index_val:]
+inputs_val = df_val['x_pad'].to_numpy().reshape(-1, ts_len, 1)
+targets_val = df_val['type'].iloc[::ts_len].to_numpy().reshape(-1,1) 
 
 print('Using {} training data samples'.format(len(inputs_train)))
 print('Using {} validation data samples'.format(len(inputs_val)))
-print('Using {} test data samples'.format(len(inputs_test)))
-
-# Export test data
-np.save('output/test_inputs_{}.npy'.format(model_type), inputs_test)
-np.save('output/test_targets_{}.npy'.format(model_type), targets_test)
 
 # Hyperparameters
 pool_size = 2
@@ -154,7 +130,6 @@ mem_cells = 50
 mem_cells2 = 10
 kernel_size = 12
 kernel_initializer = 'lecun_normal'
-
 
 # Set up NN architecture
 model = Sequential()
@@ -189,7 +164,7 @@ model_name = 'output/classifier_{}.pkl'.format(model_type)
 chk = ModelCheckpoint(model_name, 
                       monitor='val_accuracy', 
                       save_best_only=True, 
-                      mode='max', 
+                      mode='max',
                       verbose=1)
 
 # Compile Keras model
@@ -203,7 +178,8 @@ history = model.fit(inputs_train, targets_train,
                     epochs=num_epochs, 
                     batch_size=batch_size, 
                     callbacks=[chk], 
-                    validation_data=(inputs_val,targets_val))
+                    validation_data=(inputs_val,targets_val),
+                    verbose=2)
 
 # Export history data (metrics evaluated on training and validation sets at each epoch)
 df_history = pd.DataFrame(history.history)

@@ -18,9 +18,11 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_sims', type=int, help='Total number of model simulations', 
                     default=25)
+parser.add_argument('--use_inter_classifier', type=bool, help='Use the intermediate classifier as opposed to the hard saved classifier', default=True)
 
 args = parser.parse_args()
 model_sims = args.model_sims
+use_inter_classifier = args.use_inter_classifier
 
 import time
 start_time = time.time()
@@ -48,8 +50,13 @@ rw = 0.5 # rolling window
 span = 0.25 # Lowess span
 
 # Load in DL models
-m1 = load_model('../dl_train/output/classifier_1.pkl')
-m2 = load_model('../dl_train/output/classifier_2.pkl')
+if use_inter_classifier:
+    filepath_classifier = '../dl_train/output/'
+else:
+    filepath_classifier = '../../data/'
+
+m1 = load_model(filepath_classifier+'classifier_1.pkl')
+m2 = load_model(filepath_classifier+'classifier_2.pkl')
 print('TF models loaded')
 
 

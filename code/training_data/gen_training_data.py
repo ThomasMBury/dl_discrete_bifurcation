@@ -29,7 +29,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--nsims', type=int, 
                     help='Number of simulations for each model',
-                    default=10)
+                    default=200)
 parser.add_argument('--verbose', type=int, choices=[0,1], default=1)
 
 args = parser.parse_args()
@@ -504,24 +504,52 @@ while j <= nsims:
     
 
 #-------------
-# Concatenate simulations and export
+# Concatenate simulations and prepare for export
 #-------------
 
 df_full = pd.concat(list_df, ignore_index=True)
 
-# Export to csv (include only necessary cols to save space)
-df_out = pd.DataFrame()
-df_out['tsid'] = df_full['tsid'].astype('int32')
-df_out['time'] = df_full['time_reset'].astype('int32')
-df_out['x'] = df_full['x'].astype('float32')
-df_out['type'] = df_full['type'].astype('category')
-df_out['bif_type'] = df_full['bif_type'].astype('category')
+# Make classes of equal size : currently 5 times number of samples in null section
+# Get null class
+tsid_null = df_full[df_full['type']==0]['tsid'].unique()
+# Downsample - Take random selection 
+tsid_null_down = np.random.choice(tsid_null, 
+                                  size=int(len(tsid_null)/5),
+                                  replace=False)
+df_null = df_full[df_full['tsid'].isin(tsid_null_down)]
+df_not_null = df_full[df_full['type']!=0]
+df_full_balanced = pd.concat((df_null, df_not_null))
 
-df_out.to_parquet('output/df_train.parquet')
+
+# Set types to save disk space
+df_out = pd.DataFrame()
+df_out['tsid'] = df_full_balanced['tsid'].astype('int32')
+df_out['time'] = df_full_balanced['time_reset'].astype('int32')
+df_out['x'] = df_full_balanced['x'].astype('float32')
+df_out['type'] = df_full_balanced['type'].astype('category')
+df_out['bif_type'] = df_full_balanced['bif_type'].astype('category')
+
+
+# Split into train/validation/test (include shuffle)
+split_ratio = (0.95,0.025,0.025)
+tsid_values = df_out['tsid'].unique()
+max_index_train = int(split_ratio[0]*len(tsid_values))
+max_index_val = int((split_ratio[0]+split_ratio[1])*len(tsid_values)) 
+
+np.random.shuffle(tsid_values)
+tsid_train = tsid_values[:max_index_train]
+tsid_val = tsid_values[max_index_train:max_index_val]
+tsid_test = tsid_values[max_index_val:]
+
+df_out_train = df_out[df_out['tsid'].isin(tsid_train)]
+df_out_val = df_out[df_out['tsid'].isin(tsid_val)]
+df_out_test = df_out[df_out['tsid'].isin(tsid_test)]
+
+df_out_train.to_parquet('output/df_train.parquet')
+df_out_val.to_parquet('output/df_val.parquet')
+df_out_test.to_parquet('output/df_test.parquet')
 
 end = time.time()
 print('Script took {:0.1f} seconds'.format(end-start))
-
-
 
 

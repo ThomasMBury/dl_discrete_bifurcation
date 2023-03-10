@@ -2,8 +2,9 @@
 
 # Shell script to execute all code required to reproduce results.
 
-# Set to true to do a quick run of all scripts
-QUICK_RUN=true
+GEN_TRAINING_DATA=true # generate the training data from scratch
+TRAIN_CLASSIFIER=true # train a new deep learning classifier
+QUICK_RUN=true # do a quick run that takes minimal compute time
 
 if [ "$QUICK_RUN" = true ]
 then 
@@ -18,23 +19,37 @@ else
     INC=5
 fi
 
+
 echo -e "-----\n Running code repository with NSIMS=$NSIMS, NEPOCHS=$NEPOCHS, MODEL_SIMS=$MODEL_SIMS, INC=$INC  \n-----"
 
-echo -e "-----\n Generate training data \n-----"
-cd training_data
-mkdir -p output
-python gen_training_data.py --nsims $NSIMS --verbose 0
 
-echo -e "-----\n Train classifier of type 1 \n-----"
-cd ../dl_train
-mkdir -p output
-python dl_train.py --model_type 1 --num_epochs $NEPOCHS
+if [ "$GEN_TRAINING_DATA" = true ]
+then
+    echo -e "-----\n Generate training data \n-----"
+    cd training_data
+    mkdir -p output
+    python gen_training_data.py --nsims $NSIMS --verbose 0
+    cd ../
+    $USE_INTER_TRAIN
+fi
 
-echo -e "-----\n Train classifier of type 2 \n-----"
-python dl_train.py --model_type 2 --num_epochs $NEPOCHS
+if [ "$TRAIN_CLASSIFIER" = true ]
+then
+    echo -e "-----\n Train classifier of type 1 \n-----"
+    cd dl_train
+    mkdir -p output
+    python dl_train.py --model_type 1 --num_epochs $NEPOCHS --use_inter_train $GEN_TRAINING_DATA
+
+    echo -e "-----\n Train classifier of type 2 \n-----"
+    python dl_train.py --model_type 2 --num_epochs $NEPOCHS --use_inter_train $GEN_TRAINING_DATA
+    cd ../
+fi
 
 echo -e "-----\n Get F1 scores on test data \n-----"
-python dl_test.py
+cd dl_train
+mkdir -p output
+python dl_test.py --use_inter_train $GEN_TRAINING_DATA --use_inter_classifier $TRAIN_CLASSIFIER
+
 
 echo -e "-----\n Make Sup Fig 2 - example training simulations \n-----"
 cd ../figure_s2
@@ -47,37 +62,37 @@ python make_fig.py
 echo -e "-----\n Test DL classifier and EWS on Fox model \n-----"
 cd ../test_fox
 mkdir -p output
-python test_fox.py --model_sims $MODEL_SIMS
+python test_fox.py --model_sims $MODEL_SIMS --use_inter_classifier $TRAIN_CLASSIFIER
 python compute_roc.py
 
 echo -e "-----\n Test DL classifier and EWS on Westerhoff model \n-----"
 cd ../test_westerhoff
 mkdir -p output
-python test_westerhoff.py --model_sims $MODEL_SIMS
+python test_westerhoff.py --model_sims $MODEL_SIMS --use_inter_classifier $TRAIN_CLASSIFIER
 python compute_roc.py
 
 echo -e "-----\n Test DL classifier and EWS on Ricker model \n-----"
 cd ../test_ricker
 mkdir -p output
-python test_ricker.py --model_sims $MODEL_SIMS
+python test_ricker.py --model_sims $MODEL_SIMS --use_inter_classifier $TRAIN_CLASSIFIER
 python compute_roc.py
 
 echo -e "-----\n Test DL classifier and EWS on Kot model \n-----"
 cd ../test_kot
 mkdir -p output
-python test_kot.py --model_sims $MODEL_SIMS
+python test_kot.py --model_sims $MODEL_SIMS --use_inter_classifier $TRAIN_CLASSIFIER
 python compute_roc.py
 
 echo -e "-----\n Test DL classifier and EWS on Lorenz model \n-----"
 cd ../test_lorenz
 mkdir -p output
-python test_lorenz.py --model_sims $MODEL_SIMS
+python test_lorenz.py --model_sims $MODEL_SIMS --use_inter_classifier $TRAIN_CLASSIFIER
 python compute_roc.py
 
 echo -e "-----\n Make Figure 2 - EWS and DL predictions for sample model simulations \n-----"
 cd ../figure_2
 mkdir -p output
-python generate_data.py
+python generate_data.py --use_inter_classifier $TRAIN_CLASSIFIER
 python make_fig.py
 
 echo -e "-----\n Make Sup Fig 4 - AUC scores across rof and sigma \n-----"
@@ -94,10 +109,10 @@ mkdir -p output
 python find_transition_times.py
 
 echo -e "-----\n Compute EWS in chick heart data \n-----"
-python compute_ews.py --inc $INC
+python compute_ews.py --inc $INC --use_inter_classifier $TRAIN_CLASSIFIER
 
 echo -e "-----\n Test EWS and DL in chick heart data \n-----"
-python test_chick_heart.py
+python test_chick_heart.py --use_inter_classifier $TRAIN_CLASSIFIER
 python compute_roc.py
 
 echo -e "-----\n Make figure 3 - sample EWS and DL preds in chick heart data \n-----"
@@ -116,6 +131,3 @@ echo -e "-----\n Make Figure 4 - ROC curves \n-----"
 cd ../figure_4
 mkdir -p output
 python make_fig.py
-
-
-

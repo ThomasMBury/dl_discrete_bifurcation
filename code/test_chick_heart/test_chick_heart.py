@@ -24,13 +24,29 @@ from tensorflow.keras.models import load_model
 
 import os
 
+# Parse command line arguments
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--model_sims', type=int, help='Total number of model simulations', 
+                    default=25)
+parser.add_argument('--use_inter_classifier', type=bool, help='Use the intermediate classifier as opposed to the hard saved classifier', default=True)
+
+args = parser.parse_args()
+model_sims = args.model_sims
+use_inter_classifier = args.use_inter_classifier
+
 np.random.seed(0)
 
 eval_pts = np.arange(0.64, 1.01, 0.04) #  percentage of way through pre-transition time series
 
 # Load in DL models
-m1 = load_model('../dl_train/output/classifier_1.pkl')
-m2 = load_model('../dl_train/output/classifier_2.pkl')
+if use_inter_classifier:
+    filepath_classifier = '../dl_train/output/'
+else:
+    filepath_classifier = '../../data/'
+
+m1 = load_model(filepath_classifier+'classifier_1.pkl')
+m2 = load_model(filepath_classifier+'classifier_2.pkl')
 print('TF models loaded')
 
 # EWS parameters
