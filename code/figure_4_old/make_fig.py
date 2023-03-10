@@ -2,11 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Feb  7 19:03:01 2021
-
 Make fig of ROC curves with inset showing histogram of highest DL probability
-
 @author: Thoams M. Bury
-
 """
 
 
@@ -79,7 +76,7 @@ scale = 8 # default dpi=72 - nature=300-600
 
 
 
-def make_roc_figure(df_roc, letter_label, title=''):
+def make_roc_figure(df_roc, df_counts, letter_label, title=''):
     ''' Make ROC figure (no inset)'''
         
     fig = go.Figure()
@@ -281,73 +278,124 @@ def make_roc_figure(df_roc, letter_label, title=''):
 
 
 
-import seaborn as sns
 
-def make_inset_boxplot(df_dl_forced, target_bif, save_dir):
-    '''
-    Make inset boxplot that shows the value of the 
-    DL weights where the predictions are made
+def make_inset_histo(df, target_bif, save_dir):
 
     '''
-    
-    sns.set(
-        style="ticks",
-        rc={'figure.figsize': (2.5*1.05, 1.5*1.05),
-            'axes.linewidth':0.5,
-            'axes.edgecolor':'#333F4B',
-            'xtick.color':'#333F4B',
-            'xtick.major.width':0.5,
-            'xtick.major.size':3,
-            'text.color':'#333F4B',
-            'font.family':'Times New Roman',
-            # 'font.size':20,
-            },
-        font_scale=1.2,
-        )
-            
+    Modified from 
+    https://scentellegher.github.io/visualization/2018/10/10/beautiful-bar-plots-matplotlib.html
+    '''
 
-    plt.figure()
+    df.index = ['Null', 'PD', 'NS', 'Fold', 'TC', 'PF']
     
-    bif_types = [str(i) for i in np.arange(1,6)]
-    bif_labels = ['PD', 'NS', 'Fold', 'TC', 'PF']
-    map_bif = dict(zip(bif_types, bif_labels))
-    df_plot = df_dl_forced[bif_types].melt(var_name='bif_type', value_name='DL prob')
-    df_plot['bif_label'] = df_plot['bif_type'].map(map_bif)
+    # set font
+    # plt.rcParams['font.family'] = 'sans-serif'
+    # plt.rcParams['font.sans-serif'] = 'Helvetica'
     
-    color_main = '#A9A9A9'
+    plt.rcParams["font.family"] = "Times New Roman"
+    plt.rcParams["font.size"] = 15
+
+    
+    # set the style of the axes and the text color
+    plt.rcParams['axes.edgecolor']='#333F4B'
+    plt.rcParams['axes.linewidth']=0.8
+    plt.rcParams['xtick.color']='#333F4B'
+    plt.rcParams['ytick.color']='#333F4B'
+    plt.rcParams['text.color']='#333F4B'    
+    
+    
+    fig, ax = plt.subplots(figsize=(3,2), dpi=800, )
+    
+    color_main = '#646464'
     color_target = '#FFA15A'
-    col_palette = {bif: color_main for bif in bif_labels}
-    col_palette[target_bif] = color_target
-
-
-    b = sns.boxplot(df_plot,
-                    orient = 'h',
-                    x = "DL prob", 
-                    y = "bif_label",
-                    width = 0.8,
-                    palette = col_palette,
-                    linewidth = 0.8,
-                    showfliers=False,
-                    )
     
-    b.set(xlabel=None)
-    b.set(ylabel=None)
-    b.set_xticks([0, 0.5, 1])
-    b.set_xticklabels(['0', '0.5', '1'])
-
-    sns.despine(offset = 3, trim = True)
-    b.tick_params(left=False, bottom=True)
-
-
-
-    fig = b.get_figure()
-    # fig.tight_layout()
-
-    fig.savefig(save_dir, dpi=330, bbox_inches='tight', pad_inches=0)
-        
+    cols = [color_main]*6
+    cols[target_bif] = color_target
+    
+    plt.hlines(y=df.index, xmin=0, xmax=df['count'], color=cols, alpha=0.4, linewidth=5,)
     
     
+    for i in np.arange(6):
+        plt.plot(df['count'].iloc[i], i, "o", markersize=5, color=cols[i], alpha=0.8) 
     
+    # set labels style
+    # ax.set_xlabel('Frequency', fontsize=15, fontweight='black', color = '#333F4B')
+    ax.set_ylabel('')
+    
+    # change the style of the axis spines
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_bounds((0,5))
+    
+    ax.grid(False)
+
+    # add some space between the axis and the plot
+    ax.spines['left'].set_position(('outward', 5))
+    ax.spines['bottom'].set_position(('outward', 5))  
+    
+    plt.savefig(save_dir, dpi=300, bbox_inches='tight', pad_inches=0)
+    
+
+
+def make_inset_histo_2(df, target_bif, save_dir):
+
+    '''
+    Modified from 
+    https://scentellegher.github.io/visualization/2018/10/10/beautiful-bar-plots-matplotlib.html
+    
+    Exclude null bifurcation probability
+    
+    target_bif: one of [1,2,3,4,5]
+    
+    '''
+    
+    plt.rcParams["font.family"] = "Times New Roman"
+    plt.rcParams["font.size"] = 15
+
+    
+    # set the style of the axes and the text color
+    plt.rcParams['axes.edgecolor']='#333F4B'
+    plt.rcParams['axes.linewidth']=0.8
+    plt.rcParams['xtick.color']='#333F4B'
+    plt.rcParams['ytick.color']='#333F4B'
+    plt.rcParams['text.color']='#333F4B'    
+    
+    
+    fig, ax = plt.subplots(figsize=(2.5,1.5), dpi=800, )
+    
+    color_main = '#646464'
+    color_target = '#FFA15A'
+    
+    df['color'] = df['bif_id'].apply(lambda x: color_target if x==target_bif else color_main)
+    df['bif_name'] = ['PD', 'NS', 'Fold', 'TC', 'PF']
+    
+    # Reverse the order of occurnece for plot
+    df = df.iloc[::-1]
+    
+    # Plot horizontal lines
+    plt.hlines(y=np.arange(5), xmin=0, xmax=df['count'], color= df['color'].values, alpha=0.4, linewidth=5,)
+
+    for i in np.arange(5):
+        plt.plot(df['count'].iloc[i], df['bif_name'].iloc[i], "o", markersize=5, color=df['color'].iloc[i], alpha=0.8) 
+    
+    # set labels style
+    # ax.set_xlabel('Frequency', fontsize=15, fontweight='black', color = '#333F4B')
+    ax.set_ylabel('')
+    
+    # change the style of the axis spines
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_bounds((0,4))
+    
+    ax.grid(False)
+
+    # add some space between the axis and the plot
+    ax.spines['left'].set_position(('outward', 5))
+    ax.spines['bottom'].set_position(('outward', 5))  
+    
+    plt.savefig(save_dir, dpi=300, bbox_inches='tight', pad_inches=0)
+    
+
 
 
 def combine_roc_inset(path_roc, path_inset, path_out):
@@ -368,7 +416,7 @@ def combine_roc_inset(path_roc, path_inset, path_out):
     
     # Pasete in images
     dst.paste(img_roc,(0,0))
-    dst.paste(img_inset,(width-img_inset.width-60, 1100))
+    dst.paste(img_inset,(width-img_inset.width-50, 1100))
     
     dpi=96*8 # (default dpi) * (scaling factor)
     dst.save(path_out, dpi=(dpi,dpi))
@@ -382,14 +430,14 @@ def combine_roc_inset(path_roc, path_inset, path_out):
 #--------
 
 df_roc = pd.read_csv('../test_fox/output/df_roc.csv')
-# df_counts = pd.read_csv('../test_fox/output/df_fav_bif.csv')
-df_dl_forced = pd.read_csv('../test_fox/output/df_dl_forced.csv')
+df_counts = pd.read_csv('../test_fox/output/df_fav_bif.csv')
 
-fig_roc = make_roc_figure(df_roc, 'a')
+fig_roc = make_roc_figure(df_roc, df_counts, 'a')
 fig_roc.write_image('temp_roc.png', scale=scale)
 
-# make_inset_bar(df_counts, 1, 'temp_inset.png')
-make_inset_boxplot(df_dl_forced, 'PD', 'temp_inset.png')
+# make_inset_histo(df_counts, 1, 'temp_inset.png')
+make_inset_histo_2(df_counts, 1, 'temp_inset.png')
+
 
 # Combine figs and export
 path_roc = 'temp_roc.png'
@@ -404,14 +452,13 @@ combine_roc_inset(path_roc, path_inset, path_out)
 #--------
 
 df_roc = pd.read_csv('../test_westerhoff/output/df_roc.csv')
-# df_counts = pd.read_csv('../test_westerhoff/output/df_fav_bif.csv')
-df_dl_forced = pd.read_csv('../test_westerhoff/output/df_dl_forced.csv')
+df_counts = pd.read_csv('../test_westerhoff/output/df_fav_bif.csv')
 
-fig_roc = make_roc_figure(df_roc, 'b')
+fig_roc = make_roc_figure(df_roc, df_counts, 'b')
 fig_roc.write_image('temp_roc.png', scale=scale)
 
-# make_inset_bar(df_counts, 2, 'temp_inset.png')
-make_inset_boxplot(df_dl_forced, 'NS', 'temp_inset.png')
+# make_inset_histo(df_counts, 2, 'temp_inset.png')
+make_inset_histo_2(df_counts, 2, 'temp_inset.png')
 
 # Combine figs and export
 path_roc = 'temp_roc.png'
@@ -426,14 +473,13 @@ combine_roc_inset(path_roc, path_inset, path_out)
 # Ricker fold
 #--------
 df_roc = pd.read_csv('../test_ricker/output/df_roc.csv')
-# df_counts = pd.read_csv('../test_ricker/output/df_fav_bif.csv')
-df_dl_forced = pd.read_csv('../test_ricker/output/df_dl_forced.csv')
+df_counts = pd.read_csv('../test_ricker/output/df_fav_bif.csv')
 
-fig_roc = make_roc_figure(df_roc, 'c')
+fig_roc = make_roc_figure(df_roc, df_counts, 'c')
 fig_roc.write_image('temp_roc.png', scale=scale)
 
-# make_inset_bar(df_counts, 3, 'temp_inset.png')
-make_inset_boxplot(df_dl_forced, 'Fold', 'temp_inset.png')
+# make_inset_histo(df_counts, 3, 'temp_inset.png')
+make_inset_histo_2(df_counts, 3, 'temp_inset.png')
 
 
 # Combine figs and export
@@ -449,15 +495,13 @@ combine_roc_inset(path_roc, path_inset, path_out)
 # Kot transcritical
 #--------
 df_roc = pd.read_csv('../test_kot/output/df_roc.csv')
-# df_counts = pd.read_csv('../test_kot/output/df_fav_bif.csv')
-df_dl_forced = pd.read_csv('../test_kot/output/df_dl_forced.csv')
+df_counts = pd.read_csv('../test_kot/output/df_fav_bif.csv')
 
-
-fig_roc = make_roc_figure(df_roc, 'd')
+fig_roc = make_roc_figure(df_roc, df_counts, 'd')
 fig_roc.write_image('temp_roc.png', scale=scale)
 
-# make_inset_bar(df_counts, 4, 'temp_inset.png')
-make_inset_boxplot(df_dl_forced, 'TC', 'temp_inset.png')
+# make_inset_histo(df_counts, 4, 'temp_inset.png')
+make_inset_histo_2(df_counts, 4, 'temp_inset.png')
 
 
 # Combine figs and export
@@ -473,15 +517,13 @@ combine_roc_inset(path_roc, path_inset, path_out)
 #--------
 nsims = 2500
 df_roc = pd.read_csv('../test_lorenz/output/df_roc.csv')
-# df_counts = pd.read_csv('../test_lorenz/output/df_fav_bif.csv')
-df_dl_forced = pd.read_csv('../test_lorenz/output/df_dl_forced.csv')
+df_counts = pd.read_csv('../test_lorenz/output/df_fav_bif.csv')
 
-
-fig_roc = make_roc_figure(df_roc, 'e')
+fig_roc = make_roc_figure(df_roc, df_counts, 'e')
 fig_roc.write_image('temp_roc.png', scale=scale)
 
-# make_inset_bar(df_counts, 5, 'temp_inset.png')
-make_inset_boxplot(df_dl_forced, 'PF', 'temp_inset.png')
+# make_inset_histo(df_counts, 5, 'temp_inset.png')
+make_inset_histo_2(df_counts, 5, 'temp_inset.png')
 
 
 # Combine figs and export
@@ -496,14 +538,13 @@ combine_roc_inset(path_roc, path_inset, path_out)
 # Heart data
 #--------
 df_roc = pd.read_csv('../test_chick_heart/output/df_roc.csv')
-# df_counts = pd.read_csv('../test_chick_heart/output/df_fav_bif.csv')
-df_dl_forced = pd.read_csv('../test_chick_heart/output/df_dl_pd_fixed.csv')
+df_counts = pd.read_csv('../test_chick_heart/output/df_fav_bif.csv')
 
-fig_roc = make_roc_figure(df_roc, 'f')
+fig_roc = make_roc_figure(df_roc, df_counts, 'f')
 fig_roc.write_image('temp_roc.png', scale=scale)
 
-# make_inset_bar(df_counts, 1, 'temp_inset.png')
-make_inset_boxplot(df_dl_forced, 'PD', 'temp_inset.png')
+# make_inset_histo(df_counts, 1, 'temp_inset.png')
+make_inset_histo_2(df_counts, 1, 'temp_inset.png')
 
 
 # Combine figs and export
@@ -555,8 +596,9 @@ for y in np.arange(2)*ind_height:
 
 
 dpi=96*8 # (default dpi) * (scaling factor)
-dst.save('../../results/figure_4_2.png',
+dst.save('../../results/figure_4.png',
           dpi=(dpi,dpi))
+
 
 # Remove temporary images
 import os
@@ -566,18 +608,16 @@ for filename in list_filenames+['temp_inset.png','temp_roc.png']:
     except:
         pass
 
+# # Export time taken for script to run
+# end_time = time.time()
+# time_taken = end_time - start_time
+# path = 'time_make_fig.txt'
+# with open(path, 'w') as f:
+#     f.write('{:.2f}'.format(time_taken))
+
+
 # Time taken for script to run
 end_time = time.time()
 time_taken = end_time - start_time
 print('Ran in {:.2f}s'.format(time_taken))
-
-
-
-
-
-
-
-
-
-
 

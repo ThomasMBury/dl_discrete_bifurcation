@@ -85,7 +85,7 @@ for rof in rof_vals:
             # Get DL predictions for forced trajectory
             ts.apply_classifier(m1, tmin=0, tmax=transition*eval_pt, name='m1', verbose=0)
             ts.apply_classifier(m2, tmin=0, tmax=transition*eval_pt, name='m2', verbose=0)
-            df_dl_preds = ts.dl_preds.groupby('time').mean() # use mean DL pred
+            df_dl_preds = ts.dl_preds.groupby('time').mean(numeric_only=True) # use mean DL pred
             df_dl_preds['sigma'] = sigma
             df_dl_preds['rof'] = rof
             df_dl_preds['id'] = id_val
@@ -107,7 +107,7 @@ for rof in rof_vals:
             # Get DL predictions for null
             ts.apply_classifier(m1, tmin=0, tmax=transition*eval_pt, name='m1', verbose=0)
             ts.apply_classifier(m2, tmin=0, tmax=transition*eval_pt, name='m2', verbose=0)
-            df_dl_preds = ts.dl_preds.groupby('time').mean() # use mean DL pred
+            df_dl_preds = ts.dl_preds.groupby('time').mean(numeric_only=True) # use mean DL pred
             df_dl_preds['sigma'] = sigma
             df_dl_preds['rof'] = rof
             df_dl_preds['id'] = id_val

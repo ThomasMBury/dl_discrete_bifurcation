@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Shell script to execute all code required to reproduce results.
-
 
 # Set to true to do a quick run of all scripts
 QUICK_RUN=true
