@@ -2,9 +2,9 @@
 
 # Shell script to execute all code required to reproduce results.
 
-GEN_TRAINING_DATA=true # generate the training data from scratch
-TRAIN_CLASSIFIER=true # train a new deep learning classifier
-QUICK_RUN=true # do a quick run that takes minimal compute time
+GEN_TRAINING_DATA=false # generate the training data from scratch
+TRAIN_CLASSIFIER=false # train a new deep learning classifier
+QUICK_RUN=false # do a quick run that takes minimal compute time
 
 if [ "$QUICK_RUN" = true ]
 then 
@@ -19,7 +19,6 @@ else
     INC=5
 fi
 
-
 echo -e "-----\n Running code repository with NSIMS=$NSIMS, NEPOCHS=$NEPOCHS, MODEL_SIMS=$MODEL_SIMS, INC=$INC  \n-----"
 
 
@@ -30,7 +29,6 @@ then
     mkdir -p output
     python gen_training_data.py --nsims $NSIMS --verbose 0
     cd ../
-    $USE_INTER_TRAIN
 fi
 
 if [ "$TRAIN_CLASSIFIER" = true ]
@@ -48,7 +46,7 @@ fi
 echo -e "-----\n Get F1 scores on test data \n-----"
 cd dl_train
 mkdir -p output
-python dl_test.py --use_inter_train $GEN_TRAINING_DATA --use_inter_classifier $TRAIN_CLASSIFIER
+#python dl_test.py --use_inter_train $GEN_TRAINING_DATA --use_inter_classifier $TRAIN_CLASSIFIER
 
 
 echo -e "-----\n Make Sup Fig 2 - example training simulations \n-----"
