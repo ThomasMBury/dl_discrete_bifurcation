@@ -49,7 +49,7 @@ then
 else
     NSIMS=10000
     NEPOCHS=200
-    MODEL_SIMS=100
+    MODEL_SIMS=2500
     INC=5
 fi
 
