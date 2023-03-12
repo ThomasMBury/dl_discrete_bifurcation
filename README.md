@@ -1,8 +1,13 @@
 # Predicting discrete-time bifurcations with deep learning
 
-This is the code repository to accompany the article "Predicting discrete-time bifurcations with deep learning".
+<!-- ![alt text](/code/figure_1/figure_1.png) -->
+<img src="/code/figure_1/figure_1.png"  width="500">
 
-The code also appears as a [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean, which provides the software environment and compute resources to do a reproducible run of the results reported in the paper. Alternatively, you may do a reproducible run on your local computer following the instructions below.
+This repository accompanies the article:
+
+***Predicting discrete-time bifurcations with deep learning***. *Thomas M. Bury, Daniel Dylewsky, Chris Bauch, Madhur Anand, Leon Glass, Alvin Shrier, Gil Bub.*
+
+The [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean provides a software environment and compute resources to do a reproducible run of the results reported in the paper. Alternatively, you may do a reproducible run on your local computer following the instructions below.
 
 ## Instructions to reproduce results
 
