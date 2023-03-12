@@ -36,8 +36,8 @@ echo List all packages
 pip list
 
 
-GEN_TRAINING_DATA=true # generate the training data from scratch
-TRAIN_CLASSIFIER=true # train a new deep learning classifier
+GEN_TRAINING_DATA=false # generate the training data from scratch
+TRAIN_CLASSIFIER=false # train a new deep learning classifier
 QUICK_RUN=false # do a quick run that takes minimal compute time
 
 if [ "$QUICK_RUN" = true ]
