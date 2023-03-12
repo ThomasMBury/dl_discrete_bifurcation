@@ -3,11 +3,11 @@
 <!-- ![alt text](/code/figure_1/figure_1.png) -->
 <img src="/code/figure_1/figure_1.png"  width="500">
 
-This repository accompanies the article:
+The above shows the spontaneous beating of an aggregate of chick heart cells. The time between beats (inter-beat interval, IBI) can be regular one minute (blue) and alternating the next (green). This sudden change in dynamics is due to a period-doubling bifurcation. Can deep learning help us to predict these types of bifurcation, which are pervasive in fields ranging from physiology to economics? We address this question in the article
 
 ***Predicting discrete-time bifurcations with deep learning***. *Thomas M. Bury, Daniel Dylewsky, Chris Bauch, Madhur Anand, Leon Glass, Alvin Shrier, Gil Bub.*
 
-The [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean provides a software environment and compute resources to do a reproducible run of the results reported in the paper. Alternatively, you may do a reproducible run on your local computer following the instructions below.
+This is the accompanying code repository. The [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean provides a software environment and compute resources to do a reproducible run of the results reported in the paper. Alternatively, you may do a reproducible run on your local computer following the instructions below.
 
 ## Instructions to reproduce results
 
