@@ -99,7 +99,7 @@ model_type = 1
 model = load_model(filepath_classifier+'classifier_{}.pkl'.format(model_type))
 
 # Import test data and apply preprocessing
-df_test = pd.read_parquet(filepath_data+'df_train.parquet')
+df_test = pd.read_parquet(filepath_data+'df_test.parquet')
 ts_pad = df_test.groupby('tsid')['x'].transform(prepare_series, model_type)
 df_test['x_pad'] = ts_pad
 
@@ -182,7 +182,7 @@ model_type = 2
 model = load_model(filepath_classifier+'classifier_{}.pkl'.format(model_type))
 
 # Import test data and apply preprocessing
-df_test = pd.read_parquet(filepath_data+'df_train.parquet')
+df_test = pd.read_parquet(filepath_data+'df_test.parquet')
 ts_pad = df_test.groupby('tsid')['x'].transform(prepare_series, model_type)
 df_test['x_pad'] = ts_pad
 
