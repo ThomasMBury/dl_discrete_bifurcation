@@ -15,12 +15,11 @@ then
 else
     NSIMS=10000
     NEPOCHS=200
-    MODEL_SIMS=100
+    MODEL_SIMS=2500
     INC=5
 fi
 
 echo -e "-----\n Running code repository with NSIMS=$NSIMS, NEPOCHS=$NEPOCHS, MODEL_SIMS=$MODEL_SIMS, INC=$INC  \n-----"
-
 
 if [ "$GEN_TRAINING_DATA" = true ]
 then
@@ -46,7 +45,7 @@ fi
 echo -e "-----\n Get F1 scores on test data \n-----"
 cd dl_train
 mkdir -p output
-#python dl_test.py --use_inter_train $GEN_TRAINING_DATA --use_inter_classifier $TRAIN_CLASSIFIER
+python dl_test.py --use_inter_train $GEN_TRAINING_DATA --use_inter_classifier $TRAIN_CLASSIFIER
 
 
 echo -e "-----\n Make Sup Fig 2 - example training simulations \n-----"

@@ -10,6 +10,8 @@ Created on Tue Oct 26 22:30:01 2021
 """
 
 import numpy as np
+np.random.seed(0)
+
 import pandas as pd
 
 import os
@@ -34,12 +36,12 @@ start = time.time()
 # Parse command line arguments
 import argparse
 parser = argparse.ArgumentParser(description='Test DL classifier')
-parser.add_argument('--use_inter_train', type=bool, help='Use the intermediate training data as opposed to the hard saved training data', default=True)
-parser.add_argument('--use_inter_classifier', type=bool, help='Use the intermediate classifier as opposed to the hard saved classifier', default=True)
+parser.add_argument('--use_inter_train', type=str, help='Use the intermediate training data as opposed to the hard saved training data',default='false')
+parser.add_argument('--use_inter_classifier', type=str, help='Use the intermediate classifier as opposed to the hard saved classifier',default='false')
 
 args = parser.parse_args()
-use_inter_train = args.use_inter_train
-use_inter_classifier = args.use_inter_classifier
+use_inter_train = True if args.use_inter_train=='true' else False
+use_inter_classifier = True if args.use_inter_classifier=='true' else False
 
 if use_inter_train:
     filepath_data = '../training_data/output/'

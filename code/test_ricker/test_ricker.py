@@ -24,7 +24,7 @@ parser.add_argument('--use_inter_classifier', type=bool, help='Use the intermedi
 
 args = parser.parse_args()
 model_sims = args.model_sims
-use_inter_classifier = args.use_inter_classifier
+use_inter_classifier = True if args.use_inter_classifier=='true' else False
 
 
 

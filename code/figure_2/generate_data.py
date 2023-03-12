@@ -18,7 +18,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--use_inter_classifier', type=bool, help='Use the intermediate classifier as opposed to the hard saved classifier', default=True)
 
 args = parser.parse_args()
-use_inter_classifier = args.use_inter_classifier
+use_inter_classifier = True if args.use_inter_classifier=='true' else False
 
 import numpy as np
 import pandas as pd

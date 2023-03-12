@@ -1,0 +1,7 @@
+tensorflow==2.11.0
+ewstools==2.1.0
+kaleido==0.2.1
+matplotlib==3.7.1
+pyarrow==11.0.0
+scikit-learn==1.2.1
+seaborn==0.12.2
