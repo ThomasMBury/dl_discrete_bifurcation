@@ -34,7 +34,7 @@ cd code
 ./remove_output.sh
 ```
 
-- Decide upon a reproducible run from scratch (4.45 hours on a NVIDIA P100 Pascal GPU) or using the pretrained classifier (XX hours). The parameters to set are in the shell script ```run.sh```. To check that the code is working in your environment, you can do a quick run by setting ```QUICK_RUN=true``` (10 minutes). 
+- Decide upon a reproducible run from scratch (4 h 46 mins on a NVIDIA P100 Pascal GPU) or using the pretrained classifier (2 h 34 mins). The parameters to set are in the shell script ```run.sh```. To check that the code is working in your environment, you can do a quick run by setting ```QUICK_RUN=true``` (11 mins). 
 
 To run using the pretrained classifier, set 
 ```
@@ -47,6 +47,6 @@ GEN_TRAINING_DATA=true
 TRAIN_CLASSIFIER=true
 ```
 
-- The results are sent to the ```/results``` directory.
+- Results are saved in the ```/results``` directory.
 
 
