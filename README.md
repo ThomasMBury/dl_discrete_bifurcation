@@ -52,40 +52,50 @@ This is the accompanying code repository. The [code capsule](https://codeocean.c
 
 ## Instructions to apply the deep learning classifier to your own data
 
+A simple example of applying the deep learning classifier to data is given in ```code/test_chick_heart/example.py```. In brief:
+
 - Clone the repository and install package dependencies as above.
-- In a Python script, import the classifiers
+- In a Python script, import the individual classifiers
 
   ```python
   from tensorflow.keras.models import load_model
   m1 = load_model('data/classifier_1.pkl')
-  m1 = load_model('data/classifier_2.pkl')
+  m2 = load_model('data/classifier_2.pkl')
   ```
-- Create an ```ewstools.TimeSeries``` object using your data
+- Create an ```ewstools.TimeSeries``` object using your data and an estimated transition time
 
   ```python
   import ewstools
-  ts = ewstools.TimeSeries(data)
+  ts = ewstools.TimeSeries(data=data, transition=300)
   ```
   
 - Detrend if necessary, e.g.
   ```python
-  ts.detrend(method='Lowess', span=span)
+  ts.detrend(method='Guassian', bandwidth=20)
   ```
   
-- Get predictions from the classifiers at successive points in the time series
+- Get predictions from the classifiers at successive points in the data
   ```python
-  ts.apply_classifier_inc(m1, inc=inc, name='m1', verbose=0)
-  ts.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
+  ts.apply_classifier_inc(m1, inc=10, name='m1', verbose=0)
+  ts.apply_classifier_inc(m2, inc=10, name='m2', verbose=0)
   ```
   
- - Plot results
-  ```python
-  ts.make_plotly()
-  ```
-  Figure
-  For further details, see the [ewstools](https://github.com/ThomasMBury/ewstools) repository.
-
-
-
+ - Plot results using the ensemble average of the classifiers
+   ```python
+   ts.make_plotly(ens_avg=True)
+   ```
+  <img src="/code/test_chick_heart/output/example.png"  width="500">
+  
+The different classes of the classifier predictions correspond to
+  - 0 : null trajectory (no approaching bifurcation)
+  - 1 : period-doubling bifurcation
+  - 2 : Neimark-Sacker bifurcation
+  - 3 : fold bifurcation
+  - 4 : transcritical bifurcation
+  - 5 : pitchfork bifurcation
+  
+In the above example, the classifier correctly predicts a period-doubling bifurcation.
+  
+For more details and tutorials on comuting these early warning signals in Python, check out the [ewstools](https://github.com/ThomasMBury/ewstools) repository.
 
 
