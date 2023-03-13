@@ -1,2 +1,3 @@
 code/training_data/output
 data/df_train.parquet
+*.DS_Store
