@@ -425,6 +425,33 @@ df_roc = pd.read_csv('../test_ricker/output/df_roc.csv')
 df_dl_forced = pd.read_csv('../test_ricker/output/df_dl_forced.csv')
 
 fig_roc = make_roc_figure(df_roc, 'c')
+
+# Add text to indicate which ROC curve belongs to each EWS
+fig_roc.add_annotation(x=0.15, y=0.92,
+            text='DL',
+            showarrow=False,
+            font=dict(family='Times New Roman',
+                      size=12,
+                      color=cols[0]
+                      )
+            )
+fig_roc.add_annotation(x=0.37, y=0.7,
+            text='Var',
+            showarrow=False,
+            font=dict(family='Times New Roman',
+                      size=12,
+                      color=cols[1]
+                      )
+            )
+fig_roc.add_annotation(x=0.25, y=0.8,
+            text='AC',
+            showarrow=False,
+            font=dict(family='Times New Roman',
+                      size=12,
+                      color=cols[2]
+                      )
+            )
+
 fig_roc.write_image('temp_roc.png', scale=scale)
 
 make_inset_boxplot(df_dl_forced, 'Fold', 'temp_inset.png')
@@ -506,7 +533,7 @@ combine_roc_inset(path_roc, path_inset, path_out)
 #------------
 
 #-----------------
-# Fig 2 of manuscript: 8-panel figure for all models and empirical data
+# Fig 4 of manuscript: 8-panel figure for all models and empirical data
 #-----------------
 
 # # Early or late predictions
