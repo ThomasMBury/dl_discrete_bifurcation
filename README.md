@@ -56,7 +56,7 @@ This is the accompanying code repository. The [code capsule](https://codeocean.c
   ./run.sh
   ```
   
-- Note that in either case, you can set ```QUICK_RUN=true```, which performs a quick run of the code (11 mins) using parameters to minimise computation. This is useful to check the code is working in your environment, before committing to a full reproducible run.
+- Note that in either case, you can set ```QUICK_RUN=true```, which performs a quick run of the code (11 mins) using parameters that minimise computation. This is useful to check the code is working in your environment, before doing a full reproducible run.
 
 - Results are saved in the ```/results``` directory.
 
