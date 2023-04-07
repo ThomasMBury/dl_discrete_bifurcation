@@ -7,7 +7,7 @@ The above shows the spontaneous beating of an aggregate of chick heart cells. Th
 
 ***Predicting discrete-time bifurcations with deep learning***. *Thomas M. Bury, Daniel Dylewsky, Chris Bauch, Madhur Anand, Leon Glass, Alvin Shrier, Gil Bub.*
 
-This is the accompanying code repository. The [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean provides a software environment and compute resources to do a reproducible run of the results reported in the paper. Alternatively, you may do a reproducible run on your local computer following the instructions below.
+This is the accompanying code repository. The [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean provides a software environment and compute resources to do a reproducible run of the results reported in the paper. Alternatively, you may do a reproducible run on your local computer following the instructions below. This has been tested using Python 3.7-3.10.
 
 ## Instructions to reproduce results
 
