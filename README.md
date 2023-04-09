@@ -1,13 +1,57 @@
 # Predicting discrete-time bifurcations with deep learning
 
+This is the code repository to accompnay the article:
+
+***Predicting discrete-time bifurcations with deep learning***. *Thomas M. Bury, Daniel Dylewsky, Chris Bauch, Madhur Anand, Leon Glass, Alvin Shrier, Gil Bub.* 
+https://doi.org/10.48550/arXiv.2303.09669
+
+- [Overview](#overview)
+- [Code capsule](#code-capsule)
+- [System Requirements](#system-requirements)
+- [Instructions to reproduce results](#instructions-to-reproduce-results)
+- [Instructions to apply to your data](#instructions-to-apply-the-deep-learning-classifier-to-your-own-data)
+- [License](#license)
+- [Issues](https://github.com/thomasmbury/dl_discrete_bifurcation/issues)
+
+## Overview
+
 <!-- ![alt text](/code/figure_1/figure_1.png) -->
 <img src="/code/figure_1/figure_1.png"  width="500">
 
-The above shows the spontaneous beating of an aggregate of chick heart cells. The time between beats (inter-beat interval, IBI) can be regular one minute (blue) and alternating the next (green). This sudden change in dynamics is due to a period-doubling bifurcation. Can deep learning help us to predict these types of bifurcation, which are pervasive in fields ranging from physiology to economics? We address this question in the article
+The above figure shows the spontaneous beating of an aggregate of chick heart cells. The time between beats (inter-beat interval, IBI) can be regular one minute (blue) and alternating the next (green). This sudden change in dynamics is due to a type of discrete-time bifurcation known as a period-doubling bifurcation. Can deep learning help us to predict these types of bifurcation, which are present in fields ranging from physiology to economics? This is the question we address in the article.
 
-***Predicting discrete-time bifurcations with deep learning***. *Thomas M. Bury, Daniel Dylewsky, Chris Bauch, Madhur Anand, Leon Glass, Alvin Shrier, Gil Bub.*
 
-This is the accompanying code repository. The [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean provides a software environment and compute resources to do a reproducible run of the results reported in the paper. Alternatively, you may do a reproducible run on your local computer following the instructions below. This has been tested using Python 3.7-3.10.
+## Code capsule
+
+The article is accompanied by a [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean, which provides a software environment and compute resources to do a reproducible run of the results reported in the paper. This circumnavigates the need to install the software environment yourslef to reproduce the results. Alternatively, you can do a reproducible run on your local machine following the instructions below.
+
+
+## System Requirements
+### Hardware requirements
+Training of the deep learning classifier requires access to a GPU. All other operations in the code can be run on a standard machine with enough RAM to support in-memory operations. The code has been tested on both
+- MacBook Air (M1, 2020) with  8-core GPU, 8GB memory, 512GB storage
+- Intel E5-2650 v4 Broadwell @ 2.2GHz with NVIDIA P100 Pascal GPU
+
+### Software requirements
+#### OS Requirements
+The code is supported for both *macOS* and *Linux*. It has been tested on the following systems:
+- macOS: Monterey (12.2.1)
+- Linux: CentOS 7
+
+
+#### Python Dependencies
+The code has been tested with Python 3.10 and depends primarily on the following Python scientific stack.
+
+```
+numpy
+pandas
+scikit-learn
+tensorflow
+ewstools
+pyarrow
+plotly
+```
+
 
 ## Instructions to reproduce results
 
@@ -109,4 +153,10 @@ In the above example, the classifier correctly predicts a period-doubling bifurc
   
 For more details and tutorials on comuting these early warning signals in Python, check out the [ewstools](https://github.com/ThomasMBury/ewstools) repository.
 
+
+
+
+## License
+
+This project is covered under the **MIT License**.
 
