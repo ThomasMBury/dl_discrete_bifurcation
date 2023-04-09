@@ -51,28 +51,31 @@ ewstools
 pyarrow
 plotly
 ```
-
+Specific versions required to reproduce reusults are listed in ```requirements.txt```.
 
 ## Instructions to reproduce results
 
-- Clone the repository
+- Clone the repository [~1min]
   ```
   git clone git@github.com:ThomasMBury/dl_discrete_bifurcation.git
   ```
 
-- Navigate to the repository. Create a virtual environment
+- Navigate to the repository. Create a virtual environment [<1min]
   ```
+  cd dl_discrete_bifurcation
   python -m venv venv
   source venv/bin/activate
   ```
 
-- Install package dependencies
+- Install package dependencies [~10min]
   ```
   pip install --upgrade pip
   pip install -r requirements.txt
   ```
+  Depending on your system, you may have to install tensorflow 2.11 via methods other than pip. See [here](https://www.tensorflow.org/install) for details. For those looking to install tensorflow on Mac OS with GPU support, [this](https://caffeinedev.medium.com/how-to-install-tensorflow-on-m1-mac-8e9b91d93706) is a helpful article.
+  
 
-- Remove all files in `/output` and `/results` directories
+- Remove all files in `/output` and `/results` directories to start with a clean slate [<1s]
   ```
   cd code
   ./remove_output.sh
@@ -100,7 +103,7 @@ plotly
   ./run.sh
   ```
   
-- Note that in either case, you can set ```QUICK_RUN=true```, which performs a quick run of the code (11 mins) using parameters that minimise computation. This is useful to check the code is working in your environment, before doing a full reproducible run.
+- In either case, you can set ```QUICK_RUN=true```, which performs a quick run of the code (11 mins) using parameters that minimise computation. This is useful to check the code is working in your environment, before doing a full reproducible run.
 
 - Results are saved in the ```/results``` directory.
 
