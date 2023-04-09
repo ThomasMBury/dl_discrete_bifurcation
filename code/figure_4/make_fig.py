@@ -55,7 +55,7 @@ fig_width = 183*mm_to_pixel/3 # 3 panels wide
 fig_height = fig_width
 
 
-font_size = 8
+font_size = 10
 font_family = 'Times New Roman'
 font_size_letter_label = 14
 font_size_auc_text = 10
@@ -368,7 +368,7 @@ def combine_roc_inset(path_roc, path_inset, path_out):
     
     # Pasete in images
     dst.paste(img_roc,(0,0))
-    dst.paste(img_inset,(width-img_inset.width-60, 1100))
+    dst.paste(img_inset,(width-img_inset.width-60, 1050))
     
     dpi=96*8 # (default dpi) * (scaling factor)
     dst.save(path_out, dpi=(dpi,dpi))
