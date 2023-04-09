@@ -7,7 +7,7 @@ The above shows the spontaneous beating of an aggregate of chick heart cells. Th
 
 ***Predicting discrete-time bifurcations with deep learning***. *Thomas M. Bury, Daniel Dylewsky, Chris Bauch, Madhur Anand, Leon Glass, Alvin Shrier, Gil Bub.*
 
-This is the accompanying code repository. The [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean provides a software environment and compute resources to do a reproducible run of the results reported in the paper. Alternatively, you may do a reproducible run on your local computer following the instructions below.
+This is the accompanying code repository. The [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean provides a software environment and compute resources to do a reproducible run of the results reported in the paper. Alternatively, you may do a reproducible run on your local computer following the instructions below. This has been tested using Python 3.7-3.10.
 
 ## Instructions to reproduce results
 
@@ -34,18 +34,29 @@ This is the accompanying code repository. The [code capsule](https://codeocean.c
   ./remove_output.sh
   ```
 
-- Decide upon a reproducible run from scratch (4 h 46 mins on a NVIDIA P100 Pascal GPU) or using the pretrained classifier (2 h 34 mins). The parameters to set are in the shell script ```run.sh```. To check that the code is working in your environment, you can do a quick run by setting ```QUICK_RUN=true``` (11 mins). 
-
-  To run using the pretrained classifier, set 
-  ```
-  GEN_TRAINING_DATA=false
-  TRAIN_CLASSIFIER=false
-  ```
-  To run from scratch, set
+- Decide between doing a reproducible run from scratch (4 h 46 mins on a NVIDIA P100 Pascal GPU) or using the pretrained classifier (2 h 34 mins). To run from scratch, open the shell script ```code/run.sh``` and set the parameters
   ```
   GEN_TRAINING_DATA=true
   TRAIN_CLASSIFIER=true
+  QUICK_RUN=false
   ```
+  and run it using the command
+  ```
+  ./run.sh
+  ```
+
+- To use the pretrained classifier, set 
+  ```
+  GEN_TRAINING_DATA=false
+  TRAIN_CLASSIFIER=false
+  QUICK_RUN=false
+  ```
+  and run it using the command
+  ```
+  ./run.sh
+  ```
+  
+- Note that in either case, you can set ```QUICK_RUN=true```, which performs a quick run of the code (11 mins) using parameters that minimise computation. This is useful to check the code is working in your environment, before doing a full reproducible run.
 
 - Results are saved in the ```/results``` directory.
 
@@ -74,7 +85,7 @@ A simple example of applying the deep learning classifier to data is given in ``
   ts.detrend(method='Guassian', bandwidth=20)
   ```
   
-- Get predictions from the classifiers at successive points in the data
+- Get incremental predictions from the classifiers
   ```python
   ts.apply_classifier_inc(m1, inc=10, name='m1', verbose=0)
   ts.apply_classifier_inc(m2, inc=10, name='m2', verbose=0)
