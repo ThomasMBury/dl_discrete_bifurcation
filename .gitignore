@@ -2,3 +2,4 @@ code/training_data/output
 data/df_train.parquet
 *.DS_Store
 /submission_nature_mi
+/revisions
