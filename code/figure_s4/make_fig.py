@@ -16,7 +16,6 @@ start_time = time.time()
 
 import numpy as np
 import pandas as pd
-
 import plotly.express as px
 
 import sklearn.metrics as metrics
@@ -59,12 +58,9 @@ df_ktau = pd.concat([df_ktau_forced, df_ktau_null])
 
 df_dl['p_bif'] = df_dl[['1','2','3','4','5']].sum(axis=1)
 
-
 # Get rof and sigma values
 rof_values = df_ktau_forced['rof'].unique()
 sigma_values = df_ktau_forced['sigma'].unique()
-
-
 
 list_dict = []
 
