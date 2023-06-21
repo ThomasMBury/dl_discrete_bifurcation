@@ -34,10 +34,9 @@ def roc_compute(truth_vals, indicator_vals):
 
     return df_roc
 
-
 #-------------
 # Fox model
-#------------
+#-------------
 
 path = '../test_fox/output/'
 
@@ -101,7 +100,7 @@ prop_dl_best = len(df_auc_pivot[df_auc_pivot['best']=='p_bif'])/len(df_auc_pivot
 print('For the Fox model, the DL performs best in {}% of cases'.format(prop_dl_best*100))
 
 
-#-------------
+#------------
 # Westerhoff model
 #------------
 
@@ -128,7 +127,6 @@ df_dl['p_bif'] = df_dl[['1','2','3','4','5']].sum(axis=1)
 # Get rof and sigma values
 rof_values = df_ktau_forced['rof'].unique()
 sigma_values = df_ktau_forced['sigma'].unique()
-
 
 
 list_dict = []
@@ -198,7 +196,6 @@ df_dl['p_bif'] = df_dl[['1','2','3','4','5']].sum(axis=1)
 # Get rof and sigma values
 rof_values = df_ktau_forced['rof'].unique()
 sigma_values = df_ktau_forced['sigma'].unique()
-
 
 
 list_dict = []
@@ -393,7 +390,6 @@ import plotly.graph_objects as go
 
 
 fig = make_subplots(5, 3, horizontal_spacing=0.15, vertical_spacing=0.08)
-    
 
 
 # Fox model

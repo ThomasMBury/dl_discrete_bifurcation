@@ -23,13 +23,6 @@ import ewstools
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
-
-rho = 0.5
-sigma = 0.01
-x0 = 0
-l = 100
-
-
 # # Parse command line arguments
 # import argparse
 # parser = argparse.ArgumentParser()
@@ -53,10 +46,12 @@ m2 = load_model(filepath_classifier+'classifier_2.pkl')
 print('TF models loaded')
 
 
-rho_vals = np.arange(-1,1, 0.2)[1:]
-sigma_vals = np.arange(0.02, 0.12, 0.02)
+sigma = 0.01
+x0 = 0
+
+rho_vals = np.arange(-1,1, 0.1)[1:]
 l_vals = np.arange(100,600,100)
-nsims = 5
+nsims = 20
 
 list_df = []
 
@@ -67,13 +62,15 @@ for rho in rho_vals:
             # Simulate AR1 process
             list_x = []
             x = x0
-            for i in np.arange(100):
+            for i in np.arange(l):
                 x = rho*x + sigma*np.random.normal(0,1)
                 list_x.append(x)
             
             # Compute EWS
             s = pd.Series(list_x)
             ts = ewstools.TimeSeries(s)
+            ts.detrend(method='Lowess', span=0.25)
+            
             ts.apply_classifier(m1, tmin=s.index[0], tmax=s.index[-1], name='m1', verbose=0)
             ts.apply_classifier(m2, tmin=s.index[0], tmax=s.index[-1], name='m2', verbose=0)
             df_dl = ts.dl_preds.groupby('time').mean(numeric_only=True)
@@ -86,19 +83,10 @@ for rho in rho_vals:
         print('Complete for length={}'.format(l))
     print('Complete for rho={}'.format(rho))
 
-df_dl_full = pd.concat(list_df)
+df_dl_full = pd.concat(list_df).reset_index()
 
-
-# Make heatmap fig
-
-
-
-
-
-
-
-
-
+# Export DL predictions
+df_dl_full.to_csv('output/df_sigma_{}.csv'.format(sigma), index=False)
 
 
 
