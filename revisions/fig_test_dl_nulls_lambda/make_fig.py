@@ -3,20 +3,6 @@
 """
 Created on Wed Oct 26 12:23:35 2022
 
-Make fig with rows
-- simulation
-- variance
-- lag-1 ac
-- dl preds
-
-and cols
-- period-doubling model
-- NS model
-- fold model
-- transcritical model
-- pitchfork model
-
-
 @author: tbury
 """
 
