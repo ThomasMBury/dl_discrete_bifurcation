@@ -4,7 +4,7 @@
 Created on Thu Jan 30 11:58:49 2020
 
 Compute ROC curves for EWS and DL predictions.
-Do separately for each alpha value
+Do separately for each scale value
 
 @author: Thomas M. Bury
 """
@@ -17,14 +17,13 @@ import scipy.stats as stats
 
 import funs_fox as funs
 
-
 #-------------
 # Import predictions
 #–------------
-df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
-df_ktau_null = pd.read_csv('output/df_ktau_null.csv')
-df_dl_forced = pd.read_csv('output/df_dl_forced.csv')
-df_dl_null = pd.read_csv('output/df_dl_null.csv')
+df_ktau_forced = pd.read_csv('output/df_ktau_forced_scale.csv')
+df_ktau_null = pd.read_csv('output/df_ktau_null_scale.csv')
+df_dl_forced = pd.read_csv('output/df_dl_forced_scale.csv')
+df_dl_null = pd.read_csv('output/df_dl_null_scale.csv')
 
 #----------------
 # compute ROC curves
@@ -77,34 +76,33 @@ def roc_compute(truth_vals, indicator_vals):
 # Initiliase list for ROC dataframes for predicting May fold bifurcation
 list_roc = []
 
+# Compute ROC for each scale value
+scale_vals = df_dl_forced['scale'].unique()
 
-# Compute ROC for each alpha value
-alpha_vals = df_dl_forced['alpha'].unique()
-
-for alpha in alpha_vals:
+for scale in scale_vals:
 
     # Assign indicator and truth values for ML prediction
-    indicator_vals = df_dl.query('alpha==@alpha')['any_bif']
-    truth_vals = df_dl.query('alpha==@alpha')['truth_value']
+    indicator_vals = df_dl.query('scale==@scale')['any_bif']
+    truth_vals = df_dl.query('scale==@scale')['truth_value']
     df_roc = roc_compute(truth_vals,indicator_vals)
     df_roc['ews'] = 'DL bif'
-    df_roc['alpha'] = alpha
+    df_roc['scale'] = scale
     list_roc.append(df_roc)
     
     # Assign indicator and truth values for variance
-    indicator_vals = df_ktau.query('alpha==@alpha')['variance']
-    truth_vals = df_ktau.query('alpha==@alpha')['truth_value']
+    indicator_vals = df_ktau.query('scale==@scale')['variance']
+    truth_vals = df_ktau.query('scale==@scale')['truth_value']
     df_roc = roc_compute(truth_vals,indicator_vals)
     df_roc['ews'] = 'Variance'
-    df_roc['alpha'] = alpha
+    df_roc['scale'] = scale
     list_roc.append(df_roc)
     
     # Assign indicator and truth values for lag-1 AC
-    indicator_vals = -df_ktau.query('alpha==@alpha')['ac1']
-    truth_vals = df_ktau.query('alpha==@alpha')['truth_value']
+    indicator_vals = -df_ktau.query('scale==@scale')['ac1']
+    truth_vals = df_ktau.query('scale==@scale')['truth_value']
     df_roc = roc_compute(truth_vals,indicator_vals)
     df_roc['ews'] = 'Lag-1 AC'
-    df_roc['alpha'] = alpha
+    df_roc['scale'] = scale
     list_roc.append(df_roc)
 
 # Concatenate roc dataframes
@@ -116,8 +114,6 @@ df_roc_full.to_csv(filepath,
                     index=False,)
 
 print('Exported ROC data to {}'.format(filepath))
-
-
 
 
 

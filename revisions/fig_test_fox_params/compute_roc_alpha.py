@@ -21,10 +21,10 @@ import funs_fox as funs
 #-------------
 # Import predictions
 #–------------
-df_ktau_forced = pd.read_csv('output/df_ktau_forced.csv')
-df_ktau_null = pd.read_csv('output/df_ktau_null.csv')
-df_dl_forced = pd.read_csv('output/df_dl_forced.csv')
-df_dl_null = pd.read_csv('output/df_dl_null.csv')
+df_ktau_forced = pd.read_csv('output/df_ktau_forced_alpha.csv')
+df_ktau_null = pd.read_csv('output/df_ktau_null_alpha.csv')
+df_dl_forced = pd.read_csv('output/df_dl_forced_alpha.csv')
+df_dl_null = pd.read_csv('output/df_dl_null_alpha.csv')
 
 #----------------
 # compute ROC curves
@@ -116,8 +116,6 @@ df_roc_full.to_csv(filepath,
                     index=False,)
 
 print('Exported ROC data to {}'.format(filepath))
-
-
 
 
 

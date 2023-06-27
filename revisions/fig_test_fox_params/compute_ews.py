@@ -21,12 +21,11 @@ import pandas as pd
 import funs_fox as funs
 
 import ewstools
-
 from tensorflow.keras.models import load_model
 
 np.random.seed(0)
 eval_pt = 0.8 #  percentage of way through pre-transition time series
-
+5
 # EWS parameters
 rw = 0.5 # rolling window
 span = 0.25 # Lowess span
@@ -49,7 +48,7 @@ df_bif_vals_scale = pd.read_csv('output/df_bifvalues_scaleup.csv')
 alpha_vals = df_bif_vals_alpha['alpha'].values
 scale_vals = df_bif_vals_scale['scale_up'].values
 
-model_sims = 100
+model_sims = 500
 id_vals = np.arange(int(model_sims/5)) # number of simulations at each combo of rof and sigma
 
 #---------------
@@ -146,8 +145,6 @@ df_dl_null.to_csv('output/df_dl_null_alpha.csv', index=False)
 
 
 
-
-
 #---------------
 # forced and null trajectories at different scale values
 #---------------
@@ -167,7 +164,7 @@ M0 = 1
 sigma = 0.1
 
 for idx, scale in enumerate(scale_vals):
-    bif_val = df_bif_vals_scale.query('alpha==@alpha')['bif'].values[0]
+    bif_val = df_bif_vals_scale.query('scale_up==@scale')['bif'].values[0]
         
     A = 88*scale
     B = 122*scale
@@ -228,7 +225,7 @@ for idx, scale in enumerate(scale_vals):
         df_dl_preds['id'] = id_val
         list_dl_null.append(df_dl_preds)
             
-    print('Complete for alpha={}'.format(alpha))
+    print('Complete for scale_up={}'.format(scale))
 
 df_ktau_forced = pd.DataFrame(list_ktau_forced)
 df_dl_forced = pd.concat(list_dl_forced)
@@ -241,8 +238,6 @@ df_ktau_forced.to_csv('output/df_ktau_forced_scale.csv', index=False)
 df_ktau_null.to_csv('output/df_ktau_null_scale.csv', index=False)
 df_dl_forced.to_csv('output/df_dl_forced_scale.csv', index=False)
 df_dl_null.to_csv('output/df_dl_null_scale.csv', index=False)
-
-
 
 
 

@@ -94,14 +94,12 @@ df_bif_vals.to_csv('output/df_bifvalues_alpha.csv', index=False)
 # fig.write_html('figures/fig_bif_alpha.html')
 
 
-
-
 #---------
 # Bifurcation diagrams with different scaling factor
 #----------
 
 # Model parameters
-scale_up_vals = [0.7, 0.8, 0.9, 1.1, 1.2]
+scale_up_vals = [0.8, 0.9, 1, 1.1, 1.2]
 tau = 180
 alpha=0.2
 
