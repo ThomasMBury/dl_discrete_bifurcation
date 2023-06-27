@@ -32,7 +32,7 @@ def simulate_model(A, B, C, D, tau, alpha, M0, D0, Tvals, sigma_1, sigma_2):
         Realisation of model
 
     '''
-  
+
     # # Model parameters
     # A = 88
     # B = 122
@@ -62,8 +62,8 @@ def simulate_model(A, B, C, D, tau, alpha, M0, D0, Tvals, sigma_1, sigma_2):
         
         # Subsequent state variables
         Mn_next = np.exp(-In/tau)*(1+ (Mn-1)*np.exp(-Dn/tau)) + sigma_1*zeta_1
-        # Dn_next = (1-alpha*Mn_next)*(A + B/(1+np.exp(-(In-C)/D))) + sigma_2*zeta_2
-        Dn_next = (1-alpha*Mn_next)*(A + B/(1+np.exp(-(In-C)/D)))
+        Dn_next = (1-alpha*Mn_next)*(A + B/(1+np.exp(-(In-C)/D))) + sigma_2*zeta_2
+        # Dn_next = (1-alpha*Mn_next)*(A + B/(1+np.exp(-(In-C)/D)))
         
         return Mn_next, Dn_next
 

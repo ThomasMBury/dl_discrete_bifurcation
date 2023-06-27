@@ -21,7 +21,6 @@ import funs_fox as funs
 
 import plotly.express as px
 
-
 np.random.seed(0)
 
 #---------
@@ -102,7 +101,7 @@ df_bif_vals.to_csv('output/df_bifvalues_alpha.csv', index=False)
 #----------
 
 # Model parameters
-scale_up_vals = [0.6, 0.8, 1, 1.2, 1.4]
+scale_up_vals = [0.7, 0.8, 0.9, 1.1, 1.2]
 tau = 180
 alpha=0.2
 
@@ -142,9 +141,9 @@ df_bif = pd.concat(list_df)
 df_bif.to_csv('output/df_bif_scaleup.csv', index=False)
 
 
-# fig = px.scatter(df_bif, x='T', y='D', color='scale_up')
-# fig.update_yaxes(range=[90,200])
-# fig.write_html('figures/fig_bif_scaleup.html')
+fig = px.scatter(df_bif, x='T', y='D', color='scale_up')
+fig.update_yaxes(range=[90,200])
+fig.write_html('figures/fig_bif_scaleup.html')
     
 
 # Get bifurcation values
