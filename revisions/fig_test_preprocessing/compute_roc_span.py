@@ -25,7 +25,6 @@ from tensorflow.keras.models import load_model
 
 import sklearn.metrics as metrics
 
-
 np.random.seed(0)
 
 span = 80
