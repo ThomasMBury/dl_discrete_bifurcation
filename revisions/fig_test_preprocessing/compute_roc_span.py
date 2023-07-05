@@ -4,6 +4,7 @@
 Created on Tue Oct  4 15:38:29 2022
 
 - Compute ROC curve data using predictions at evaluation points
+- Do for various values of Lowess span
 
 @author: tbury
 """
@@ -27,12 +28,13 @@ import sklearn.metrics as metrics
 
 np.random.seed(0)
 
-# Import df predictions
-df_ktau_forced = pd.read_csv('output/df_ktau_pd_fixed.csv')
-df_ktau_null = pd.read_csv('output/df_ktau_null_fixed.csv')
-df_dl_forced = pd.read_csv('output/df_dl_pd_fixed.csv')
-df_dl_null = pd.read_csv('output/df_dl_null_fixed.csv')
+span = 80
 
+# Import df predictions
+df_ktau_forced = pd.read_csv('output/df_ktau_pd_fixed_span_{}.csv'.format(span))
+df_ktau_null = pd.read_csv('output/df_ktau_null_fixed_span_{}.csv'.format(span))
+df_dl_forced = pd.read_csv('output/df_dl_pd_fixed_span_{}.csv'.format(span))
+df_dl_null = pd.read_csv('output/df_dl_null_fixed_span_{}.csv'.format(span))
 
 #----------------
 # compute ROC curves
@@ -63,7 +65,7 @@ df_counts['count'] = counts
 df_counts.fillna(value=0, inplace=True)
 
 # Export data on bifurcation prediction counts
-filepath = 'output/df_fav_bif.csv'
+filepath = 'output/df_fav_bif_span_{}.csv'.format(span)
 df_counts.to_csv(filepath)
 print('Exported bifurcation count data to {}'.format(filepath))
 
@@ -113,11 +115,12 @@ list_roc.append(df_roc)
 df_roc_full = pd.concat(list_roc, ignore_index=True)
 
 # Export ROC data
-filepath = 'output/df_roc.csv'
+filepath = 'output/df_roc_span_{}.csv'.format(span)
 df_roc_full.to_csv(filepath,
                    index=False,)
 
 auc_vals = df_roc_full.groupby('ews')['auc'].max()
+print(auc_vals)
 
 print('Exported ROC data to {}'.format(filepath))
 

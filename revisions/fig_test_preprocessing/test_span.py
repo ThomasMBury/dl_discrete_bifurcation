@@ -3,7 +3,7 @@
 """
 Created on Tue Oct  4 15:38:29 2022
 
-- Test different preprocessing methods on chick heart data and compute EWS
+- Compute EWS in chick heart data using different span with Lowess filter
 
 @author: tbury
 """
@@ -43,10 +43,9 @@ m2 = load_model(filepath_classifier+'classifier_2.pkl')
 print('TF models loaded')
 
 
-
 # EWS parameters
 rw = 0.5 # rolling window
-bw = 20 # Gaussian band width (# beats)
+span = 5 # Lowess span (# beats)
 
 # Load in trajectory data
 df = pd.read_csv('../../data/df_chick.csv')
@@ -73,8 +72,8 @@ for tsid in list_tsid:
     
     # Compute EWS
     ts = ewstools.TimeSeries(series, transition=transition)
-    # ts.detrend(method='Lowess', span=50)
-    ts.detrend(method='Gaussian', bandwidth=bw)
+    ts.detrend(method='Lowess', span=span)
+    # ts.detrend(method='Gaussian', bandwidth=bw)
     
     ts.compute_var(rolling_window=rw)
     ts.compute_auto(rolling_window=rw, lag=1)
@@ -124,8 +123,8 @@ for tsid in list_tsid:
     
     # Compute EWS
     ts = ewstools.TimeSeries(series)
-    # ts.detrend(method='Lowess', span=50)
-    ts.detrend(method='Gaussian', bandwidth=bw)
+    ts.detrend(method='Lowess', span=span)
+    # ts.detrend(method='Gaussian', bandwidth=bw)
     
     ts.compute_var(rolling_window=rw)
     ts.compute_auto(rolling_window=rw, lag=1)
@@ -156,12 +155,11 @@ for tsid in list_tsid:
 df_ktau_null = pd.DataFrame(list_ktau)
 df_dl_null = pd.concat(list_dl_preds)
 
-
 # Export data
-df_ktau_forced.to_csv('output/df_ktau_pd_fixed.csv', index=False)
-df_ktau_null.to_csv('output/df_ktau_null_fixed.csv', index=False)
-df_dl_forced.to_csv('output/df_dl_pd_fixed.csv', index=False)
-df_dl_null.to_csv('output/df_dl_null_fixed.csv', index=False)
+df_ktau_forced.to_csv('output/df_ktau_pd_fixed_span_{}.csv'.format(span), index=False)
+df_ktau_null.to_csv('output/df_ktau_null_fixed_span_{}.csv'.format(span), index=False)
+df_dl_forced.to_csv('output/df_dl_pd_fixed_span_{}.csv'.format(span), index=False)
+df_dl_null.to_csv('output/df_dl_null_fixed_span_{}.csv'.format(span), index=False)
 
 
 # Time taken for script to run
