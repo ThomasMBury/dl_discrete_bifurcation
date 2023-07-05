@@ -24,30 +24,25 @@ from tensorflow.keras.models import load_model
 
 import os
 
-# Parse command line arguments
-import argparse
-parser = argparse.ArgumentParser()
-parser.add_argument('--model_sims', type=int, help='Total number of model simulations', 
-                    default=25)
-parser.add_argument('--use_inter_classifier', type=bool, help='Use the intermediate classifier as opposed to the hard saved classifier', default=True)
-
-args = parser.parse_args()
-model_sims = args.model_sims
-use_inter_classifier = True if args.use_inter_classifier=='true' else False
+use_inter_classifier =  False
 
 np.random.seed(0)
 
 eval_pts = np.arange(0.64, 1.01, 0.04) #  percentage of way through pre-transition time series
 
+path_prefix = '../../code'
+
 # Load in DL models
 if use_inter_classifier:
-    filepath_classifier = '../dl_train/output/'
+    filepath_classifier = path_prefix+'/dl_train/output/'
 else:
-    filepath_classifier = '../../data/'
+    filepath_classifier = path_prefix+'/../data/'
 
 m1 = load_model(filepath_classifier+'classifier_1.pkl')
 m2 = load_model(filepath_classifier+'classifier_2.pkl')
 print('TF models loaded')
+
+
 
 # EWS parameters
 rw = 0.5 # rolling window
@@ -59,7 +54,7 @@ df_pd = df[df['type']=='pd']
 df_null = df[df['type']=='neutral']
 
 # Load in transition times
-df_transition = pd.read_csv('output/df_transitions.csv')
+df_transition = pd.read_csv('../../code/test_chick_heart/output/df_transitions.csv')
 df_transition.set_index('tsid', inplace=True)
 
 
@@ -110,7 +105,6 @@ for tsid in list_tsid:
 
 df_ktau_forced = pd.DataFrame(list_ktau)
 df_dl_forced = pd.concat(list_dl_preds)
-
 
 
 #-------------
