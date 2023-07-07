@@ -45,7 +45,7 @@ print('TF models loaded')
 
 # EWS parameters
 rw = 0.5 # rolling window
-bw = 5 # Gaussian band width (# beats)
+bw = 50 # Gaussian band width (# beats)
 
 # Load in trajectory data
 df = pd.read_csv('../../data/df_chick.csv')

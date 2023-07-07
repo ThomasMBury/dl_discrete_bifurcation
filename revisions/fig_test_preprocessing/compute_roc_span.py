@@ -27,7 +27,7 @@ import sklearn.metrics as metrics
 
 np.random.seed(0)
 
-span = 80
+span = 160
 
 # Import df predictions
 df_ktau_forced = pd.read_csv('output/df_ktau_pd_fixed_span_{}.csv'.format(span))

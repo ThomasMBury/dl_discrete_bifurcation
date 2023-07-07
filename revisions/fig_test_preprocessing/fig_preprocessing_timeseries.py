@@ -9,7 +9,6 @@ Make fig showing chick heart time series being detrended for different span and 
 """
 
 
-
 import numpy as np
 import pandas as pd
 import ewstools
@@ -79,7 +78,7 @@ df_plot = df_plot.melt(id_vars = ['title','Beat number'], value_vars=['state','s
 
 
 fig = px.line(df_plot, x='Beat number', y='value', color='variable', facet_col_wrap=2, facet_col='title')
-fig.update_xaxes(range=[0,250])
+fig.update_xaxes(range=[0,260])
 fig.update_yaxes(range=[0.4,1.6])
 fig.for_each_annotation(lambda a: a.update(text=a.text[a.text.find("=")+1:]))
 
@@ -141,7 +140,7 @@ y_pos = 1.06
 title_gauss = dict(
         x=0.5,
         y=y_pos,
-        text='Gaussian smoothing',
+        text='<b>Gaussian smoothing</b>',
         xref='x domain',
         yref='paper',
         showarrow=False,
@@ -153,7 +152,7 @@ title_gauss = dict(
 title_lowess = dict(
         x=0.5,
         y=y_pos,
-        text='Lowess smoothing',
+        text='<b>Lowess smoothing</b>',
         xref='x2 domain',
         yref='paper',
         showarrow=False,
@@ -166,14 +165,12 @@ fig.add_annotation(title_gauss)
 fig.add_annotation(title_lowess)
 
 
-
-# # Specific x axes properties
-# fig.update_xaxes(title='Beat number',
-#                   ticks="outside",
-#                   tickwidth=tickwidth,
-#                   ticklen=ticklen,
-#                   row=5,
-#                   )
+# Specific x axes properties
+fig.update_xaxes(ticks="outside",
+                  tickwidth=tickwidth,
+                  ticklen=ticklen,
+                  # row=5,
+                  )
 
 # fig.write_html('temp.html')
 

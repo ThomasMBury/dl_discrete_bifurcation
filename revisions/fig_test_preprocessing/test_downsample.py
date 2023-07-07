@@ -3,7 +3,7 @@
 """
 Created on Tue Oct  4 15:38:29 2022
 
-- Compute EWS in chick heart data using different span with Lowess filter
+- Compute EWS in chick heart data using different downsampling
 
 @author: tbury
 """
@@ -23,6 +23,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 
 import os
+
 use_inter_classifier =  False
 
 np.random.seed(0)
@@ -41,10 +42,10 @@ m1 = load_model(filepath_classifier+'classifier_1.pkl')
 m2 = load_model(filepath_classifier+'classifier_2.pkl')
 print('TF models loaded')
 
-
 # EWS parameters
 rw = 0.5 # rolling window
-span = 160 # Lowess span (# beats)
+bw = 20 # Gaussian band width (# beats)
+ds = 3 # downsampling factor
 
 # Load in trajectory data
 df = pd.read_csv('../../data/df_chick.csv')
@@ -67,16 +68,18 @@ for tsid in list_tsid:
     
     df_spec = df_pd[df_pd['tsid']==tsid].set_index('Beat number')
     transition = df_transition.loc[tsid]['transition']
-    series = df_spec['IBI (s)'] 
+    series = df_spec['IBI (s)']
+    
+    # Downsample series
+    series_ds = series.iloc[::ds]
     
     # Compute EWS
-    ts = ewstools.TimeSeries(series, transition=transition)
-    ts.detrend(method='Lowess', span=min(span, transition)) # If span is bigger than available data take length of data)
-    # ts.detrend(method='Gaussian', bandwidth=bw)
+    ts = ewstools.TimeSeries(series_ds, transition=transition)
+    # ts.detrend(method='Lowess', span=50)
+    ts.detrend(method='Gaussian', bandwidth=int(bw/ds))
     
     ts.compute_var(rolling_window=rw)
     ts.compute_auto(rolling_window=rw, lag=1)
-
     
     for eval_pt in eval_pts:
         
@@ -121,10 +124,13 @@ for tsid in list_tsid:
     df_spec = df_null[df_null['tsid']==tsid].set_index('Beat number')
     series = df_spec['IBI (s)']    
     
+    # Downsample series
+    series_ds = series.iloc[::ds]    
+    
     # Compute EWS
-    ts = ewstools.TimeSeries(series)
-    ts.detrend(method='Lowess', span=min(span, len(series)))
-    # ts.detrend(method='Gaussian', bandwidth=bw)
+    ts = ewstools.TimeSeries(series_ds)
+    # ts.detrend(method='Lowess', span=50)
+    ts.detrend(method='Gaussian', bandwidth=bw)
     
     ts.compute_var(rolling_window=rw)
     ts.compute_auto(rolling_window=rw, lag=1)
@@ -156,10 +162,10 @@ df_ktau_null = pd.DataFrame(list_ktau)
 df_dl_null = pd.concat(list_dl_preds)
 
 # Export data
-df_ktau_forced.to_csv('output/df_ktau_pd_fixed_span_{}.csv'.format(span), index=False)
-df_ktau_null.to_csv('output/df_ktau_null_fixed_span_{}.csv'.format(span), index=False)
-df_dl_forced.to_csv('output/df_dl_pd_fixed_span_{}.csv'.format(span), index=False)
-df_dl_null.to_csv('output/df_dl_null_fixed_span_{}.csv'.format(span), index=False)
+df_ktau_forced.to_csv('output/df_ktau_pd_fixed_ds_{}.csv'.format(ds), index=False)
+df_ktau_null.to_csv('output/df_ktau_null_fixed_ds_{}.csv'.format(ds), index=False)
+df_dl_forced.to_csv('output/df_dl_pd_fixed_ds_{}.csv'.format(ds), index=False)
+df_dl_null.to_csv('output/df_dl_null_fixed_ds_{}.csv'.format(ds), index=False)
 
 
 # Time taken for script to run

@@ -3,7 +3,7 @@
 """
 Created on Tue Oct  4 15:38:29 2022
 
-- Compute EWS in chick heart data using different span with Lowess filter
+- Compute EWS in chick heart data using different rolling window
 
 @author: tbury
 """
@@ -23,6 +23,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 
 import os
+
 use_inter_classifier =  False
 
 np.random.seed(0)
@@ -31,20 +32,9 @@ eval_pts = np.arange(0.64, 1.01, 0.04) #  percentage of way through pre-transiti
 
 path_prefix = '../../code'
 
-# Load in DL models
-if use_inter_classifier:
-    filepath_classifier = path_prefix+'/dl_train/output/'
-else:
-    filepath_classifier = path_prefix+'/../data/'
-
-m1 = load_model(filepath_classifier+'classifier_1.pkl')
-m2 = load_model(filepath_classifier+'classifier_2.pkl')
-print('TF models loaded')
-
-
 # EWS parameters
-rw = 0.5 # rolling window
-span = 160 # Lowess span (# beats)
+rw = 0.05 # roling window
+bw = 20 # Gaussian band width (# beats)
 
 # Load in trajectory data
 df = pd.read_csv('../../data/df_chick.csv')
@@ -67,16 +57,15 @@ for tsid in list_tsid:
     
     df_spec = df_pd[df_pd['tsid']==tsid].set_index('Beat number')
     transition = df_transition.loc[tsid]['transition']
-    series = df_spec['IBI (s)'] 
+    series = df_spec['IBI (s)']
     
     # Compute EWS
     ts = ewstools.TimeSeries(series, transition=transition)
-    ts.detrend(method='Lowess', span=min(span, transition)) # If span is bigger than available data take length of data)
-    # ts.detrend(method='Gaussian', bandwidth=bw)
+    # ts.detrend(method='Lowess', span=50)
+    ts.detrend(method='Gaussian', bandwidth=bw)
     
     ts.compute_var(rolling_window=rw)
     ts.compute_auto(rolling_window=rw, lag=1)
-
     
     for eval_pt in eval_pts:
         
@@ -88,23 +77,11 @@ for tsid in list_tsid:
         dic_ktau['eval_time'] = eval_time
         dic_ktau['tsid'] = tsid
         list_ktau.append(dic_ktau)
-    
-        # Get DL predictions at eval pts
-        ts.apply_classifier(m1, tmin=0, tmax=eval_time, name='m1', verbose=0)
-        ts.apply_classifier(m2, tmin=0, tmax=eval_time, name='m2', verbose=0)
-         
-        df_dl_preds = ts.dl_preds.groupby('time').mean(numeric_only=True) # use mean DL pred
-        df_dl_preds['eval_time']=eval_time
-        df_dl_preds['tsid'] = tsid
-        list_dl_preds.append(df_dl_preds)
-        ts.clear_dl_preds()
 
     print('Complete for pd tsid={}'.format(tsid))
 
 
 df_ktau_forced = pd.DataFrame(list_ktau)
-df_dl_forced = pd.concat(list_dl_preds)
-
 
 #-------------
 # null trajectories
@@ -123,8 +100,8 @@ for tsid in list_tsid:
     
     # Compute EWS
     ts = ewstools.TimeSeries(series)
-    ts.detrend(method='Lowess', span=min(span, len(series)))
-    # ts.detrend(method='Gaussian', bandwidth=bw)
+    # ts.detrend(method='Lowess', span=50)
+    ts.detrend(method='Gaussian', bandwidth=bw)
     
     ts.compute_var(rolling_window=rw)
     ts.compute_auto(rolling_window=rw, lag=1)
@@ -139,28 +116,14 @@ for tsid in list_tsid:
         dic_ktau['eval_time'] = eval_time
         dic_ktau['tsid'] = tsid
         list_ktau.append(dic_ktau)
-    
-        # Get DL predictions at eval pts
-        ts.apply_classifier(m1, tmin=0, tmax=eval_time, name='m1', verbose=0)
-        ts.apply_classifier(m2, tmin=0, tmax=eval_time, name='m2', verbose=0)
-            
-        df_dl_preds = ts.dl_preds.groupby('time').mean(numeric_only=True) # use mean DL pred
-        df_dl_preds['eval_time']=eval_time
-        df_dl_preds['tsid']=tsid
-        list_dl_preds.append(df_dl_preds)
-        ts.clear_dl_preds()
-    
+
     print('Complete for null tsid={}'.format(tsid))
         
 df_ktau_null = pd.DataFrame(list_ktau)
-df_dl_null = pd.concat(list_dl_preds)
 
 # Export data
-df_ktau_forced.to_csv('output/df_ktau_pd_fixed_span_{}.csv'.format(span), index=False)
-df_ktau_null.to_csv('output/df_ktau_null_fixed_span_{}.csv'.format(span), index=False)
-df_dl_forced.to_csv('output/df_dl_pd_fixed_span_{}.csv'.format(span), index=False)
-df_dl_null.to_csv('output/df_dl_null_fixed_span_{}.csv'.format(span), index=False)
-
+df_ktau_forced.to_csv('output/df_ktau_pd_fixed_rw_{}.csv'.format(rw), index=False)
+df_ktau_null.to_csv('output/df_ktau_null_fixed_rw_{}.csv'.format(rw), index=False)
 
 # Time taken for script to run
 end_time = time.time()
