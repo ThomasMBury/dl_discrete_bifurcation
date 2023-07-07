@@ -64,8 +64,6 @@ font_size_auc_text = 10
 x_auc = 0.98
 y_auc = 0.6
 y_auc_sep = 0.065
-x_N = 0.2
-y_N = 0.2
 
 linewidth = 0.7
 linewidth_axes = 0.5
@@ -207,20 +205,7 @@ def make_roc_figure(df_roc, letter_label, title=''):
             )
     
     
-    annotation_N = dict(
-            # x=sum(xrange)/2,
-            x=x_N,
-            y=y_N,
-            text='N={:d}'.format(len(df_roc)),
-            xref='paper',
-            yref='paper',
-            showarrow=False,
-            font = dict(
-                    color = 'black',
-                    size = font_size_auc_text,
-                    )
-            )
-    
+
     title_annotation = dict(
             # x=sum(xrange)/2,
             x=0.5,
@@ -239,7 +224,6 @@ def make_roc_figure(df_roc, letter_label, title=''):
     list_annotations.append(annotation_auc_dl)
     list_annotations.append(annotation_auc_var)
     list_annotations.append(annotation_auc_ac)
-    list_annotations.append(annotation_N)
     # list_annotations.append(title_annotation)
 
     fig['layout'].update(annotations=list_annotations)
@@ -402,18 +386,33 @@ df_roc = pd.read_csv('output/df_roc_pert_{}.csv'.format(pert))
 df_dl_forced = pd.read_csv('output/df_dl_pd_fixed_pert_{}.csv'.format(pert))
 
 fig_roc = make_roc_figure(df_roc, '')
-fig_roc.write_image('temp_roc.png', scale=scale)
 
-make_inset_boxplot(df_dl_forced, 'PD', 'temp_inset.png')
+fig_roc.add_annotation(
+    dict(
+        # x=sum(xrange)/2,
+        x=0.15,
+        y=0.02,
+        text='N={:d}'.format(2*len(df_dl_forced)),
+        xref='paper',
+        yref='paper',
+        showarrow=False,
+        font = dict(
+                color = 'black',
+                size = font_size_auc_text,
+                )
+        )
+    )
+    
+fig_roc.write_image('figures/temp_roc.png', scale=scale)
+
+make_inset_boxplot(df_dl_forced, 'PD', 'figures/temp_inset.png')
 
 # Combine figs and export
-path_roc = 'temp_roc.png'
-path_inset = 'temp_inset.png'
-path_out = 'fig_roc.png'
+path_roc = 'figures/temp_roc.png'
+path_inset = 'figures/temp_inset.png'
+path_out = 'figures/fig_roc_sample_error.png'
 
 combine_roc_inset(path_roc, path_inset, path_out)
-
-
 
 
 

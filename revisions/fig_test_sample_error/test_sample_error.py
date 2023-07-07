@@ -173,7 +173,7 @@ for tsid in list_tsid:
         
     print('Complete for null tsid={}'.format(tsid))
         
-
+    
 df_ktau_null = pd.DataFrame(list_ktau)
 df_dl_null = pd.concat(list_dl_preds)
 
