@@ -64,6 +64,8 @@ font_size_auc_text = 10
 # AUC annotations
 x_auc = 0.98
 y_auc = 0.6
+x_N = 0.18
+y_N = 0.05
 y_auc_sep = 0.065
 
 linewidth = 0.7
@@ -79,7 +81,7 @@ scale = 8 # default dpi=72 - nature=300-600
 
 
 
-def make_roc_figure(df_roc, letter_label, title=''):
+def make_roc_figure(df_roc, letter_label, title='', text_N=''):
     ''' Make ROC figure (no inset)'''
         
     fig = go.Figure()
@@ -206,7 +208,22 @@ def make_roc_figure(df_roc, letter_label, title=''):
                     color = 'black',
                     size = font_size_auc_text,
                     )
-            )    
+            )  
+    
+    
+    annotation_N = dict(
+            # x=sum(xrange)/2,
+            x=x_N,
+            y=y_N,
+            text=text_N,
+            xref='paper',
+            yref='paper',
+            showarrow=False,
+            font = dict(
+                    color = 'black',
+                    size = font_size_auc_text,
+                    )
+            )      
     title_annotation = dict(
             # x=sum(xrange)/2,
             x=0.5,
@@ -225,6 +242,7 @@ def make_roc_figure(df_roc, letter_label, title=''):
     list_annotations.append(annotation_auc_dl)
     list_annotations.append(annotation_auc_var)
     list_annotations.append(annotation_auc_ac)
+    list_annotations.append(annotation_N)
     # list_annotations.append(title_annotation)
 
     fig['layout'].update(annotations=list_annotations)
@@ -384,7 +402,7 @@ def combine_roc_inset(path_roc, path_inset, path_out):
 df_roc = pd.read_csv('../test_fox/output/df_roc.csv')
 df_dl_forced = pd.read_csv('../test_fox/output/df_dl_forced.csv')
 
-fig_roc = make_roc_figure(df_roc, 'a')
+fig_roc = make_roc_figure(df_roc, 'a', text_N='N={}'.format(len(df_dl_forced)*2))
 fig_roc.write_image('temp_roc.png', scale=scale)
 
 make_inset_boxplot(df_dl_forced, 'PD', 'temp_inset.png')
@@ -404,7 +422,7 @@ combine_roc_inset(path_roc, path_inset, path_out)
 df_roc = pd.read_csv('../test_westerhoff/output/df_roc.csv')
 df_dl_forced = pd.read_csv('../test_westerhoff/output/df_dl_forced.csv')
 
-fig_roc = make_roc_figure(df_roc, 'b')
+fig_roc = make_roc_figure(df_roc, 'b', text_N='N={}'.format(len(df_dl_forced)*2))
 fig_roc.write_image('temp_roc.png', scale=scale)
 
 make_inset_boxplot(df_dl_forced, 'NS', 'temp_inset.png')
@@ -424,7 +442,7 @@ combine_roc_inset(path_roc, path_inset, path_out)
 df_roc = pd.read_csv('../test_ricker/output/df_roc.csv')
 df_dl_forced = pd.read_csv('../test_ricker/output/df_dl_forced.csv')
 
-fig_roc = make_roc_figure(df_roc, 'c')
+fig_roc = make_roc_figure(df_roc, 'c', text_N='N={}'.format(len(df_dl_forced)*2))
 
 # Add text to indicate which ROC curve belongs to each EWS
 fig_roc.add_annotation(x=0.15, y=0.92,
@@ -473,7 +491,7 @@ df_roc = pd.read_csv('../test_kot/output/df_roc.csv')
 df_dl_forced = pd.read_csv('../test_kot/output/df_dl_forced.csv')
 
 
-fig_roc = make_roc_figure(df_roc, 'd')
+fig_roc = make_roc_figure(df_roc, 'd', text_N='N={}'.format(len(df_dl_forced)*2))
 fig_roc.write_image('temp_roc.png', scale=scale)
 
 make_inset_boxplot(df_dl_forced, 'TC', 'temp_inset.png')
@@ -495,7 +513,7 @@ df_roc = pd.read_csv('../test_lorenz/output/df_roc.csv')
 df_dl_forced = pd.read_csv('../test_lorenz/output/df_dl_forced.csv')
 
 
-fig_roc = make_roc_figure(df_roc, 'e')
+fig_roc = make_roc_figure(df_roc, 'e', text_N='N={}'.format(len(df_dl_forced)*2))
 fig_roc.write_image('temp_roc.png', scale=scale)
 
 make_inset_boxplot(df_dl_forced, 'PF', 'temp_inset.png')
@@ -515,7 +533,7 @@ combine_roc_inset(path_roc, path_inset, path_out)
 df_roc = pd.read_csv('../test_chick_heart/output/df_roc.csv')
 df_dl_forced = pd.read_csv('../test_chick_heart/output/df_dl_pd_fixed.csv')
 
-fig_roc = make_roc_figure(df_roc, 'f')
+fig_roc = make_roc_figure(df_roc, 'f', text_N='N={}'.format(len(df_dl_forced)*2))
 fig_roc.write_image('temp_roc.png', scale=scale)
 
 make_inset_boxplot(df_dl_forced, 'PD', 'temp_inset.png')

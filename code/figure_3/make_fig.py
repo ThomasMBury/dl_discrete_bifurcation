@@ -389,7 +389,7 @@ fig.update_xaxes(title='Beat number',
 #                  )
 
 # Specific y axes properties
-fig.update_yaxes(title='State',
+fig.update_yaxes(title='IBI (s)',
                   row=1,col=1)
 
 fig.update_yaxes(title='Lag-1 AC',
