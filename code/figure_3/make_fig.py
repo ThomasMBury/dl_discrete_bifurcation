@@ -344,9 +344,6 @@ fig['layout'].update(annotations=list_annotations)
 
 
 
-
-
-
 #-------------
 # Axes properties
 #-----------

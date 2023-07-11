@@ -64,8 +64,8 @@ fig.update_xaxes(automargin=False)
 fig.update_yaxes(automargin=False)
 
 
-fig.update_layout(width=300, height=500,
-                  margin=dict(l=60, r=10, b=75, t=30),
+fig.update_layout(width=300, height=400,
+                  margin=dict(l=60, r=10, b=40, t=10),
                   font=dict(family='Times New Roman'))
 
 fig.write_html('temp.html')

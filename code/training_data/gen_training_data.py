@@ -165,7 +165,9 @@ while j <= nsims:
     # Eigenvalues lambda = (1+mu)*exp(+/-i*theta)
     # Lower bound csp to |lambda|=0.8
     # Upper bound csp to |lambda|=0.8 (opposite direction)
-    bl = np.random.uniform(-1.8,-0.2)
+    # bl = np.random.uniform(-1.8,-0.2)
+    bl = np.random.uniform(-1.9,-0.1)
+
     bh = 0
     supercrit = bool(np.random.choice([0,1]))
     

@@ -55,8 +55,10 @@ def simulate_model(y1, y0, avals, sigma):
     
     
     # Model parameters (taken from Westerhoff paper)
-    b = 0.45
-    c = 0.1
+    # b = 0.45
+    # c = 0.1
+    b = 0.05
+    c = (1-b)/5.5
     d = 0
     
     # Simulation parameters
