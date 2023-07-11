@@ -212,7 +212,8 @@ while j <= nsims:
     dev_thresh = sigma * thresh_std
     
     # Draw starting value of bifurcaiton parameter at random
-    bl = np.random.uniform(-1.8,-0.2)
+    # bl = np.random.uniform(-1.8,-0.2)
+    bl = np.random.uniform(-1.9,-0.1)
     bh = bl
     supercrit = bool(np.random.choice([0,1]))
 
