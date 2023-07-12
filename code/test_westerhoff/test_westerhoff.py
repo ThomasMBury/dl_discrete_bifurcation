@@ -45,7 +45,7 @@ np.random.seed(0)
 eval_pt = 0.8 #  percentage of way through pre-transition time series
 
 sigma_vals = [0.00625, 0.0125, 0.025, 0.05, 0.1]
-rof_vals = [10/500, 10/400, 10/300, 10/200, 10/100]
+rof_vals = [14/500, 14/400, 14/300, 14/200, 14/100]
 id_vals = np.arange(int(model_sims/25)) # number of simulations at each combo of rof and sigma
 
 # EWS parameters

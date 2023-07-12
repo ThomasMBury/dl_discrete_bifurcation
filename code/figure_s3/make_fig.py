@@ -16,7 +16,6 @@ import pandas as pd
 
 import plotly.express as px
 
-
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
@@ -58,7 +57,7 @@ for sigma in sigma_vals:
 ## Westerhoff model
 np.random.seed(0)
 sigma_vals = [0.00625, 0.025,  0.1]
-rof_vals = [5/500,  5/300,  5/100]
+rof_vals = [14/500,  14/300,  14/100]
 
 for sigma in sigma_vals:
     for rof in rof_vals:
@@ -184,7 +183,7 @@ fig.update_xaxes(title='Time', row=1)
 
 
 yrange5 = [100,199]
-yrange4 = [18, 49]
+yrange4 = [18, 60]
 yrange3 = [-1,11]
 yrange2 = [0.6,1.1]
 yrange1 = [-0.55, 0.55]
