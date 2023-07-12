@@ -35,7 +35,6 @@ def iterate_model(yn1, yn, a, b, c, d, sigma):
     return yn2, yn1
 
 
-
 def simulate_model(y1, y0, avals, sigma):
     '''
     Simulate a single realisaiton of model
@@ -53,13 +52,10 @@ def simulate_model(y1, y0, avals, sigma):
 
     '''
     
-    
-    # Model parameters (taken from Westerhoff paper)
-    # b = 0.45
-    # c = 0.1
-    b = 0.05
-    c = (1-b)/5.5
-    d = 0
+    # Model parameters
+    b = 0.45
+    c = 0.1
+    d = 0.2
     
     # Simulation parameters
     tburn = 100
@@ -92,7 +88,7 @@ def simulate_model(y1, y0, avals, sigma):
 
 
 
-def sim_rate_forcing(sigma, rate_forcing= 10/500):
+def sim_rate_forcing(sigma, rate_forcing= 14/500):
     '''
     Run a simulation with the bifurcation parameter varying at some defined rate
     
@@ -106,9 +102,8 @@ def sim_rate_forcing(sigma, rate_forcing= 10/500):
     y1 = 20
 
     astart = 10
-    # astart = 15
-    acrit = 20
-    afinal = 22.5
+    acrit = 24
+    afinal = 27
     avals = np.arange(astart, afinal, rate_forcing)
     
     # Take transition time as time at bifurcation

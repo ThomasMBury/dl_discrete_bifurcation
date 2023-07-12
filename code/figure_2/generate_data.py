@@ -20,6 +20,7 @@ parser.add_argument('--use_inter_classifier', type=bool, help='Use the intermedi
 args = parser.parse_args()
 use_inter_classifier = True if args.use_inter_classifier=='true' else False
 
+
 import numpy as np
 import pandas as pd
 
@@ -83,7 +84,7 @@ print('EWS computed for Fox model')
 
 
 ## Westerhoff NS model
-np.random.seed(3)
+np.random.seed(2)
 sigma = 0.1
 s_forced, transition, s_null = funs_westerhoff.sim_rate_forcing(sigma)
 

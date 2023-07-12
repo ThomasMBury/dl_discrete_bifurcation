@@ -20,8 +20,7 @@ start_time = time.time()
 # args = parser.parse_args()
 # use_inter_classifier = True if args.use_inter_classifier=='true' else False
 
-
-use_inter_classifier=False
+use_inter_classifier=True
 
 import numpy as np
 import pandas as pd
@@ -87,9 +86,8 @@ ts_pd.dl_preds_mean = ts_pd.dl_preds.groupby('time').mean(numeric_only=True)
 print('EWS computed for Fox model')
         
 
-
 ## Westerhoff NS model
-np.random.seed(3)
+np.random.seed(2)
 sigma = 0.1
 s_forced, transition, s_null = funs_westerhoff.sim_rate_forcing(sigma)
 
@@ -105,7 +103,6 @@ ts_ns.apply_classifier_inc(m2, inc=inc, name='m2', verbose=0)
 ts_ns.dl_preds_mean = ts_ns.dl_preds.groupby('time').mean(numeric_only=True)
 print('EWS computed for Westerhoff model')
 
-        
 
 
 ## Ricker fold model
@@ -199,9 +196,6 @@ df_plot.to_csv('output/df_plot.csv')
 end_time = time.time()
 time_taken = end_time - start_time
 print('Script took {:.2f}s'.format(time_taken))
-
-
-
 
 
 
