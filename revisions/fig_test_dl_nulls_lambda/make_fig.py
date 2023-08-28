@@ -58,14 +58,14 @@ fig.update_coloraxes(cmin=0, cmax=1, colorbar_title_text='DL weight<br>for null'
 
 # Axes properties
 fig.update_xaxes(title='Length')
-fig.update_yaxes(title='Lag-1 autocorrelation (rho)')
+fig.update_yaxes(title='Lambda')
 
 fig.update_xaxes(automargin=False)
 fig.update_yaxes(automargin=False)
 
 
 fig.update_layout(width=300, height=400,
-                  margin=dict(l=60, r=10, b=40, t=10),
+                  margin=dict(l=40, r=10, b=40, t=10),
                   font=dict(family='Times New Roman'))
 
 fig.write_html('temp.html')
