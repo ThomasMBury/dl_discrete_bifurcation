@@ -5,3 +5,4 @@ data/df_train.parquet
 /submission2_nature_mi
 /submission_natcomms
 code/stdout
+*.html

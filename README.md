@@ -142,7 +142,7 @@ A simple example of applying the deep learning classifier to data is given in ``
    ```python
    ts.make_plotly(ens_avg=True)
    ```
-  <img src="/code/test_chick_heart/output/example.png"  width="500">
+  <img src="/code/test_chick_heart/figures/example.png"  width="500">
   
 The different classes of the classifier predictions correspond to
   - 0 : null trajectory (no approaching bifurcation)
