@@ -3,7 +3,7 @@
 """
 Created on Sun Feb  7 19:03:01 2021
 
-Make fig of ROC curves with inset showing histogram of highest DL probability
+Make fig of ROC curve with inset showing histogram of highest DL probability
 
 @author: Thoams M. Bury
 
@@ -63,12 +63,9 @@ font_family = "Times New Roman"
 font_size_letter_label = 14
 font_size_auc_text = 10
 
-
 # AUC annotations
 x_auc = 0.98
 y_auc = 0.6
-x_N = 0.18
-y_N = 0.05
 y_auc_sep = 0.065
 
 linewidth = 0.7
@@ -78,12 +75,11 @@ linewidth_axes_inset = 0.5
 
 axes_standoff = 0
 
-
 # Scale up factor on image export
 scale = 8  # default dpi=72 - nature=300-600
 
 
-def make_roc_figure(df_roc, letter_label, title="", text_N=""):
+def make_roc_figure(df_roc, letter_label, title=""):
     """Make ROC figure (no inset)"""
 
     fig = go.Figure()
@@ -212,19 +208,6 @@ def make_roc_figure(df_roc, letter_label, title="", text_N=""):
         ),
     )
 
-    annotation_N = dict(
-        # x=sum(xrange)/2,
-        x=x_N,
-        y=y_N,
-        text=text_N,
-        xref="paper",
-        yref="paper",
-        showarrow=False,
-        font=dict(
-            color="black",
-            size=font_size_auc_text,
-        ),
-    )
     title_annotation = dict(
         # x=sum(xrange)/2,
         x=0.5,
@@ -240,7 +223,6 @@ def make_roc_figure(df_roc, letter_label, title="", text_N=""):
     list_annotations.append(annotation_auc_dl)
     list_annotations.append(annotation_auc_var)
     list_annotations.append(annotation_auc_ac)
-    list_annotations.append(annotation_N)
     # list_annotations.append(title_annotation)
 
     fig["layout"].update(annotations=list_annotations)
@@ -386,206 +368,39 @@ def combine_roc_inset(path_roc, path_inset, path_out):
 
 
 # -------
-# Fox period-doubling
+# Import data
 # --------
 
-df_roc = pd.read_csv("../test_fox/output/df_roc.csv")
-df_dl_forced = pd.read_csv("../test_fox/output/df_dl_forced.csv")
+pert = 0.0125
 
-fig_roc = make_roc_figure(df_roc, "a", text_N="N={}".format(len(df_dl_forced) * 2))
-fig_roc.write_image("temp_roc.png", scale=scale)
+df_roc = pd.read_csv("output/df_roc_pert_{}.csv".format(pert))
+df_dl_forced = pd.read_csv("output/df_dl_pd_fixed_pert_{}.csv".format(pert))
 
-make_inset_boxplot(df_dl_forced, "PD", "temp_inset.png")
+fig_roc = make_roc_figure(df_roc, "")
 
-# Combine figs and export
-path_roc = "temp_roc.png"
-path_inset = "temp_inset.png"
-path_out = "output/roc_fox_pd.png"
-
-combine_roc_inset(path_roc, path_inset, path_out)
-
-
-# -------
-# Westerhoff NS
-# --------
-
-df_roc = pd.read_csv("../test_westerhoff/output/df_roc.csv")
-df_dl_forced = pd.read_csv("../test_westerhoff/output/df_dl_forced.csv")
-
-fig_roc = make_roc_figure(df_roc, "b", text_N="N={}".format(len(df_dl_forced) * 2))
-fig_roc.write_image("temp_roc.png", scale=scale)
-
-make_inset_boxplot(df_dl_forced, "NS", "temp_inset.png")
-
-# Combine figs and export
-path_roc = "temp_roc.png"
-path_inset = "temp_inset.png"
-path_out = "output/roc_westerhoff_ns.png"
-
-combine_roc_inset(path_roc, path_inset, path_out)
-
-
-# -------
-# Ricker fold
-# --------
-df_roc = pd.read_csv("../test_ricker/output/df_roc.csv")
-df_dl_forced = pd.read_csv("../test_ricker/output/df_dl_forced.csv")
-
-fig_roc = make_roc_figure(df_roc, "c", text_N="N={}".format(len(df_dl_forced) * 2))
-
-# Add text to indicate which ROC curve belongs to each EWS
 fig_roc.add_annotation(
-    x=0.15,
-    y=0.92,
-    text="DL",
-    showarrow=False,
-    font=dict(family="Times New Roman", size=12, color=cols[0]),
-)
-fig_roc.add_annotation(
-    x=0.37,
-    y=0.7,
-    text="Var",
-    showarrow=False,
-    font=dict(family="Times New Roman", size=12, color=cols[1]),
-)
-fig_roc.add_annotation(
-    x=0.25,
-    y=0.8,
-    text="AC",
-    showarrow=False,
-    font=dict(family="Times New Roman", size=12, color=cols[2]),
+    dict(
+        # x=sum(xrange)/2,
+        x=0.15,
+        y=0.02,
+        text="N={:d}".format(2 * len(df_dl_forced)),
+        xref="paper",
+        yref="paper",
+        showarrow=False,
+        font=dict(
+            color="black",
+            size=font_size_auc_text,
+        ),
+    )
 )
 
-fig_roc.write_image("temp_roc.png", scale=scale)
+fig_roc.write_image("figures/temp_roc.png", scale=scale)
 
-make_inset_boxplot(df_dl_forced, "Fold", "temp_inset.png")
-
-
-# Combine figs and export
-path_roc = "temp_roc.png"
-path_inset = "temp_inset.png"
-path_out = "output/roc_ricker_fold.png"
-
-combine_roc_inset(path_roc, path_inset, path_out)
-
-
-# -------
-# Kot transcritical
-# --------
-df_roc = pd.read_csv("../test_kot/output/df_roc.csv")
-df_dl_forced = pd.read_csv("../test_kot/output/df_dl_forced.csv")
-
-
-fig_roc = make_roc_figure(df_roc, "d", text_N="N={}".format(len(df_dl_forced) * 2))
-fig_roc.write_image("temp_roc.png", scale=scale)
-
-make_inset_boxplot(df_dl_forced, "TC", "temp_inset.png")
-
+make_inset_boxplot(df_dl_forced, "PD", "figures/temp_inset.png")
 
 # Combine figs and export
-path_roc = "temp_roc.png"
-path_inset = "temp_inset.png"
-path_out = "output/roc_kot_transcritical.png"
+path_roc = "figures/temp_roc.png"
+path_inset = "figures/temp_inset.png"
+path_out = "../../results/figure_s15.png"
 
 combine_roc_inset(path_roc, path_inset, path_out)
-
-
-# -------
-# Lorenz pitchfork
-# --------
-nsims = 2500
-df_roc = pd.read_csv("../test_lorenz/output/df_roc.csv")
-df_dl_forced = pd.read_csv("../test_lorenz/output/df_dl_forced.csv")
-
-
-fig_roc = make_roc_figure(df_roc, "e", text_N="N={}".format(len(df_dl_forced) * 2))
-fig_roc.write_image("temp_roc.png", scale=scale)
-
-make_inset_boxplot(df_dl_forced, "PF", "temp_inset.png")
-
-
-# Combine figs and export
-path_roc = "temp_roc.png"
-path_inset = "temp_inset.png"
-path_out = "output/roc_lorenz_pitchfork.png"
-
-combine_roc_inset(path_roc, path_inset, path_out)
-
-
-# -------
-# Heart data
-# --------
-df_roc = pd.read_csv("../test_chick_heart/output/df_roc.csv")
-df_dl_forced = pd.read_csv("../test_chick_heart/output/df_dl_pd_fixed.csv")
-
-fig_roc = make_roc_figure(df_roc, "f", text_N="N={}".format(len(df_dl_forced) * 2))
-fig_roc.write_image("temp_roc.png", scale=scale)
-
-make_inset_boxplot(df_dl_forced, "PD", "temp_inset.png")
-
-
-# Combine figs and export
-path_roc = "temp_roc.png"
-path_inset = "temp_inset.png"
-path_out = "output/roc_heart.png"
-
-combine_roc_inset(path_roc, path_inset, path_out)
-
-# ------------
-# Combine ROC plots
-# ------------
-
-# -----------------
-# Fig 4 of manuscript: 8-panel figure for all models and empirical data
-# -----------------
-
-# # Early or late predictions
-# timing = 'late'
-
-list_filenames = [
-    "roc_fox_pd",
-    "roc_westerhoff_ns",
-    "roc_ricker_fold",
-    "roc_kot_transcritical",
-    "roc_lorenz_pitchfork",
-    "roc_heart",
-]
-list_filenames = ["output/{}.png".format(s) for s in list_filenames]
-
-list_img = []
-for filename in list_filenames:
-    img = Image.open(filename)
-    list_img.append(img)
-
-# Get heght and width of individual panels
-ind_height = list_img[0].height
-ind_width = list_img[0].width
-
-
-# Create frame
-dst = Image.new("RGB", (3 * ind_width, 2 * ind_height), (255, 255, 255))
-
-# Paste in images
-i = 0
-for y in np.arange(2) * ind_height:
-    for x in np.arange(3) * ind_width:
-        dst.paste(list_img[i], (x, y))
-        i += 1
-
-
-dpi = 96 * 8  # (default dpi) * (scaling factor)
-dst.save("../../results/figure_3.png", dpi=(dpi, dpi))
-
-# Remove temporary images
-import os
-
-for filename in list_filenames + ["temp_inset.png", "temp_roc.png"]:
-    try:
-        os.remove(filename)
-    except:
-        pass
-
-# Time taken for script to run
-end_time = time.time()
-time_taken = end_time - start_time
-print("Ran in {:.2f}s".format(time_taken))

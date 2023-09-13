@@ -39,7 +39,7 @@ pip list
 
 GEN_TRAINING_DATA=false # generate the training data from scratch
 TRAIN_CLASSIFIER=false # train a new deep learning classifier
-QUICK_RUN=false # do a quick run that takes minimal compute time
+QUICK_RUN=true # do a quick run that takes minimal compute time
 
 if [ "$QUICK_RUN" = true ]
 then 
@@ -54,9 +54,7 @@ else
     INC=5
 fi
 
-
 echo -e "-----\n Running code repository with NSIMS=$NSIMS, NEPOCHS=$NEPOCHS, MODEL_SIMS=$MODEL_SIMS, INC=$INC  \n-----"
-
 
 if [ "$GEN_TRAINING_DATA" = true ]
 then
@@ -65,7 +63,6 @@ then
     mkdir -p output
     python gen_training_data.py --nsims $NSIMS --verbose 0
     cd ../
-    $USE_INTER_TRAIN
 fi
 
 if [ "$TRAIN_CLASSIFIER" = true ]
@@ -80,18 +77,13 @@ then
     cd ../
 fi
 
-echo -e "-----\n Get F1 scores on test data \n-----"
+echo -e "-----\n Make Sup Fig 1 - Confusion matrix of classifier on test data \n-----"
 cd dl_train
 mkdir -p output
 python dl_test.py --use_inter_train $GEN_TRAINING_DATA --use_inter_classifier $TRAIN_CLASSIFIER
 
-
 echo -e "-----\n Make Sup Fig 2 - example training simulations \n-----"
 cd ../figure_s2
-python make_fig.py
-
-echo -e "-----\n Make Sup Fig 3 - example model test simulations \n-----"
-cd ../figure_s3
 python make_fig.py
 
 echo -e "-----\n Test DL classifier and EWS on Fox model \n-----"
@@ -130,12 +122,29 @@ mkdir -p output
 python generate_data.py --use_inter_classifier $TRAIN_CLASSIFIER
 python make_fig.py
 
-echo -e "-----\n Make Sup Fig 4 - AUC scores across rof and sigma \n-----"
+echo -e "-----\n Make Sup Fig 3 - null simulations and EWS \n-----"
+cd ../figure_s3
+python generate_data.py --use_inter_classifier $TRAIN_CLASSIFIER
+python make_fig.py
+
+echo -e "-----\n Make Sup Fig 4 - example model test simulations \n-----"
 cd ../figure_s4
 python make_fig.py
 
-echo -e "-----\n Make Sup Fig 5 - DL favourite bifurcation prop. correct \n-----"
+echo -e "-----\n Make Sup Fig 5 - AUC at different rof and sigma \n-----"
 cd ../figure_s5
+python make_fig.py
+
+echo -e "-----\n Make Sup Fig 6 - DL favourite bifurcation prop. correct \n-----"
+cd ../figure_s6
+python make_fig.py
+
+echo -e "-----\n Make Sup Fig 7 - Performance of EWS for different parameter values in Fox model \n-----"
+cd ../figure_s4
+python get_bifurcation_data.py
+python compute_ews.py --use_inter_classifier $TRAIN_CLASSIFIER
+python compute_roc_alpha.py
+python compute_roc_scale.py
 python make_fig.py
 
 echo -e "-----\n Find transition times in chick heart data \n-----"
@@ -150,21 +159,48 @@ echo -e "-----\n Test EWS and DL in chick heart data \n-----"
 python test_chick_heart.py --use_inter_classifier $TRAIN_CLASSIFIER
 python compute_roc.py
 
-echo -e "-----\n Make figure 3 - sample EWS and DL preds in chick heart data \n-----"
-cd ../figure_3
-python make_fig.py
-
-echo -e "-----\n Make Fig S6 S7 - EWS in chick heart period-doubling \n-----"
-cd ../figure_s6_s7
-python make_fig.py
-
-echo -e "-----\n Make Fig S8 S9 - EWS in chick heart null \n-----"
+echo -e "-----\n Make Fig S8 S9 - EWS in chick heart period-doubling \n-----"
 cd ../figure_s8_s9
 python make_fig.py
 
-echo -e "-----\n Make Figure 4 - ROC curves \n-----"
-cd ../figure_4
+echo -e "-----\n Make Fig S10 S11 - EWS in chick heart null \n-----"
+cd ../figure_s10_s11
+python make_fig.py
+
+echo -e "-----\n Make Figure 3 - ROC curves \n-----"
+cd ../figure_3
 mkdir -p output
 python make_fig.py
 
+echo -e "-----\n Make figure 4 - sample EWS and DL preds in chick heart data \n-----"
+cd ../figure_4
+python make_fig.py
 
+echo -e "-----\n Make Fig S12 - demonstrate Lowess vs Gaussian detrending of chick heart data \n-----"
+cd ../figure_s12
+python make_fig.py
+
+echo -e "-----\n Make Fig S13 - Performance of EWS using different detrending \n-----"
+cd ../figure_s13
+python test_bandidth.py --use_inter_classifier $TRAIN_CLASSIFIER
+python test_span.py --use_inter_classifier $TRAIN_CLASSIFIER
+python compute_roc_bw.py
+python compute_roc_span.py
+python make_fig.py
+
+echo -e "-----\n Make Fig S14 - performance of lag-1 AC and variance for different rolling windows \n-----"
+cd ../figure_s14
+python test_rw.py
+python compute_roc_rw.py
+python make_fig.py
+
+echo -e "-----\n Make Fig S15 - ROC curve for EWS on perturbed chick heart data \n-----"
+cd ../figure_s15
+python test_sample_error.py --use_inter_classifier $TRAIN_CLASSIFIER
+python compute_roc_pert.py
+python make_fig.py
+
+echo -e "-----\n Make Fig S16 - DL predictions on null simulations with different lambda \n-----"
+cd ../figure_s16
+python generate_data.py --use_inter_classifier $TRAIN_CLASSIFIER
+python make_fig.py

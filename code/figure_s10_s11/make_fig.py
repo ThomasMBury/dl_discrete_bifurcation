@@ -9,7 +9,7 @@ Make a figure that includes:
 - Lag-1 AC
 - DL predictions
 
-For each period-doubling trajectory in chick-heart data
+For each null trajectory in chick-heart data
 
 @author: tbury
 """
@@ -26,15 +26,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-# Load in transition times
-df_transitions = pd.read_csv("../test_chick_heart/output/df_transitions.csv")
-df_transitions.set_index("tsid", inplace=True)
 
 # Load in EWS data
-df_ews = pd.read_csv("../test_chick_heart/output/df_ews_pd_rolling.csv")
+df_ews = pd.read_csv("../test_chick_heart/output/df_ews_null_rolling.csv")
 
 # Import DL prediction data
-df_dl = pd.read_csv("../test_chick_heart/output/df_dl_pd_rolling.csv")
+df_dl = pd.read_csv("../test_chick_heart/output/df_dl_null_rolling.csv")
 df_dl["any"] = df_dl[["1", "2", "3", "4", "5"]].sum(axis=1)
 df_dl["time"] = df_dl["Beat number"]
 # df_dl = df_dl.rename({col_name:str(col_name) for col_name in df_dl.columns.values})
@@ -270,9 +267,16 @@ def make_grid_figure(df_ews, df_dl, letter_label, title, transition=False):
     # Axes properties
     # ---------
 
-    # Let x range go 15% beyond transition
-    tstart = df_ews["Beat number"].iloc[0]
-    tend = tstart + 1.15 * (transition - tstart)
+    # # Get rate of forcing
+    # rof = df_properties[
+    #     df_properties['tsid']==tsid]['rate of forcing (mV/s)'].iloc[0]
+    # # If rate of forcing <=40, add more space to y limits
+    # if rof<=40:
+    #     ymin = df_traj_plot['Pressure (kPa)'].min()
+    #     ymax = df_traj_plot['Pressure (kPa)'].max()
+    #     ymin_plot = ymin-0.4*(ymax-ymin)
+    #     ymax_plot = ymax+0.4*(ymax-ymin)
+    #     fig.update_yaxes(range=[ymin_plot, ymax_plot],row=1,col=1)
 
     fig.update_xaxes(
         title={"text": "Beat number", "standoff": 5},
@@ -281,7 +285,6 @@ def make_grid_figure(df_ews, df_dl, letter_label, title, transition=False):
         linewidth=1,
         linecolor="black",
         mirror=True,
-        range=[tstart, tend],
         row=4,
         col=1,
     )
@@ -375,13 +378,12 @@ for i, tsid in enumerate(list_tsid):
     letter_label = list_letter_labels[i]
     df_ews_spec = df_ews[df_ews["tsid"] == tsid]
     df_dl_spec = df_dl_av[df_dl_av["tsid"] == tsid]
-    transition = df_transitions["transition"].loc[tsid]
 
     # Title
     # title = 'tsid={}'.format(tsid)
     title = ""
     fig = make_grid_figure(
-        df_ews_spec, df_dl_spec, letter_label, title, transition=transition
+        df_ews_spec, df_dl_spec, letter_label, title, transition=False
     )
     # Export as png
     fig.write_image("img_{}.png".format(tsid), scale=2)
@@ -395,7 +397,7 @@ for i, tsid in enumerate(list_tsid):
 from PIL import Image
 
 list_img = []
-filename = "../../results/figure_s8.png"
+filename = "../../results/figure_s10.png"
 
 for tsid in np.arange(1, 13):
     img = Image.open("img_{}.png".format(tsid))
@@ -423,7 +425,7 @@ dst.save(filename)
 # -----------
 
 list_img = []
-filename = "../../results/figure_s9.png"
+filename = "../../results/figure_s11.png"
 
 for tsid in np.arange(13, 24):
     img = Image.open("img_{}.png".format(tsid))
@@ -447,7 +449,6 @@ for y in np.arange(0, 2) * ind_height:
             pass
 
 dst.save(filename)
-
 
 # Remove temp images
 import os

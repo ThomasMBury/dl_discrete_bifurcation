@@ -3,7 +3,8 @@
 """
 Created on Wed Nov 30 14:39:17 2022
 
-Make heatmap of %(correct DL class) for each combo of (RoF, sigma)
+Make heatmap of AUC value at each combo of (RoF, sigma)
+for variance, lag-1 AC, and DL probability
 for each discrete-time model 
 
 @author: tbury
@@ -11,377 +12,778 @@ for each discrete-time model
 
 
 import time
+
 start_time = time.time()
 
 import numpy as np
 import pandas as pd
-
 import plotly.express as px
 
 import sklearn.metrics as metrics
 
+
 def roc_compute(truth_vals, indicator_vals):
-    
     # Compute ROC curve and threhsolds using sklearn
-    fpr, tpr, thresholds = metrics.roc_curve(truth_vals,indicator_vals)
-    
+    fpr, tpr, thresholds = metrics.roc_curve(truth_vals, indicator_vals)
+
     # Compute AUC (area under curve)
     auc = metrics.auc(fpr, tpr)
-    
+
     # Put into a DF
-    dic_roc = {'fpr':fpr, 'tpr':tpr, 'thresholds':thresholds, 'auc':auc}
+    dic_roc = {"fpr": fpr, "tpr": tpr, "thresholds": thresholds, "auc": auc}
     df_roc = pd.DataFrame(dic_roc)
 
     return df_roc
 
 
-#-------------
+# -------------
 # Fox model
-#------------
+# -------------
 
-path = '../test_fox/output/'
+path = "../test_fox/output/"
 
 # Import data
-df = pd.read_csv(path+'df_dl_forced.csv')
-df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
+df_ktau_forced = pd.read_csv(path + "df_ktau_forced.csv")
+df_ktau_null = pd.read_csv(path + "df_ktau_null.csv")
+df_dl_forced = pd.read_csv(path + "df_dl_forced.csv")
+df_dl_null = pd.read_csv(path + "df_dl_null.csv")
 
-df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
+# Set truth values
+df_ktau_forced["truth_value"] = 1
+df_ktau_null["truth_value"] = 0
+df_dl_forced["truth_value"] = 1
+df_dl_null["truth_value"] = 0
 
-correct_bif = 1
+df_dl = pd.concat([df_dl_forced, df_dl_null])
+df_ktau = pd.concat([df_ktau_forced, df_ktau_null])
+
+df_dl["p_bif"] = df_dl[["1", "2", "3", "4", "5"]].sum(axis=1)
 
 # Get rof and sigma values
-rof_values = df['rof'].unique()
-sigma_values = df['sigma'].unique()
+rof_values = df_ktau_forced["rof"].unique()
+sigma_values = df_ktau_forced["sigma"].unique()
 
 list_dict = []
 
 for rof in rof_values:
     for sigma in sigma_values:
-        
-        df_spec = df[(df['sigma']==sigma)&\
-                           (df['rof']==rof)]
-        # % correct
-        num_correct = len(df_spec[df_spec['fav_bif']==correct_bif])
-        num_total = len(df_spec)
-        prop_correct = num_correct/num_total
-        list_dict.append({'rof':rof, 'sigma':sigma, 'prop_correct':prop_correct})
+        df_dl_spec = df_dl[(df_dl["sigma"] == sigma) & (df_dl["rof"] == rof)]
+        df_ktau_spec = df_ktau[(df_ktau["sigma"] == sigma) & (df_ktau["rof"] == rof)]
+        # AUC for variance
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_ktau_spec["variance"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "var", "auc": auc})
 
-df_pred_fox = pd.DataFrame(list_dict)
+        # AUC for lag-1 AC
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = -df_ktau_spec[
+            "ac1"
+        ].values  # negative value since decreasing AC1 before period-doubling
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "ac1", "auc": auc})
+
+        # AUC for DL probability
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_dl_spec["p_bif"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "p_bif", "auc": auc})
+
+df_auc_fox = pd.DataFrame(list_dict)
+
+# What percentage of times does the DL have a better AUC
+df_auc_pivot = df_auc_fox.pivot(index=["rof", "sigma"], columns="indicator")["auc"]
+df_auc_pivot["best"] = df_auc_pivot[["ac1", "var", "p_bif"]].idxmax(axis=1)
+prop_dl_best = len(df_auc_pivot[df_auc_pivot["best"] == "p_bif"]) / len(df_auc_pivot)
+print(
+    "For the Fox model, the DL performs best in {}% of cases".format(prop_dl_best * 100)
+)
 
 
-
-#-------------
+# ------------
 # Westerhoff model
-#------------
+# ------------
 
-
-path = '../test_westerhoff/output/'
+path = "../test_westerhoff/output/"
 
 # Import data
-df = pd.read_csv(path+'df_dl_forced.csv')
-df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
+df_ktau_forced = pd.read_csv(path + "df_ktau_forced.csv")
+df_ktau_null = pd.read_csv(path + "df_ktau_null.csv")
+df_dl_forced = pd.read_csv(path + "df_dl_forced.csv")
+df_dl_null = pd.read_csv(path + "df_dl_null.csv")
 
-df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
+# Set truth values
+df_ktau_forced["truth_value"] = 1
+df_ktau_null["truth_value"] = 0
+df_dl_forced["truth_value"] = 1
+df_dl_null["truth_value"] = 0
 
-correct_bif = 2
+df_dl = pd.concat([df_dl_forced, df_dl_null])
+df_ktau = pd.concat([df_ktau_forced, df_ktau_null])
+
+df_dl["p_bif"] = df_dl[["1", "2", "3", "4", "5"]].sum(axis=1)
+
 
 # Get rof and sigma values
-rof_values = df['rof'].unique()
-sigma_values = df['sigma'].unique()
+rof_values = df_ktau_forced["rof"].unique()
+sigma_values = df_ktau_forced["sigma"].unique()
+
 
 list_dict = []
 
 for rof in rof_values:
     for sigma in sigma_values:
-        
-        df_spec = df[(df['sigma']==sigma)&\
-                           (df['rof']==rof)]
-        # % correct
-        num_correct = len(df_spec[df_spec['fav_bif']==correct_bif])
-        num_total = len(df_spec)
-        prop_correct = num_correct/num_total
-        list_dict.append({'rof':rof, 'sigma':sigma, 'prop_correct':prop_correct})
+        df_dl_spec = df_dl[(df_dl["sigma"] == sigma) & (df_dl["rof"] == rof)]
+        df_ktau_spec = df_ktau[(df_ktau["sigma"] == sigma) & (df_ktau["rof"] == rof)]
+        # AUC for variance
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_ktau_spec["variance"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "var", "auc": auc})
 
-df_pred_westerhoff = pd.DataFrame(list_dict)
+        # AUC for lag-1 AC
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_ktau_spec["ac1"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "ac1", "auc": auc})
+
+        # AUC for DL probability
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_dl_spec["p_bif"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "p_bif", "auc": auc})
+
+df_auc_westerhoff = pd.DataFrame(list_dict)
+
+# What percentage of times does the DL have a better AUC
+df_auc_pivot = df_auc_westerhoff.pivot(index=["rof", "sigma"], columns="indicator")[
+    "auc"
+]
+df_auc_pivot["best"] = df_auc_pivot[["ac1", "var", "p_bif"]].idxmax(axis=1)
+prop_dl_best = len(df_auc_pivot[df_auc_pivot["best"] == "p_bif"]) / len(df_auc_pivot)
+print(
+    "For the Westerhoff model, the DL performs best in {}% of cases".format(
+        prop_dl_best * 100
+    )
+)
 
 
-#-------------
+# -------------
 # Ricker model
-#------------
+# ------------
 
-
-path = '../test_ricker/output/'
+path = "../test_ricker/output/"
 
 # Import data
-df = pd.read_csv(path+'df_dl_forced.csv')
-df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
+df_ktau_forced = pd.read_csv(path + "df_ktau_forced.csv")
+df_ktau_null = pd.read_csv(path + "df_ktau_null.csv")
+df_dl_forced = pd.read_csv(path + "df_dl_forced.csv")
+df_dl_null = pd.read_csv(path + "df_dl_null.csv")
 
-df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
+# Set truth values
+df_ktau_forced["truth_value"] = 1
+df_ktau_null["truth_value"] = 0
+df_dl_forced["truth_value"] = 1
+df_dl_null["truth_value"] = 0
 
-correct_bif = 3
+df_dl = pd.concat([df_dl_forced, df_dl_null])
+df_ktau = pd.concat([df_ktau_forced, df_ktau_null])
+
+df_dl["p_bif"] = df_dl[["1", "2", "3", "4", "5"]].sum(axis=1)
+
 
 # Get rof and sigma values
-rof_values = df['rof'].unique()
-sigma_values = df['sigma'].unique()
+rof_values = df_ktau_forced["rof"].unique()
+sigma_values = df_ktau_forced["sigma"].unique()
+
 
 list_dict = []
 
 for rof in rof_values:
     for sigma in sigma_values:
-        
-        df_spec = df[(df['sigma']==sigma)&\
-                           (df['rof']==rof)]
-        # % correct
-        num_correct = len(df_spec[df_spec['fav_bif']==correct_bif])
-        num_total = len(df_spec)
-        prop_correct = num_correct/num_total
-        list_dict.append({'rof':rof, 'sigma':sigma, 'prop_correct':prop_correct})
+        df_dl_spec = df_dl[(df_dl["sigma"] == sigma) & (df_dl["rof"] == rof)]
+        df_ktau_spec = df_ktau[(df_ktau["sigma"] == sigma) & (df_ktau["rof"] == rof)]
+        # AUC for variance
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_ktau_spec["variance"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "var", "auc": auc})
 
-df_pred_ricker = pd.DataFrame(list_dict)
+        # AUC for lag-1 AC
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_ktau_spec["ac1"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "ac1", "auc": auc})
+
+        # AUC for DL probability
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_dl_spec["p_bif"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "p_bif", "auc": auc})
+
+df_auc_ricker = pd.DataFrame(list_dict)
+
+# What percentage of times does the DL have a better AUC
+df_auc_pivot = df_auc_ricker.pivot(index=["rof", "sigma"], columns="indicator")["auc"]
+df_auc_pivot["best"] = df_auc_pivot[["ac1", "var", "p_bif"]].idxmax(axis=1)
+prop_dl_best = len(df_auc_pivot[df_auc_pivot["best"] == "p_bif"]) / len(df_auc_pivot)
+print(
+    "For the Ricker model, the DL performs best in {}% of cases".format(
+        prop_dl_best * 100
+    )
+)
 
 
-#-------------
+# -------------
 # Kot model
-#------------
+# ------------
 
-
-path = '../test_kot/output/'
+path = "../test_kot/output/"
 
 # Import data
-df = pd.read_csv(path+'df_dl_forced.csv')
-df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
+df_ktau_forced = pd.read_csv(path + "df_ktau_forced.csv")
+df_ktau_null = pd.read_csv(path + "df_ktau_null.csv")
+df_dl_forced = pd.read_csv(path + "df_dl_forced.csv")
+df_dl_null = pd.read_csv(path + "df_dl_null.csv")
 
-df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
+# Set truth values
+df_ktau_forced["truth_value"] = 1
+df_ktau_null["truth_value"] = 0
+df_dl_forced["truth_value"] = 1
+df_dl_null["truth_value"] = 0
 
-correct_bif = 4
+df_dl = pd.concat([df_dl_forced, df_dl_null])
+df_ktau = pd.concat([df_ktau_forced, df_ktau_null])
+
+df_dl["p_bif"] = df_dl[["1", "2", "3", "4", "5"]].sum(axis=1)
+
 
 # Get rof and sigma values
-rof_values = df['rof'].unique()
-sigma_values = df['sigma'].unique()
+rof_values = df_ktau_forced["rof"].unique()
+sigma_values = df_ktau_forced["sigma"].unique()
 
 list_dict = []
 
 for rof in rof_values:
     for sigma in sigma_values:
-        
-        df_spec = df[(df['sigma']==sigma)&\
-                           (df['rof']==rof)]
-        # % correct
-        num_correct = len(df_spec[df_spec['fav_bif']==correct_bif])
-        num_total = len(df_spec)
-        prop_correct = num_correct/num_total
-        list_dict.append({'rof':rof, 'sigma':sigma, 'prop_correct':prop_correct})
+        df_dl_spec = df_dl[(df_dl["sigma"] == sigma) & (df_dl["rof"] == rof)]
+        df_ktau_spec = df_ktau[(df_ktau["sigma"] == sigma) & (df_ktau["rof"] == rof)]
+        # AUC for variance
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_ktau_spec["variance"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "var", "auc": auc})
 
-df_pred_kot = pd.DataFrame(list_dict)
+        # AUC for lag-1 AC
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_ktau_spec["ac1"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "ac1", "auc": auc})
+
+        # AUC for DL probability
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_dl_spec["p_bif"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "p_bif", "auc": auc})
+
+df_auc_kot = pd.DataFrame(list_dict)
+
+# What percentage of times does the DL have a better AUC
+df_auc_pivot = df_auc_kot.pivot(index=["rof", "sigma"], columns="indicator")["auc"]
+df_auc_pivot["best"] = df_auc_pivot[["ac1", "var", "p_bif"]].idxmax(axis=1)
+prop_dl_best = len(df_auc_pivot[df_auc_pivot["best"] == "p_bif"]) / len(df_auc_pivot)
+print(
+    "For the predator-prey model, the DL performs best in {}% of cases".format(
+        prop_dl_best * 100
+    )
+)
 
 
-
-#-------------
+# -------------
 # Lorenz model
-#------------
+# ------------
 
-
-path = '../test_lorenz/output/'
+path = "../test_lorenz/output/"
 
 # Import data
-df = pd.read_csv(path+'df_dl_forced.csv')
-df = df.rename({str(i):i for i in np.arange(6)}, axis=1)
+df_ktau_forced = pd.read_csv(path + "df_ktau_forced.csv")
+df_ktau_null = pd.read_csv(path + "df_ktau_null.csv")
+df_dl_forced = pd.read_csv(path + "df_dl_forced.csv")
+df_dl_null = pd.read_csv(path + "df_dl_null.csv")
 
-df['fav_bif'] = df[[1,2,3,4,5]].idxmax(axis=1)
+# Set truth values
+df_ktau_forced["truth_value"] = 1
+df_ktau_null["truth_value"] = 0
+df_dl_forced["truth_value"] = 1
+df_dl_null["truth_value"] = 0
 
-correct_bif = 5
+df_dl = pd.concat([df_dl_forced, df_dl_null])
+df_ktau = pd.concat([df_ktau_forced, df_ktau_null])
+
+df_dl["p_bif"] = df_dl[["1", "2", "3", "4", "5"]].sum(axis=1)
+
 
 # Get rof and sigma values
-rof_values = df['rof'].unique()
-sigma_values = df['sigma'].unique()
+rof_values = df_ktau_forced["rof"].unique()
+sigma_values = df_ktau_forced["sigma"].unique()
 
 list_dict = []
 
 for rof in rof_values:
     for sigma in sigma_values:
-        
-        df_spec = df[(df['sigma']==sigma)&\
-                           (df['rof']==rof)]
-        # % correct
-        num_correct = len(df_spec[df_spec['fav_bif']==correct_bif])
-        num_total = len(df_spec)
-        prop_correct = num_correct/num_total
-        list_dict.append({'rof':rof, 'sigma':sigma, 'prop_correct':prop_correct})
+        df_dl_spec = df_dl[(df_dl["sigma"] == sigma) & (df_dl["rof"] == rof)]
+        df_ktau_spec = df_ktau[(df_ktau["sigma"] == sigma) & (df_ktau["rof"] == rof)]
+        # AUC for variance
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_ktau_spec["variance"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "var", "auc": auc})
 
-df_pred_lorenz = pd.DataFrame(list_dict)
+        # AUC for lag-1 AC
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_ktau_spec["ac1"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "ac1", "auc": auc})
+
+        # AUC for DL probability
+        truth_vals = df_ktau_spec["truth_value"].values
+        indicator_vals = df_dl_spec["p_bif"].values
+        df_roc = roc_compute(truth_vals, indicator_vals)
+        auc = df_roc["auc"].iloc[0]
+        list_dict.append({"rof": rof, "sigma": sigma, "indicator": "p_bif", "auc": auc})
+
+df_auc_lorenz = pd.DataFrame(list_dict)
+
+# What percentage of times does the DL have a better AUC
+df_auc_pivot = df_auc_lorenz.pivot(index=["rof", "sigma"], columns="indicator")["auc"]
+df_auc_pivot["best"] = df_auc_pivot[["ac1", "var", "p_bif"]].idxmax(axis=1)
+prop_dl_best = len(df_auc_pivot[df_auc_pivot["best"] == "p_bif"]) / len(df_auc_pivot)
+print(
+    "For the Lorenz model, the DL performs best in {}% of cases".format(
+        prop_dl_best * 100
+    )
+)
 
 
-
-
-
-#-------------
+# -------------
 # Make subplot heat map
-#------------
+# ------------
 
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
-fig = make_subplots(5, 1, vertical_spacing=0.08)
-    
+
+fig = make_subplots(5, 3, horizontal_spacing=0.15, vertical_spacing=0.08)
 
 
 # Fox model
-df = df_pred_fox
-row=1
-# # Only plot from 0.5 to 1
-# df_auc['auc'] = df_auc['auc'].apply(lambda x: max(0.5, x))
+df_auc = df_auc_fox
+# Only plot from 0.5 to 1
+df_auc["auc"] = df_auc["auc"].apply(lambda x: max(0.5, x))
 
-z = df.pivot(index='sigma', columns='rof',values='prop_correct')
-xvals = ['{:.2g}'.format(x) for x in z.columns]
-yvals = ['{:.2g}'.format(x) for x in z.index]
+z_ac = df_auc[df_auc["indicator"] == "ac1"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+z_var = df_auc[df_auc["indicator"] == "var"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+z_dl = df_auc[df_auc["indicator"] == "p_bif"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
 
-fig.add_trace(go.Heatmap(z=z.values, x=xvals, y=yvals, 
-                          zmin=0, zmax=1, 
-                          coloraxis='coloraxis',
-                          ),
-              row=row,col=1)
+xvals = ["{:.2g}".format(x) for x in z_ac.columns]
+yvals = ["{:.2g}".format(x) for x in z_ac.index]
 
-    
+row = 1
+fig.add_trace(
+    go.Heatmap(
+        z=z_ac.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=1,
+)
+fig.add_trace(
+    go.Heatmap(
+        z=z_var.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=2,
+)
+fig.add_trace(
+    go.Heatmap(
+        z=z_dl.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=3,
+)
+
+
 # westerhoff model
-df = df_pred_westerhoff
-row=2
-# # Only plot from 0.5 to 1
-# df_auc['auc'] = df_auc['auc'].apply(lambda x: max(0.5, x))
+df_auc = df_auc_westerhoff
+# Only plot from 0.5 to 1
+df_auc["auc"] = df_auc["auc"].apply(lambda x: max(0.5, x))
 
-z = df.pivot(index='sigma', columns='rof',values='prop_correct')
-xvals = ['{:.2g}'.format(x) for x in z.columns]
-yvals = ['{:.2g}'.format(x) for x in z.index]
 
-fig.add_trace(go.Heatmap(z=z.values, x=xvals, y=yvals, 
-                           zmin=0, zmax=1, 
-                          coloraxis='coloraxis',
-                          ),
-              row=row,col=1)
+z_ac = df_auc[df_auc["indicator"] == "ac1"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+z_var = df_auc[df_auc["indicator"] == "var"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+z_dl = df_auc[df_auc["indicator"] == "p_bif"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
 
+xvals = ["{:.2g}".format(x) for x in z_ac.columns]
+yvals = ["{:.2g}".format(x) for x in z_ac.index]
+
+row = 2
+fig.add_trace(
+    go.Heatmap(
+        z=z_ac.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=1,
+)
+fig.add_trace(
+    go.Heatmap(
+        z=z_var.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=2,
+)
+fig.add_trace(
+    go.Heatmap(
+        z=z_dl.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=3,
+)
 
 # ricker model
-df = df_pred_ricker
-row=3
-# # Only plot from 0.5 to 1
-# df_auc['auc'] = df_auc['auc'].apply(lambda x: max(0.5, x))
-
-z = df.pivot(index='sigma', columns='rof',values='prop_correct')
-xvals = ['{:.2g}'.format(x) for x in z.columns]
-yvals = ['{:.2g}'.format(x) for x in z.index]
-
-fig.add_trace(go.Heatmap(z=z.values, x=xvals, y=yvals, 
-                           zmin=0, zmax=1, 
-                          coloraxis='coloraxis',
-                          ),
-              row=row,col=1)
+df_auc = df_auc_ricker
+# Only plot from 0.5 to 1
+df_auc["auc"] = df_auc["auc"].apply(lambda x: max(0.5, x))
 
 
-# Kot model
-df = df_pred_kot
-row=4
-# # Only plot from 0.5 to 1
-# df_auc['auc'] = df_auc['auc'].apply(lambda x: max(0.5, x))
+z_ac = df_auc[df_auc["indicator"] == "ac1"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+z_var = df_auc[df_auc["indicator"] == "var"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+z_dl = df_auc[df_auc["indicator"] == "p_bif"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
 
-z = df.pivot(index='sigma', columns='rof',values='prop_correct')
-xvals = ['{:.2g}'.format(x) for x in z.columns]
-yvals = ['{:.2g}'.format(x) for x in z.index]
+xvals = ["{:.2g}".format(x) for x in z_ac.columns]
+yvals = ["{:.2g}".format(x) for x in z_ac.index]
 
-fig.add_trace(go.Heatmap(z=z.values, x=xvals, y=yvals, 
-                           zmin=0, zmax=1, 
-                          coloraxis='coloraxis',
-                          ),
-              row=row,col=1)
+row = 3
+fig.add_trace(
+    go.Heatmap(
+        z=z_ac.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=1,
+)
+fig.add_trace(
+    go.Heatmap(
+        z=z_var.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=2,
+)
+fig.add_trace(
+    go.Heatmap(
+        z=z_dl.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=3,
+)
+
+
+# predator prey model
+df_auc = df_auc_kot
+# Only plot from 0.5 to 1
+df_auc["auc"] = df_auc["auc"].apply(lambda x: max(0.5, x))
+
+
+z_ac = df_auc[df_auc["indicator"] == "ac1"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+z_var = df_auc[df_auc["indicator"] == "var"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+z_dl = df_auc[df_auc["indicator"] == "p_bif"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+
+xvals = ["{:.2g}".format(x) for x in z_ac.columns]
+yvals = ["{:.2g}".format(x) for x in z_ac.index]
+
+row = 4
+fig.add_trace(
+    go.Heatmap(
+        z=z_ac.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=1,
+)
+fig.add_trace(
+    go.Heatmap(
+        z=z_var.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=2,
+)
+fig.add_trace(
+    go.Heatmap(
+        z=z_dl.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=3,
+)
 
 
 # lorenz model
-df = df_pred_lorenz
-row=5
-# # Only plot from 0.5 to 1
-# df_auc['auc'] = df_auc['auc'].apply(lambda x: max(0.5, x))
+df_auc = df_auc_lorenz
+# Only plot from 0.5 to 1
+df_auc["auc"] = df_auc["auc"].apply(lambda x: max(0.5, x))
 
-z = df.pivot(index='sigma', columns='rof',values='prop_correct')
-xvals = ['{:.2g}'.format(x) for x in z.columns]
-yvals = ['{:.2g}'.format(x) for x in z.index]
+z_ac = df_auc[df_auc["indicator"] == "ac1"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+z_var = df_auc[df_auc["indicator"] == "var"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
+z_dl = df_auc[df_auc["indicator"] == "p_bif"].pivot(
+    index="sigma", columns="rof", values="auc"
+)
 
-fig.add_trace(go.Heatmap(z=z.values, x=xvals, y=yvals, 
-                           zmin=0, zmax=1, 
-                          coloraxis='coloraxis',
-                          ),
-              row=row,col=1)
+xvals = ["{:.2g}".format(x) for x in z_ac.columns]
+yvals = ["{:.2g}".format(x) for x in z_ac.index]
 
+row = 5
+fig.add_trace(
+    go.Heatmap(
+        z=z_ac.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=1,
+)
+fig.add_trace(
+    go.Heatmap(
+        z=z_var.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=2,
+)
+fig.add_trace(
+    go.Heatmap(
+        z=z_dl.values,
+        x=xvals,
+        y=yvals,
+        zmin=0.5,
+        zmax=1,
+        coloraxis="coloraxis",
+    ),
+    row=row,
+    col=3,
+)
 
 
 font_annotation = 14
-
-x_annotation = 1.25
 fig.add_annotation(
-            x=x_annotation, y=0.94,
-            xref='paper', yref='paper',
-            text='Fox',
-            yanchor='middle',
-            textangle=90,
-            showarrow=False,
-            font=dict(size=font_annotation),
-            )
+    x=0.05,
+    y=1.04,
+    xref="paper",
+    yref="paper",
+    text="Lag-1 AC",
+    showarrow=False,
+    font=dict(size=font_annotation),
+)
 
 fig.add_annotation(
-            x=x_annotation, y=0.76,
-            xref='paper', yref='paper',
-            text='Westerhoff',
-            textangle=90,
-            showarrow=False,
-            font=dict(size=font_annotation),
-            )
+    x=0.49,
+    y=1.04,
+    xref="paper",
+    yref="paper",
+    text="Variance",
+    showarrow=False,
+    font=dict(size=font_annotation),
+)
 
 fig.add_annotation(
-            x=x_annotation, y=0.5,
-            xref='paper', yref='paper',
-            text='Ricker',
-            textangle=90,
-            showarrow=False,
-            font=dict(size=font_annotation),
-            )
+    x=0.98,
+    y=1.04,
+    xref="paper",
+    yref="paper",
+    text="DL probability",
+    showarrow=False,
+    font=dict(size=font_annotation),
+)
 
 fig.add_annotation(
-            x=x_annotation, y=0.23,
-            xref='paper', yref='paper',
-            text='Lotka-Volterra',
-            textangle=90,
-            showarrow=False,
-            font=dict(size=font_annotation),
-            )
+    x=1.07,
+    y=0.94,
+    xref="paper",
+    yref="paper",
+    text="Fox",
+    yanchor="middle",
+    textangle=90,
+    showarrow=False,
+    font=dict(size=font_annotation),
+)
 
 fig.add_annotation(
-            x=x_annotation, y=0.04,
-            xref='paper', yref='paper',
-            text='Lorenz',
-            textangle=90,
-            showarrow=False,
-            font=dict(size=font_annotation),
-            )
+    x=1.07,
+    y=0.76,
+    xref="paper",
+    yref="paper",
+    text="Westerhoff",
+    textangle=90,
+    showarrow=False,
+    font=dict(size=font_annotation),
+)
 
+fig.add_annotation(
+    x=1.07,
+    y=0.5,
+    xref="paper",
+    yref="paper",
+    text="Ricker",
+    textangle=90,
+    showarrow=False,
+    font=dict(size=font_annotation),
+)
+
+fig.add_annotation(
+    x=1.07,
+    y=0.23,
+    xref="paper",
+    yref="paper",
+    text="Lotka-Volterra",
+    textangle=90,
+    showarrow=False,
+    font=dict(size=font_annotation),
+)
+
+fig.add_annotation(
+    x=1.07,
+    y=0.04,
+    xref="paper",
+    yref="paper",
+    text="Lorenz",
+    textangle=90,
+    showarrow=False,
+    font=dict(size=font_annotation),
+)
 
 
 # Axes properties
-fig.update_xaxes(title='RoF', row=5)
-fig.update_yaxes(title='sigma', col=1)
+fig.update_xaxes(title="RoF", row=5)
+fig.update_yaxes(title="sigma", col=1)
 
 fig.update_xaxes(automargin=False)
 fig.update_yaxes(automargin=False)
 
 
 fig.update_layout(
-    width=320 , height=900,
-    font=dict(family='Times New Roman'),
-    coloraxis=dict(cmin=0, cmax=1),
-    coloraxis_colorbar=dict(x=1.5, 
-                            title='Proportion<br>correct<br>',
-                            ),
+    coloraxis_colorbar=dict(x=1.1, title="AUC<br>score<br> "),
+    # automargin=False,
     margin=dict(l=60, r=10, b=75, t=30),
-    )
+)
 
 
-fig.write_image('../../results/figure_s5.png', scale=8)
+fig.update_layout(width=650, height=900, font=dict(family="Times New Roman"))
+
+
+fig.write_image("../../results/figure_s5.png", scale=8)
 
 
 # # Export time taken for script to run
@@ -390,30 +792,3 @@ fig.write_image('../../results/figure_s5.png', scale=8)
 # path = 'time_make_fig.txt'
 # with open(path, 'w') as f:
 #     f.write('{:.2f}'.format(time_taken))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

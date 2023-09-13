@@ -1,616 +1,461 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sun Feb  7 19:03:01 2021
+Created on Wed Oct 26 12:23:35 2022
 
-Make fig of ROC curves with inset showing histogram of highest DL probability
+Make figure for select period-doubling trajectories in chick-heart data
+for main manuscript
 
-@author: Thoams M. Bury
+Make fig with rows
+- trajectory and smoothing
+- variance
+- lag-1 ac
+- dl preds
 
+and each col a different trajectory
+
+@author: tbury
 """
-
-
 import time
+
 start_time = time.time()
 
 import numpy as np
 import pandas as pd
+
 import plotly.graph_objects as go
 import plotly.express as px
+from plotly.subplots import make_subplots
 
-import matplotlib.pyplot as plt
+# Load in EWS data
+df_ews = pd.read_csv("../test_chick_heart/output/df_ews_pd_rolling.csv")
 
-# Import PIL for image tools
-from PIL import Image
+# Load in DL data
+df_dl = pd.read_csv("../test_chick_heart/output/df_dl_pd_rolling.csv")
+df_dl["time"] = df_dl["Beat number"]
+df_dl = df_dl.groupby(["tsid", "time"]).mean().reset_index()
+df_dl["any"] = df_dl[["1", "2", "3", "4", "5"]].sum(axis=1)
 
-#-----------
-# General fig params
-#------------
+# Load in transition times
+df_transitions = pd.read_csv("../test_chick_heart/output/df_transitions.csv")
+df_transitions.set_index("tsid", inplace=True)
 
-# Colour scheme
-# cols = px.colors.qualitative.D3 # blue, orange, green, red, purple, brown
-cols = px.colors.qualitative.Plotly # blue, red, green, purple, orange, cyan, pink, light green
-col_grays = px.colors.sequential.gray
-
-dic_colours = {
-        'state':'gray',
-        'smoothing':col_grays[2],
-        'dl_bif':cols[0],
-        'variance':cols[1],
-        'ac':cols[2],
-        'dl_fold':cols[3],  
-        'dl_hopf':cols[4],
-        'dl_branch':cols[5],
-        'dl_null':'black',
-     }
+tsid_plot = [8, 20, 14, 22, 16]
 
 # Pixels to mm
-mm_to_pixel = 96/25.4 # 96 dpi, 25.4mm in an inch
+mm_to_pixel = 96 / 25.4  # 96 dpi, 25.4mm in an inch
 
 # Nature width of single col fig : 89mm
 # Nature width of double col fig : 183mm
 
 # Get width of single panel in pixels
-fig_width = 183*mm_to_pixel/3 # 3 panels wide
-fig_height = fig_width
+fig_width = 183 * mm_to_pixel  # try single col width
+fig_height = fig_width * 0.6
+
+
+# Colour scheme
+# cols = px.colors.qualitative.D3 # blue, orange, green, red, purple, brown
+cols = (
+    px.colors.qualitative.Plotly
+)  # blue, red, green, purple, orange, cyan, pink, light green
+col_grays = px.colors.sequential.gray
+
+col_other_bif = "gray"
+dic_colours = {
+    "state": "gray",
+    "smoothing": col_grays[2],
+    "variance": cols[1],
+    "ac": cols[2],
+    "dl_any": cols[0],
+    "dl_specific": cols[4],
+    "dl_null": "black",
+    "dl_pd": col_other_bif,
+    "dl_ns": col_other_bif,
+    "dl_fold": col_other_bif,
+    "dl_tc": col_other_bif,
+    "dl_pf": col_other_bif,
+}
 
 
 font_size = 10
-font_family = 'Times New Roman'
-font_size_letter_label = 14
-font_size_auc_text = 10
-
-
-# AUC annotations
-x_auc = 0.98
-y_auc = 0.6
-x_N = 0.18
-y_N = 0.05
-y_auc_sep = 0.065
+font_family = "Times New Roman"
+font_size_letter_label = 10
+font_size_titles = 12
 
 linewidth = 0.7
 linewidth_axes = 0.5
 tickwidth = 0.5
-linewidth_axes_inset = 0.5
+ticklen = 2
 
-axes_standoff = 0
+
+# Opacity of DL probabilities for different bifs
+opacity = 0.5
+
+
+# dist from axis to axis label
+xaxes_standoff = 0
+yaxes_standoff = 0
 
 
 # Scale up factor on image export
-scale = 8 # default dpi=72 - nature=300-600
+scale = 8  # default dpi=72 - nature=300-600
+
+fig = make_subplots(
+    rows=4,
+    cols=5,
+    shared_xaxes=True,
+    vertical_spacing=0.04,
+)
+
+list_shapes = []
+list_annotations = []
 
 
+for i, tsid in enumerate(tsid_plot):
+    df_ews_sel = df_ews[df_ews["tsid"] == tsid]
+    df_dl_sel = df_dl[df_dl["tsid"] == tsid]
+    col = i + 1
 
-def make_roc_figure(df_roc, letter_label, title='', text_N=''):
-    ''' Make ROC figure (no inset)'''
-        
-    fig = go.Figure()
-    
-    
-    # DL prediction any bif
-    df_trace = df_roc[df_roc['ews']=='DL bif']
-    auc_dl = df_trace.round(2)['auc'].iloc[0]
+    # Trace for trajectory
     fig.add_trace(
-        go.Scatter(x=df_trace['fpr'],
-                    y=df_trace['tpr'],
-                    showlegend=False,
-                    mode='lines',
-                    line=dict(width=linewidth,
-                              color=dic_colours['dl_bif'],
-                              ),
-                    )
-        )
-    
-    
-    # Variance plot
-    df_trace = df_roc[df_roc['ews']=='Variance']
-    auc_var = df_trace.round(2)['auc'].iloc[0]
-    fig.add_trace(
-        go.Scatter(x=df_trace['fpr'],
-                    y=df_trace['tpr'],
-                    showlegend=False,
-                    mode='lines',
-                    line=dict(width=linewidth,
-                              color=dic_colours['variance'],
-                              ),
-                    )
-        )
-    
-    # Lag-1  AC plot
-    df_trace = df_roc[df_roc['ews']=='Lag-1 AC']
-    auc_ac = df_trace.round(2)['auc'].iloc[0]
-    fig.add_trace(
-        go.Scatter(x=df_trace['fpr'],
-                    y=df_trace['tpr'],
-                    showlegend=False,
-                    mode='lines',
-                    line=dict(width=linewidth,
-                              color=dic_colours['ac'],
-                              ),
-                    )
-        )
-    
-    # Line y=x
-    fig.add_trace(
-        go.Scatter(x=np.linspace(0,1,100),
-                    y=np.linspace(0,1,100),
-                    showlegend=False,
-                    line=dict(color='black',
-                              dash='dot',
-                              width=linewidth,
-                              ),
-                    )
-        )
-    
+        go.Scatter(
+            x=df_ews_sel["Beat number"],
+            y=df_ews_sel["state"],
+            marker_color=dic_colours["state"],
+            showlegend=False,
+            line={"width": linewidth},
+        ),
+        row=1,
+        col=col,
+    )
 
-    #--------------
-    # Add labels and titles
-    #----------------------
-    
-    list_annotations = []
-    
+    # Trace for smoothing
+    fig.add_trace(
+        go.Scatter(
+            x=df_ews_sel["Beat number"],
+            y=df_ews_sel["smoothing"],
+            marker_color=dic_colours["smoothing"],
+            showlegend=False,
+            line={"width": linewidth},
+        ),
+        row=1,
+        col=col,
+    )
+
+    # Trace for lag-1 AC
+    fig.add_trace(
+        go.Scatter(
+            x=df_ews_sel["Beat number"],
+            y=df_ews_sel["ac1"],
+            marker_color=dic_colours["ac"],
+            showlegend=False,
+            line={"width": linewidth},
+        ),
+        row=3,
+        col=col,
+    )
+
+    # Trace for variance
+    fig.add_trace(
+        go.Scatter(
+            x=df_ews_sel["Beat number"],
+            y=df_ews_sel["variance"],
+            marker_color=dic_colours["variance"],
+            showlegend=False,
+            line={"width": linewidth},
+        ),
+        row=2,
+        col=col,
+    )
+
+    # Weight for any bif
+    fig.add_trace(
+        go.Scatter(
+            x=df_dl_sel["time"],
+            y=df_dl_sel["any"],
+            marker_color=dic_colours["dl_any"],
+            showlegend=False,
+            line={"width": linewidth},
+        ),
+        row=4,
+        col=col,
+    )
+
+    # Weight for PD
+    fig.add_trace(
+        go.Scatter(
+            x=df_dl_sel["time"],
+            y=df_dl_sel["1"],
+            marker_color=dic_colours["dl_specific"],
+            showlegend=False,
+            line={"width": linewidth},
+        ),
+        row=4,
+        col=col,
+    )
+
+    # Weight for NS
+    fig.add_trace(
+        go.Scatter(
+            x=df_dl_sel["time"],
+            y=df_dl_sel["2"],
+            marker_color=dic_colours["dl_ns"],
+            showlegend=False,
+            line={"width": linewidth},
+            opacity=opacity,
+        ),
+        row=4,
+        col=col,
+    )
+
+    # Weight for Fold
+    fig.add_trace(
+        go.Scatter(
+            x=df_dl_sel["time"],
+            y=df_dl_sel["3"],
+            marker_color=dic_colours["dl_fold"],
+            showlegend=False,
+            line={"width": linewidth},
+            opacity=opacity,
+        ),
+        row=4,
+        col=col,
+    )
+
+    # Weight for transcritical
+    fig.add_trace(
+        go.Scatter(
+            x=df_dl_sel["time"],
+            y=df_dl_sel["4"],
+            marker_color=dic_colours["dl_tc"],
+            showlegend=False,
+            line={"width": linewidth},
+            opacity=opacity,
+        ),
+        row=4,
+        col=col,
+    )
+
+    # Weight for pitchfork
+    fig.add_trace(
+        go.Scatter(
+            x=df_dl_sel["time"],
+            y=df_dl_sel["5"],
+            marker_color=dic_colours["dl_pf"],
+            showlegend=False,
+            line={"width": linewidth},
+            opacity=opacity,
+        ),
+        row=4,
+        col=col,
+    )
+
+    # Vertical line for where transition occurs
+    transition = df_transitions.loc[tsid]["transition"]
+    shape = {
+        "type": "line",
+        "x0": transition,
+        "y0": 0,
+        "x1": transition,
+        "y1": 1,
+        "xref": "x{}".format(i + 1),
+        "yref": "paper",
+        "line": {"width": linewidth, "dash": "dot"},
+    }
+    list_shapes.append(shape)
+
+    # Let x range go 15% beyond transition
+    tstart = df_ews_sel["Beat number"].iloc[0]
+    tend = tstart + 1.15 * (transition - tstart)
+    fig.update_xaxes(range=[tstart, tend], col=col)
+
+    # Arrows to indiciate rolling window
+    rw = 0.5
+    arrowhead = 1
+    arrowsize = 1.5
+    arrowwidth = 0.4
+
+    axis_numbers = [6 + i, 11 + i]
+
+    for axis_number in axis_numbers:
+        # Make right-pointing arrow
+        annotation_arrow_right = dict(
+            x=0,  # arrows' head
+            y=0.1,  # arrows' head
+            ax=transition * rw,  # arrows' tail
+            ay=0.1,  # arrows' tail
+            xref="x{}".format(axis_number),
+            yref="y{} domain".format(axis_number),
+            axref="x{}".format(axis_number),
+            ayref="y{} domain".format(axis_number),
+            text="",  # if you want only the arrow
+            showarrow=True,
+            arrowhead=arrowhead,
+            arrowsize=arrowsize,
+            arrowwidth=arrowwidth,
+            arrowcolor="black",
+        )
+        # Make left-pointing arrow
+        annotation_arrow_left = dict(
+            ax=0,  # arrows' head
+            y=0.1,  # arrows' head
+            x=transition * rw,  # arrows' tail
+            ay=0.1,  # arrows' tail
+            xref="x{}".format(axis_number),
+            yref="y{} domain".format(axis_number),
+            axref="x{}".format(axis_number),
+            ayref="y{} domain".format(axis_number),
+            text="",  # if you want only the arrow
+            showarrow=True,
+            arrowhead=arrowhead,
+            arrowsize=arrowsize,
+            arrowwidth=arrowwidth,
+            arrowcolor="black",
+        )
+
+        # Append to annotations
+        list_annotations.append(annotation_arrow_left)
+        list_annotations.append(annotation_arrow_right)
+
+
+fig["layout"].update(shapes=list_shapes)
+
+
+# #--------------
+# # Add annotations
+# #----------------------
+
+
+# Letter labels for each panel
+import string
+
+label_letters = string.ascii_lowercase
+
+axes_numbers = [str(n) for n in np.arange(1, 21)]
+axes_numbers[0] = ""
+idx = 0
+for axis_number in axes_numbers:
     label_annotation = dict(
-            # x=sum(xrange)/2,
-            x=0.02,
-            y=1,
-            text='<b>{}</b>'.format(letter_label),
-            xref='paper',
-            yref='paper',
-            showarrow=False,
-            font = dict(
-                    color = 'black',
-                    size = font_size_letter_label,
-                    ),
-            )
-
-
-    
-    annotation_auc_dl = dict(
-            # x=sum(xrange)/2,
-            x=x_auc,
-            y=y_auc,
-            text='A<sub>DL</sub>={:.2f}'.format(auc_dl),
-            xref='paper',
-            yref='paper',
-            showarrow=False,
-            font = dict(
-                    color = 'black',
-                    size = font_size_auc_text,
-                    )
-            )
-        
-    
-    annotation_auc_var = dict(
-            # x=sum(xrange)/2,
-            x=x_auc,
-            y=y_auc-y_auc_sep,
-            text='A<sub>Var</sub>={:.2f}'.format(auc_var),
-            xref='paper',
-            yref='paper',
-            showarrow=False,
-            font = dict(
-                    color = 'black',
-                    size = font_size_auc_text,
-                    )
-            )    
-    
-    
-    
-    annotation_auc_ac = dict(
-            # x=sum(xrange)/2,
-            x=x_auc,
-            y=y_auc-2*y_auc_sep,
-            text='A<sub>AC</sub>={:.2f}'.format(auc_ac),
-            xref='paper',
-            yref='paper',
-            showarrow=False,
-            font = dict(
-                    color = 'black',
-                    size = font_size_auc_text,
-                    )
-            )  
-    
-    
-    annotation_N = dict(
-            # x=sum(xrange)/2,
-            x=x_N,
-            y=y_N,
-            text=text_N,
-            xref='paper',
-            yref='paper',
-            showarrow=False,
-            font = dict(
-                    color = 'black',
-                    size = font_size_auc_text,
-                    )
-            )      
-    title_annotation = dict(
-            # x=sum(xrange)/2,
-            x=0.5,
-            y=1,
-            text=title,
-            xref='paper',
-            yref='paper',
-            showarrow=False,
-            font = dict(
-                    color = "black",
-                    size = font_size)
-            ) 
-      
-    
+        x=0.01,
+        y=1.00,
+        text="<b>{}</b>".format(label_letters[idx]),
+        xref="x{} domain".format(axis_number),
+        yref="y{} domain".format(axis_number),
+        showarrow=False,
+        font=dict(color="black", size=font_size_letter_label),
+    )
     list_annotations.append(label_annotation)
-    list_annotations.append(annotation_auc_dl)
-    list_annotations.append(annotation_auc_var)
-    list_annotations.append(annotation_auc_ac)
-    list_annotations.append(annotation_N)
-    # list_annotations.append(title_annotation)
-
-    fig['layout'].update(annotations=list_annotations)
-        
-    
-    #-------------
-    # General layout properties
-    #--------------
-    
-    # X axes properties
-    fig.update_xaxes(
-        title=dict(text='False positive',
-                   standoff=axes_standoff,
-                   ),
-        range=[-0.04,1.04],
-        ticks="outside",
-        tickwidth=tickwidth,
-        tickvals =np.arange(0,1.1,0.2),
-        showline=True,
-        linewidth=linewidth_axes,
-        linecolor='black',
-        mirror=False,
-        )
-    
-    
-    # Y axes properties
-    fig.update_yaxes(
-        title=dict(text='True positive',
-                   standoff=axes_standoff,
-                   ),
-        range=[-0.04,1.04],
-        ticks="outside",
-        tickvals=np.arange(0,1.1,0.2),
-        tickwidth=tickwidth,
-        showline=True,
-        linewidth=linewidth_axes,
-        linecolor='black',
-        mirror=False,
-        )
-    
-    
-    # Overall properties
-    fig.update_layout(
-        legend=dict(x=0.6, y=0),
-        width=fig_width,
-        height=fig_height,
-        margin=dict(l=30,r=5,b=15,t=5),
-        font=dict(size=font_size, family=font_family),
-        paper_bgcolor='rgba(255,255,255,1)',
-        plot_bgcolor='rgba(255,255,255,1)',
-        )
-
-    return fig
-
-
-
-import seaborn as sns
-
-def make_inset_boxplot(df_dl_forced, target_bif, save_dir):
-    '''
-    Make inset boxplot that shows the value of the 
-    DL weights where the predictions are made
-
-    '''
-    
-    sns.set(
-        style="ticks",
-        rc={'figure.figsize': (2.5*1.05, 1.5*1.05),
-            'axes.linewidth':0.5,
-            'axes.edgecolor':'#333F4B',
-            'xtick.color':'#333F4B',
-            'xtick.major.width':0.5,
-            'xtick.major.size':3,
-            'text.color':'#333F4B',
-            'font.family':'Times New Roman',
-            # 'font.size':20,
-            },
-        font_scale=1.2,
-        )
-            
-
-    plt.figure()
-    
-    bif_types = [str(i) for i in np.arange(1,6)]
-    bif_labels = ['PD', 'NS', 'Fold', 'TC', 'PF']
-    map_bif = dict(zip(bif_types, bif_labels))
-    df_plot = df_dl_forced[bif_types].melt(var_name='bif_type', value_name='DL prob')
-    df_plot['bif_label'] = df_plot['bif_type'].map(map_bif)
-    
-    color_main = '#A9A9A9'
-    color_target = '#FFA15A'
-    col_palette = {bif: color_main for bif in bif_labels}
-    col_palette[target_bif] = color_target
-
-
-    b = sns.boxplot(df_plot,
-                    orient = 'h',
-                    x = "DL prob", 
-                    y = "bif_label",
-                    width = 0.8,
-                    palette = col_palette,
-                    linewidth = 0.8,
-                    showfliers=False,
-                    )
-    
-    b.set(xlabel=None)
-    b.set(ylabel=None)
-    b.set_xticks([0, 0.5, 1])
-    b.set_xticklabels(['0', '0.5', '1'])
-
-    sns.despine(offset = 3, trim = True)
-    b.tick_params(left=False, bottom=True)
-
-
-
-    fig = b.get_figure()
-    # fig.tight_layout()
-
-    fig.savefig(save_dir, dpi=330, bbox_inches='tight', pad_inches=0)
-        
-    
-    
-    
-
-
-def combine_roc_inset(path_roc, path_inset, path_out):
-    ''' 
-    Combine ROC plot and inset, and export to path_out
-    '''
-    
-    # Import image
-    img_roc = Image.open(path_roc)
-    img_inset = Image.open(path_inset)
-    
-    # Get height and width of frame (in pixels)
-    height = img_roc.height
-    width = img_roc.width
-    
-    # Create frame
-    dst = Image.new('RGB', (width,height), (255,255,255))
-    
-    # Pasete in images
-    dst.paste(img_roc,(0,0))
-    dst.paste(img_inset,(width-img_inset.width-60, 1050))
-    
-    dpi=96*8 # (default dpi) * (scaling factor)
-    dst.save(path_out, dpi=(dpi,dpi))
-    
-    return
-    
-
-
-#-------
-# Fox period-doubling
-#--------
-
-df_roc = pd.read_csv('../test_fox/output/df_roc.csv')
-df_dl_forced = pd.read_csv('../test_fox/output/df_dl_forced.csv')
-
-fig_roc = make_roc_figure(df_roc, 'a', text_N='N={}'.format(len(df_dl_forced)*2))
-fig_roc.write_image('temp_roc.png', scale=scale)
-
-make_inset_boxplot(df_dl_forced, 'PD', 'temp_inset.png')
+    idx += 1
 
-# Combine figs and export
-path_roc = 'temp_roc.png'
-path_inset = 'temp_inset.png'
-path_out = 'output/roc_fox_pd.png'
-
-combine_roc_inset(path_roc, path_inset, path_out)
 
+fig["layout"].update(annotations=list_annotations)
 
-#-------
-# Westerhoff NS
-#--------
 
-df_roc = pd.read_csv('../test_westerhoff/output/df_roc.csv')
-df_dl_forced = pd.read_csv('../test_westerhoff/output/df_dl_forced.csv')
+# -------------
+# Axes properties
+# -----------
 
-fig_roc = make_roc_figure(df_roc, 'b', text_N='N={}'.format(len(df_dl_forced)*2))
-fig_roc.write_image('temp_roc.png', scale=scale)
 
-make_inset_boxplot(df_dl_forced, 'NS', 'temp_inset.png')
+# Global y axis properties
+fig.update_yaxes(
+    showline=True,
+    ticks="outside",
+    tickwidth=tickwidth,
+    ticklen=ticklen,
+    linecolor="black",
+    linewidth=linewidth_axes,
+    mirror=False,
+    showgrid=False,
+    automargin=False,
+    title_standoff=yaxes_standoff,
+)
 
-# Combine figs and export
-path_roc = 'temp_roc.png'
-path_inset = 'temp_inset.png'
-path_out = 'output/roc_westerhoff_ns.png'
+# Global x axis properties
+fig.update_xaxes(
+    showline=True,
+    linecolor="black",
+    linewidth=linewidth_axes,
+    mirror=False,
+    showgrid=False,
+    automargin=False,
+    title_standoff=xaxes_standoff,
+)
 
-combine_roc_inset(path_roc, path_inset, path_out)
 
+# Specific x axes properties
+fig.update_xaxes(
+    title="Beat number",
+    ticks="outside",
+    tickwidth=tickwidth,
+    ticklen=ticklen,
+    row=4,
+)
 
+# fig.update_xaxes(mirror=False,
+#                  row=1,
+#                  )
 
-#-------
-# Ricker fold
-#--------
-df_roc = pd.read_csv('../test_ricker/output/df_roc.csv')
-df_dl_forced = pd.read_csv('../test_ricker/output/df_dl_forced.csv')
+# Specific y axes properties
+fig.update_yaxes(title="IBI (s)", row=1, col=1)
 
-fig_roc = make_roc_figure(df_roc, 'c', text_N='N={}'.format(len(df_dl_forced)*2))
+fig.update_yaxes(title="Lag-1 AC", row=3, col=1)
 
-# Add text to indicate which ROC curve belongs to each EWS
-fig_roc.add_annotation(x=0.15, y=0.92,
-            text='DL',
-            showarrow=False,
-            font=dict(family='Times New Roman',
-                      size=12,
-                      color=cols[0]
-                      )
-            )
-fig_roc.add_annotation(x=0.37, y=0.7,
-            text='Var',
-            showarrow=False,
-            font=dict(family='Times New Roman',
-                      size=12,
-                      color=cols[1]
-                      )
-            )
-fig_roc.add_annotation(x=0.25, y=0.8,
-            text='AC',
-            showarrow=False,
-            font=dict(family='Times New Roman',
-                      size=12,
-                      color=cols[2]
-                      )
-            )
+fig.update_yaxes(title="Variance", row=2, col=1)
 
-fig_roc.write_image('temp_roc.png', scale=scale)
+fig.update_yaxes(title="DL probability", row=4, col=1)
 
-make_inset_boxplot(df_dl_forced, 'Fold', 'temp_inset.png')
 
+fig.update_yaxes(range=[0.45, 1.4], row=1, col=3)
 
-# Combine figs and export
-path_roc = 'temp_roc.png'
-path_inset = 'temp_inset.png'
-path_out = 'output/roc_ricker_fold.png'
+fig.update_yaxes(range=[0.5, 1.39], row=1, col=5)
 
-combine_roc_inset(path_roc, path_inset, path_out)
+fig.update_yaxes(range=[-0.05, 1.05], row=4)
 
 
+# General layout properties
+fig.update_layout(
+    height=fig_height,
+    width=fig_width,
+    margin={"l": 40, "r": 5, "b": 30, "t": 5},
+    font=dict(size=font_size, family=font_family),
+    paper_bgcolor="rgba(255,255,255,1)",
+    plot_bgcolor="rgba(255,255,255,1)",
+)
 
-#-------
-# Kot transcritical
-#--------
-df_roc = pd.read_csv('../test_kot/output/df_roc.csv')
-df_dl_forced = pd.read_csv('../test_kot/output/df_dl_forced.csv')
+fig.update_traces(connectgaps=True)
 
 
-fig_roc = make_roc_figure(df_roc, 'd', text_N='N={}'.format(len(df_dl_forced)*2))
-fig_roc.write_image('temp_roc.png', scale=scale)
+# Export as temp image
+fig.write_image("temp.png", scale=8)
 
-make_inset_boxplot(df_dl_forced, 'TC', 'temp_inset.png')
+# fig.write_html('temp.html')
 
+# Import image with Pil to assert dpi and export - this assigns correct
+# dimensions in mm for figure.
+from PIL import Image
 
-# Combine figs and export
-path_roc = 'temp_roc.png'
-path_inset = 'temp_inset.png'
-path_out = 'output/roc_kot_transcritical.png'
+img = Image.open("temp.png")
+dpi = 96 * 8  # (default dpi) * (scaling factor)
+img.save("../../results/figure_4.png", dpi=(dpi, dpi))
 
-combine_roc_inset(path_roc, path_inset, path_out)
-
-
-#-------
-# Lorenz pitchfork
-#--------
-nsims = 2500
-df_roc = pd.read_csv('../test_lorenz/output/df_roc.csv')
-df_dl_forced = pd.read_csv('../test_lorenz/output/df_dl_forced.csv')
-
-
-fig_roc = make_roc_figure(df_roc, 'e', text_N='N={}'.format(len(df_dl_forced)*2))
-fig_roc.write_image('temp_roc.png', scale=scale)
-
-make_inset_boxplot(df_dl_forced, 'PF', 'temp_inset.png')
-
-
-# Combine figs and export
-path_roc = 'temp_roc.png'
-path_inset = 'temp_inset.png'
-path_out = 'output/roc_lorenz_pitchfork.png'
-
-combine_roc_inset(path_roc, path_inset, path_out)
-
-
-#-------
-# Heart data
-#--------
-df_roc = pd.read_csv('../test_chick_heart/output/df_roc.csv')
-df_dl_forced = pd.read_csv('../test_chick_heart/output/df_dl_pd_fixed.csv')
-
-fig_roc = make_roc_figure(df_roc, 'f', text_N='N={}'.format(len(df_dl_forced)*2))
-fig_roc.write_image('temp_roc.png', scale=scale)
-
-make_inset_boxplot(df_dl_forced, 'PD', 'temp_inset.png')
-
-
-# Combine figs and export
-path_roc = 'temp_roc.png'
-path_inset = 'temp_inset.png'
-path_out = 'output/roc_heart.png'
-
-combine_roc_inset(path_roc, path_inset, path_out)
-
-#------------
-# Combine ROC plots
-#------------
-
-#-----------------
-# Fig 4 of manuscript: 8-panel figure for all models and empirical data
-#-----------------
-
-# # Early or late predictions
-# timing = 'late'
-
-list_filenames = ['roc_fox_pd',
-                  'roc_westerhoff_ns',
-                  'roc_ricker_fold',
-                  'roc_kot_transcritical',
-                  'roc_lorenz_pitchfork',
-                  'roc_heart',
-                  ]
-list_filenames = ['output/{}.png'.format(s) for s in list_filenames]
-
-list_img = []
-for filename in list_filenames:
-    img = Image.open(filename)
-    list_img.append(img)
-
-# Get heght and width of individual panels
-ind_height = list_img[0].height
-ind_width = list_img[0].width
-
-
-# Create frame
-dst = Image.new('RGB',(3*ind_width, 2*ind_height), (255,255,255))
-
-# Paste in images
-i=0
-for y in np.arange(2)*ind_height:
-    for x in np.arange(3)*ind_width:
-        dst.paste(list_img[i], (x,y))
-        i+=1
-
-
-dpi=96*8 # (default dpi) * (scaling factor)
-dst.save('../../results/figure_4.png',
-          dpi=(dpi,dpi))
-
-# Remove temporary images
+# Remove temp images
 import os
-for filename in list_filenames+['temp_inset.png','temp_roc.png']:
-    try:
-        os.remove(filename)
-    except:
-        pass
+
+try:
+    os.remove("temp.png")
+except:
+    pass
+
 
 # Time taken for script to run
 end_time = time.time()
 time_taken = end_time - start_time
-print('Ran in {:.2f}s'.format(time_taken))
+print("Ran in {:.2f}s".format(time_taken))
 
 
-
-
-
-
-
-
-
-
-
+# # Export time taken for script to run
+# end_time = time.time()
+# time_taken = end_time - start_time
+# path = 'time_make_fig.txt'
+# with open(path, 'w') as f:
+#     f.write('{:.2f}'.format(time_taken))
