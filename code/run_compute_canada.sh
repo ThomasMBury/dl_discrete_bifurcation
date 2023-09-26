@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH --job-name=reproducible_run
 #SBATCH --account=def-glass # adjust this to match the accounting group you are using to submit jobs
-#SBATCH --time=0-4:00:00         # adjust this to match the walltime of your job
+#SBATCH --time=0-8:00:00         # adjust this to match the walltime of your job
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4      # adjust this if you are using parallel commands
@@ -39,7 +39,7 @@ pip list
 
 GEN_TRAINING_DATA=false # generate the training data from scratch
 TRAIN_CLASSIFIER=false # train a new deep learning classifier
-QUICK_RUN=true # do a quick run that takes minimal compute time
+QUICK_RUN=false # do a quick run that takes minimal compute time
 
 if [ "$QUICK_RUN" = true ]
 then 
