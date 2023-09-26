@@ -372,7 +372,7 @@ import string
 list_letter_labels = string.ascii_lowercase[: len(list_tsid)]
 
 for i, tsid in enumerate(list_tsid):
-    letter_label = list_letter_labels[i]
+    letter_label = list_letter_labels[i % 12]
     df_ews_spec = df_ews[df_ews["tsid"] == tsid]
     df_dl_spec = df_dl_av[df_dl_av["tsid"] == tsid]
     transition = df_transitions["transition"].loc[tsid]
