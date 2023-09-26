@@ -134,7 +134,7 @@ fig.add_annotation(
         size=20,
     ),
 )
-fig.write_image("figures/temp/fig_bar_auc_bw.png", scale=4)
+fig.write_image("figures/fig_bar_auc_bw.png", scale=4)
 
 
 # ------------
@@ -226,7 +226,7 @@ fig.add_annotation(
     ),
 )
 
-fig.write_image("figures/temp/fig_bar_auc_span.png", scale=4)
+fig.write_image("figures/fig_bar_auc_span.png", scale=4)
 
 
 # ------------
@@ -329,7 +329,7 @@ fig.add_annotation(
     ),
 )
 
-fig.write_image("figures/temp/fig_box_dl_weight_bw.png", scale=4)
+fig.write_image("figures/fig_box_dl_weight_bw.png", scale=4)
 
 
 # ------------
@@ -431,7 +431,7 @@ fig.add_annotation(
     ),
 )
 
-fig.write_image("figures/temp/fig_box_dl_weight_span.png", scale=4)
+fig.write_image("figures/fig_box_dl_weight_span.png", scale=4)
 
 
 # ------------
@@ -536,7 +536,7 @@ fig.add_annotation(
     ),
 )
 
-fig.write_image("figures/temp/fig_box_dl_favbif_bw.png", scale=4)
+fig.write_image("figures/fig_box_dl_favbif_bw.png", scale=4)
 
 
 # ------------
@@ -644,7 +644,7 @@ fig.add_annotation(
     ),
 )
 
-fig.write_image("figures/temp/fig_box_dl_favbif_span.png", scale=4)
+fig.write_image("figures/fig_box_dl_favbif_span.png", scale=4)
 
 
 # ---------
@@ -661,7 +661,7 @@ list_filenames = [
     "fig_box_dl_favbif_bw",
     "fig_box_dl_favbif_span",
 ]
-list_filenames = ["figures/temp/{}.png".format(s) for s in list_filenames]
+list_filenames = ["figures/{}.png".format(s) for s in list_filenames]
 
 list_img = []
 for filename in list_filenames:

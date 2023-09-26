@@ -194,7 +194,7 @@ echo -e "-----\n Make Fig S13 - Performance of EWS using different detrending \n
 cd ../figure_s13
 mkdir -p output
 mkdir -p figures
-python test_bandidth.py --use_inter_classifier $TRAIN_CLASSIFIER
+python test_bandwidth.py --use_inter_classifier $TRAIN_CLASSIFIER
 python test_span.py --use_inter_classifier $TRAIN_CLASSIFIER
 python compute_roc_bw.py
 python compute_roc_span.py
