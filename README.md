@@ -23,7 +23,7 @@ The above figure shows the spontaneous beating of an aggregate of chick heart ce
 
 ## Code capsule
 
-The article is accompanied by a [code capsule](https://codeocean.com/capsule/3359094/tree) on Code Ocean, which provides a software environment and compute resources to do a reproducible run of the results reported in the paper. This circumnavigates the need to install the software environment yourslef to reproduce the results. Alternatively, you can do a reproducible run on your local machine following the instructions below.
+The article is accompanied by a [code capsule](https://codeocean.com/capsule/2209652/tree/v2) on Code Ocean, which provides a software environment and compute resources to do a reproducible run of the results reported in the paper. This circumnavigates the need to install the software environment yourslef to reproduce the results. Alternatively, you can do a reproducible run on your local machine following the instructions below.
 
 
 ## System Requirements
